@@ -126,7 +126,7 @@ function convertTemperature(t) {
   if(config.temp_format == "C")
     return t
 
-  return tempToF(c)
+  return tempToF(t)
 }
 
 function copyToClipboard(d) {
