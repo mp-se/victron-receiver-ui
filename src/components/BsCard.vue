@@ -2,7 +2,7 @@
   <div class="card">
     <div :class="headerStyle()">{{ header }}</div>   
     <div class="card-body">
-      <h5 class="card-title"><BsIcon v-if="icon!==undefined" :icon="icon" height="16" width="16"></BsIcon> {{ title }} <slot name="header"> 1 </slot></h5>
+      <h5 class="card-title"><BsIcon v-if="icon!==undefined" :icon="icon" height="16" width="16"></BsIcon> {{ title }} <slot name="header"></slot></h5>
       <p class="card-text">
         <!-- @slot Content of the card is placed via the slot -->
         <slot></slot>
