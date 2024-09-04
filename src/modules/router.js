@@ -1,9 +1,8 @@
 import { ref } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { validateCurrentForm } from "@/modules/utils"
+import { validateCurrentForm } from '@/modules/utils'
 import * as badge from '@/modules/badge'
 import { global } from '@/modules/pinia'
-import { logDebug, logError, logInfo } from '@/modules/logger'
 
 import HomeView from '@/views/HomeView.vue'
 import DeviceSettingsView from '@/views/DeviceSettingsView.vue'
@@ -18,9 +17,6 @@ import SupportView from '@/views/SupportView.vue'
 import SerialView from '@/views/SerialView.vue'
 import ToolsView from '@/views/ToolsView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
-
-// TODO: Add backup and restore view/route
-// TODO: Import gravitymon push format options (http post x 2, http get, influx and mqtt)
 
 const routes = [
   {
@@ -84,23 +80,23 @@ const routes = [
     component: AboutView
   },
   {
-    path: "/:catchAll(.*)",
-    name: "404",
+    path: '/:catchAll(.*)',
+    name: '404',
     component: NotFoundView
   }
 ]
 
-export const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: routes
 })
 
-router.beforeEach((to, from) => {
-  if (global.disabled)
-    return false
+export default router
 
-  if (!validateCurrentForm()) 
-    return false;
+router.beforeEach(() => {
+  if (global.disabled) return false
+
+  if (!validateCurrentForm()) return false
 
   global.clearMessages()
   return true
@@ -109,87 +105,83 @@ router.beforeEach((to, from) => {
 const items = ref([
   {
     label: 'Home',
-    icon: 'bi-home',
+    icon: 'IconHome',
     path: '/',
     subs: []
   },
   {
     label: 'Device',
-    icon: 'bi-cpu',
+    icon: 'IconCpu',
     path: '/device',
     badge: badge.deviceBadge,
     subs: [
       {
         label: 'Settings',
-        icon: 'pi pi-cog',
         badge: badge.deviceSettingBadge,
-        path: '/device/settings',
+        path: '/device/settings'
       },
       {
         label: 'Security',
-        icon: 'pi pi-cog',
         badge: badge.deviceSecurityBadge,
-        path: '/device/security',
+        path: '/device/security'
       },
       {
         label: 'Hardware',
-        icon: 'pi pi-cog',
         badge: badge.deviceHardwareBadge,
-        path: '/device/hardware',
+        path: '/device/hardware'
       },
       {
         label: 'Wifi',
-        icon: 'pi pi-cog',
         badge: badge.deviceWifiBadge,
-        path: '/device/wifi',
-      },
+        path: '/device/wifi'
+      }
     ]
   },
   {
     label: 'Push targets',
-    icon: 'bi-cloud-up-arrow',
+    icon: 'IconCloudUpArrow',
     path: '/push',
     badge: badge.pushBadge,
     subs: [
       {
         label: 'Settings',
         badge: badge.pushSettingBadge,
-        path: '/push/settings',
+        path: '/push/settings'
       },
       {
         label: 'Home Assistant',
         badge: badge.pushMqttBadge,
-        path: '/push/hass',
-      },
+        path: '/push/hass'
+      }
     ]
   },
   {
     label: 'Other',
-    icon: 'bi-tools',
+    icon: 'IconTools',
     path: '/other',
     subs: [
       {
         label: 'Serial console',
-        path: '/other/serial',
+        path: '/other/serial'
       },
       {
         label: 'Firmware update',
-        path: '/other/firmware',
+        path: '/other/firmware'
       },
       {
         label: 'Support',
-        path: '/other/support',
+        path: '/other/support'
       },
       {
         label: 'Tools',
-        path: '/other/tools',
+        path: '/other/tools'
       },
       {
         label: 'About',
-        path: '/other/about',
-      },
+        path: '/other/about'
+      }
     ]
-  },
+  }
 ])
 
 export { items }
