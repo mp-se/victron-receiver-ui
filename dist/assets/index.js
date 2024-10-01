@@ -1842,7 +1842,7 @@ function resolveAsset(type, name, warnMissing = true, maybeSelfReference = false
   const instance = currentRenderingInstance || currentInstance;
   if (instance) {
     const Component = instance.type;
-    if (type === COMPONENTS) {
+    {
       const selfName = getComponentName(
         Component,
         false
@@ -6654,7 +6654,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.1.0";
     },
     uiBuild() {
-      return "..ba9923";
+      return "..9c4db2";
     },
     disabled32() {
       if (this.disabled) return true;
