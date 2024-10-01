@@ -6658,10 +6658,10 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return this.url;
     },
     uiVersion() {
-      return "1.1.2";
+      return "0.1.2";
     },
     uiBuild() {
-      return "..c3f4dc";
+      return "..69e31b";
     },
     disabled32() {
       if (this.disabled) return true;
