@@ -38,12 +38,14 @@ app.component('BsInputRadio', BsInputRadio)
 app.component('BsInputSwitch', BsInputSwitch)
 
 import IconHome from './components/IconHome.vue'
+import IconClipboard from './components/IconClipboard.vue'
 import IconTools from './components/IconTools.vue'
 import IconCloudUpArrow from './components/IconCloudUpArrow.vue'
 import IconUpArrow from './components/IconUpArrow.vue'
 import IconCpu from './components/IconCpu.vue'
 
 app.component('IconHome', IconHome)
+app.component('IconClipboard', IconClipboard)
 app.component('IconTools', IconTools)
 app.component('IconCloudUpArrow', IconCloudUpArrow)
 app.component('IconUpArrow', IconUpArrow)
