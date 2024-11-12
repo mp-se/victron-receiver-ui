@@ -4,22 +4,43 @@
     <p class="h3">Device - WIFI</p>
     <hr />
 
-    <BsMessage v-if="scanning" :dismissable="false" message="Scanning for wifi networks in range" alert="info">
+    <BsMessage
+      v-if="scanning"
+      :dismissable="false"
+      message="Scanning for wifi networks in range"
+      alert="info"
+    >
     </BsMessage>
 
-    <BsMessage v-if="config.wifi_ssid === '' && config.wifi_ssid2 === ''" dismissable="true" message="" alert="warning">
+    <BsMessage
+      v-if="config.wifi_ssid === '' && config.wifi_ssid2 === ''"
+      dismissable="true"
+      message=""
+      alert="warning"
+    >
       You need to define at least one wifi network
     </BsMessage>
 
     <form @submit.prevent="save" class="needs-validation" novalidate>
       <div class="row">
         <div class="col-md-6">
-          <BsSelect v-model="config.wifi_ssid" label="SSID #1" :options="networks" :badge="badge.deviceWifi1Badge()"
-            :disabled="global.disabled" />
+          <BsSelect
+            v-model="config.wifi_ssid"
+            label="SSID #1"
+            :options="networks"
+            :badge="badge.deviceWifi1Badge()"
+            :disabled="global.disabled"
+          />
         </div>
         <div class="col-md-6">
-          <BsInputText v-model="config.wifi_pass" type="password" maxlength="50" label="Password #1"
-            help="Enter password for the first wifi network" :disabled="global.disabled"></BsInputText>
+          <BsInputText
+            v-model="config.wifi_pass"
+            type="password"
+            maxlength="50"
+            label="Password #1"
+            help="Enter password for the first wifi network"
+            :disabled="global.disabled"
+          ></BsInputText>
         </div>
 
         <!-- 
@@ -37,20 +58,40 @@
         </div>
 
         <div class="col-md-6">
-          <BsInputNumber v-model="config.wifi_portal_timeout" unit="seconds" label="Portal timeout" min="10" max="240"
-            step="1" width="5" help="Max time the wifi portal is idle (10 to 240)" :disabled="global.disabled">
+          <BsInputNumber
+            v-model="config.wifi_portal_timeout"
+            unit="seconds"
+            label="Portal timeout"
+            min="10"
+            max="240"
+            step="1"
+            width="5"
+            help="Max time the wifi portal is idle (10 to 240)"
+            :disabled="global.disabled"
+          >
           </BsInputNumber>
         </div>
         <div class="col-md-6">
-          <BsInputNumber v-model="config.wifi_connect_timeout" unit="seconds" label="Connection timeout" min="1"
-            max="60" step="1" width="5" help="Max time waiting for a wifi connection (1 to 60)"
-            :disabled="global.disabled">
+          <BsInputNumber
+            v-model="config.wifi_connect_timeout"
+            unit="seconds"
+            label="Connection timeout"
+            min="1"
+            max="60"
+            step="1"
+            width="5"
+            help="Max time waiting for a wifi connection (1 to 60)"
+            :disabled="global.disabled"
+          >
           </BsInputNumber>
         </div>
         <div class="col-md-6">
-          <BsInputSwitch v-model="config.wifi_scan_ap" label="Scan for strongest AP"
+          <BsInputSwitch
+            v-model="config.wifi_scan_ap"
+            label="Scan for strongest AP"
             help="Will do a scan and connect to the strongest AP found (longer connection time)"
-            :disabled="global.disabled">
+            :disabled="global.disabled"
+          >
           </BsInputSwitch>
         </div>
       </div>
@@ -60,16 +101,33 @@
           <hr />
         </div>
         <div class="col-md-3">
-          <button type="submit" class="btn btn-primary w-2" :disabled="global.disabled || !global.configChanged">
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
-              :hidden="!global.disabled"></span>
+          <button
+            type="submit"
+            class="btn btn-primary w-2"
+            :disabled="global.disabled || !global.configChanged"
+          >
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+              :hidden="!global.disabled"
+            ></span>
             &nbsp;Save
           </button>
         </div>
         <div class="col-md-3">
-          <button @click="restart()" type="button" class="btn btn-secondary" :disabled="global.disabled">
-            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
-              :hidden="!global.disabled"></span>
+          <button
+            @click="restart()"
+            type="button"
+            class="btn btn-secondary"
+            :disabled="global.disabled"
+          >
+            <span
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+              :hidden="!global.disabled"
+            ></span>
             &nbsp;Restart device
           </button>
         </div>

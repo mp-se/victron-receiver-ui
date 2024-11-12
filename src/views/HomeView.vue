@@ -33,6 +33,15 @@
                     Message: {{ g.data.off_reason_message }}<br />
                   </template>
 
+                  <template v-if="g.data.name == 'Blue Smart IP65 Charger'">
+                    Battery: {{ g.data.battery_voltage1 }} V<br />
+                    Current: {{ g.data.ac_current }} A<br />
+                    State: {{ g.data.state_message }}
+                    <template v-if="g.data.error > 0"
+                      ><br />Error: {{ g.data.error_message }}<br
+                    /></template>
+                  </template>
+
                   <template v-if="g.data.name == 'Unknown'">
                     Unknown victron device found, copy the payload and create an issue on Github to
                     support the device.
@@ -44,7 +53,7 @@
                     type="button"
                     class="btn btn-outline-secondary btn-sm"
                   >
-                    <BsIcon icon="bi-clipboard" width="16" height="16" /> Copy data
+                    <IconClipboard icon="bi-clipboard" width="16" height="16" /> Copy data
                   </button>
                 </p>
               </slot>
@@ -86,9 +95,7 @@
 
         <div class="col-md-4">
           <BsCard header="Device" title="Platform">
-            <p class="text-center">
-              {{ status.platform }}
-            </p>
+            <p class="text-center">{{ status.platform }} (id: {{ status.id }})</p>
           </BsCard>
         </div>
 
@@ -138,7 +145,16 @@ function convertTemperature(t) {
 
 function copyToClipboard(d) {
   logDebug('HomeView::copyToClipboard()', d)
-  navigator.clipboard.writeText(JSON.stringify(d))
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(JSON.stringify(d))
+  } else {
+    const input = document.createElement('temporary')
+    input.value = JSON.stringify(d)
+    document.body.appendChild(input)
+    input.select()
+    document.execCommand('copy')
+    document.body.removeChild(input)
+  }
 }
 
 function refresh() {
