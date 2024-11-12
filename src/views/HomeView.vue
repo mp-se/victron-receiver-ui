@@ -42,6 +42,13 @@
                     /></template>
                   </template>
 
+                  <template v-if="g.data.name == 'Smart Shunt'">
+                    Battery: {{ g.data.battery_voltage }} V<br />
+                    Current: {{ g.data.battery_current }} A<br />
+                    Remaning: {{ g.data.remaning_mins }} min<br />
+                    Consumed: {{ g.data.consumed_ah }} Ah
+                  </template>
+
                   <template v-if="g.data.name == 'Unknown'">
                     Unknown victron device found, copy the payload and create an issue on Github to
                     support the device.
@@ -145,16 +152,17 @@ function convertTemperature(t) {
 
 function copyToClipboard(d) {
   logDebug('HomeView::copyToClipboard()', d)
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(JSON.stringify(d))
-  } else {
-    const input = document.createElement('temporary')
+
+  // if (navigator.clipboard) {
+  //   navigator.clipboard.writeText(JSON.stringify(d))
+  // } else {
+    const input = document.createElement('textarea')
     input.value = JSON.stringify(d)
     document.body.appendChild(input)
     input.select()
     document.execCommand('copy')
     document.body.removeChild(input)
-  }
+  // }
 }
 
 function refresh() {
