@@ -49,6 +49,16 @@
                     Consumed: {{ g.data.consumed_ah }} Ah
                   </template>
 
+                  <template v-if="g.data.name == 'Solar Charger'">
+                    State: {{ g.data.state_message }} V<br />
+                    Voltage: {{ g.data.battery_voltage }} A<br />
+                    Current: {{ g.data.battery_current }} min<br />
+                    PV: {{ g.data.pv_power }} Ah
+                    <template v-if="g.data.error > 0"
+                      ><br />Error: {{ g.data.error_message }}<br
+                    /></template>
+                  </template>
+
                   <template v-if="g.data.name == 'Unknown'">
                     Unknown victron device found, copy the payload and create an issue on Github to
                     support the device.
