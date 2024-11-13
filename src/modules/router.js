@@ -5,6 +5,7 @@ import * as badge from '@/modules/badge'
 import { global } from '@/modules/pinia'
 
 import HomeView from '@/views/HomeView.vue'
+import RawDataView from '@/views/RawDataView.vue'
 import DeviceSettingsView from '@/views/DeviceSettingsView.vue'
 import DeviceHardwareView from '@/views/DeviceHardwareView.vue'
 import DeviceSecurityView from '@/views/DeviceSecurityView.vue'
@@ -23,6 +24,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/data',
+    name: 'data',
+    component: RawDataView
   },
   {
     path: '/device/settings',
@@ -136,6 +142,12 @@ const items = ref([
         path: '/device/wifi'
       }
     ]
+  },
+  {
+    label: 'Data Explorer',
+    icon: 'IconEye',
+    path: '/data',
+    subs: []
   },
   {
     label: 'Push targets',

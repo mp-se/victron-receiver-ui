@@ -26,14 +26,14 @@
                     Battery: {{ g.data.battery_voltage }} V
                   </template>
 
-                  <template v-if="g.data.name == 'Orion Smart DC-DC Charger'">
+                  <template v-if="g.data.name == 'Smart DC-DC Charger'">
                     Input: {{ g.data.input_voltage }} V<br />
                     Output: {{ g.data.output_voltage }} V<br />
                     State: {{ g.data.state_message }}<br />
                     Message: {{ g.data.off_reason_message }}<br />
                   </template>
 
-                  <template v-if="g.data.name == 'Blue Smart IP65 Charger'">
+                  <template v-if="g.data.name == 'Smart AC Charger'">
                     Battery: {{ g.data.battery_voltage1 }} V<br />
                     Current: {{ g.data.ac_current }} A<br />
                     State: {{ g.data.state_message }}
@@ -156,12 +156,12 @@ function copyToClipboard(d) {
   // if (navigator.clipboard) {
   //   navigator.clipboard.writeText(JSON.stringify(d))
   // } else {
-    const input = document.createElement('textarea')
-    input.value = JSON.stringify(d)
-    document.body.appendChild(input)
-    input.select()
-    document.execCommand('copy')
-    document.body.removeChild(input)
+  const input = document.createElement('textarea')
+  input.value = JSON.stringify(d)
+  document.body.appendChild(input)
+  input.select()
+  document.execCommand('copy')
+  document.body.removeChild(input)
   // }
 }
 
