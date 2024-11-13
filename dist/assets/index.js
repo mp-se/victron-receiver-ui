@@ -6660,7 +6660,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.1.2";
     },
     uiBuild() {
-      return "..61b25f";
+      return "..9f3da4";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -8939,15 +8939,15 @@ function pushSettingBadge() {
 function pushMqttBadge() {
   return pushTargetCount() === 0 ? 1 : 0;
 }
-const _hoisted_1$I = { class: "container" };
-const _hoisted_2$E = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
-const _hoisted_3$w = {
+const _hoisted_1$J = { class: "container" };
+const _hoisted_2$F = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
+const _hoisted_3$x = {
   key: 0,
   class: "container overflow-hidden text-center"
 };
-const _hoisted_4$j = { class: "row gy-4" };
-const _hoisted_5$e = { class: "text-center" };
-const _hoisted_6$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_4$k = { class: "row gy-4" };
+const _hoisted_5$f = { class: "text-center" };
+const _hoisted_6$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_7$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_8$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_9$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
@@ -8960,20 +8960,25 @@ const _hoisted_15$8 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_16$6 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_17$6 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_18$6 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_19$5 = ["onClick"];
-const _hoisted_20$4 = { class: "col-md-4" };
-const _hoisted_21$3 = { class: "text-center" };
-const _hoisted_22$3 = { class: "col-md-4" };
-const _hoisted_23$3 = { class: "text-center" };
-const _hoisted_24$3 = { class: "col-md-4" };
-const _hoisted_25$1 = { class: "text-center" };
-const _hoisted_26$1 = { class: "col-md-4" };
-const _hoisted_27 = { class: "text-center" };
-const _hoisted_28 = { class: "col-md-4" };
-const _hoisted_29 = { class: "text-center" };
-const _hoisted_30 = { class: "col-md-4" };
-const _hoisted_31 = { class: "text-center" };
-const _sfc_main$I = {
+const _hoisted_19$5 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_20$4 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_21$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_22$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_23$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_24$3 = ["onClick"];
+const _hoisted_25$1 = { class: "col-md-4" };
+const _hoisted_26$1 = { class: "text-center" };
+const _hoisted_27 = { class: "col-md-4" };
+const _hoisted_28 = { class: "text-center" };
+const _hoisted_29 = { class: "col-md-4" };
+const _hoisted_30 = { class: "text-center" };
+const _hoisted_31 = { class: "col-md-4" };
+const _hoisted_32 = { class: "text-center" };
+const _hoisted_33 = { class: "col-md-4" };
+const _hoisted_34 = { class: "text-center" };
+const _hoisted_35 = { class: "col-md-4" };
+const _hoisted_36 = { class: "text-center" };
+const _sfc_main$J = {
   __name: "HomeView",
   setup(__props) {
     const polling = ref(null);
@@ -9012,10 +9017,10 @@ const _sfc_main$I = {
     return (_ctx, _cache) => {
       const _component_IconClipboard = resolveComponent("IconClipboard");
       const _component_BsCard = resolveComponent("BsCard");
-      return openBlock(), createElementBlock("div", _hoisted_1$I, [
-        _hoisted_2$E,
-        unref(status) ? (openBlock(), createElementBlock("div", _hoisted_3$w, [
-          createBaseVNode("div", _hoisted_4$j, [
+      return openBlock(), createElementBlock("div", _hoisted_1$J, [
+        _hoisted_2$F,
+        unref(status) ? (openBlock(), createElementBlock("div", _hoisted_3$x, [
+          createBaseVNode("div", _hoisted_4$k, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(unref(status).victron_device, (g) => {
               return openBlock(), createElementBlock("div", {
                 key: g.mac,
@@ -9029,13 +9034,13 @@ const _sfc_main$I = {
                   header: withCtx(() => []),
                   default: withCtx(() => [
                     renderSlot(_ctx.$slots, "default", {}, () => [
-                      createBaseVNode("p", _hoisted_5$e, [
+                      createBaseVNode("p", _hoisted_5$f, [
                         g.data.name == "Smart Battery Monitor" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                           createTextVNode(" Temperature: " + toDisplayString(convertTemperature(g.data.temperature)) + " °" + toDisplayString(unref(config).temp_format), 1),
-                          _hoisted_6$d,
+                          _hoisted_6$e,
                           createTextVNode(" Battery: " + toDisplayString(g.data.battery_voltage) + " V ", 1)
                         ], 64)) : createCommentVNode("", true),
-                        g.data.name == "Orion Smart DC-DC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                        g.data.name == "Smart DC-DC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
                           createTextVNode(" Input: " + toDisplayString(g.data.input_voltage) + " V", 1),
                           _hoisted_7$d,
                           createTextVNode(" Output: " + toDisplayString(g.data.output_voltage) + " V", 1),
@@ -9045,7 +9050,7 @@ const _sfc_main$I = {
                           createTextVNode(" Message: " + toDisplayString(g.data.off_reason_message), 1),
                           _hoisted_10$d
                         ], 64)) : createCommentVNode("", true),
-                        g.data.name == "Blue Smart IP65 Charger" ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                        g.data.name == "Smart AC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
                           createTextVNode(" Battery: " + toDisplayString(g.data.battery_voltage1) + " V", 1),
                           _hoisted_11$c,
                           createTextVNode(" Current: " + toDisplayString(g.data.ac_current) + " A", 1),
@@ -9066,10 +9071,24 @@ const _sfc_main$I = {
                           _hoisted_17$6,
                           createTextVNode(" Consumed: " + toDisplayString(g.data.consumed_ah) + " Ah ", 1)
                         ], 64)) : createCommentVNode("", true),
-                        g.data.name == "Unknown" ? (openBlock(), createElementBlock(Fragment, { key: 4 }, [
+                        g.data.name == "Solar Charger" ? (openBlock(), createElementBlock(Fragment, { key: 4 }, [
+                          createTextVNode(" State: " + toDisplayString(g.data.state_message) + " V", 1),
+                          _hoisted_18$6,
+                          createTextVNode(" Voltage: " + toDisplayString(g.data.battery_voltage) + " A", 1),
+                          _hoisted_19$5,
+                          createTextVNode(" Current: " + toDisplayString(g.data.battery_current) + " min", 1),
+                          _hoisted_20$4,
+                          createTextVNode(" PV: " + toDisplayString(g.data.pv_power) + " Ah ", 1),
+                          g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                            _hoisted_21$3,
+                            createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
+                            _hoisted_22$3
+                          ], 64)) : createCommentVNode("", true)
+                        ], 64)) : createCommentVNode("", true),
+                        g.data.name == "Unknown" ? (openBlock(), createElementBlock(Fragment, { key: 5 }, [
                           createTextVNode(" Unknown victron device found, copy the payload and create an issue on Github to support the device. ")
                         ], 64)) : createCommentVNode("", true),
-                        _hoisted_18$6,
+                        _hoisted_23$3,
                         createBaseVNode("button", {
                           onClick: ($event) => copyToClipboard(g.data),
                           type: "button",
@@ -9081,7 +9100,7 @@ const _sfc_main$I = {
                             height: "16"
                           }),
                           createTextVNode(" Copy data ")
-                        ], 8, _hoisted_19$5)
+                        ], 8, _hoisted_24$3)
                       ])
                     ])
                   ]),
@@ -9089,72 +9108,135 @@ const _sfc_main$I = {
                 }, 1032, ["header", "title"])
               ]);
             }), 128)),
-            createBaseVNode("div", _hoisted_20$4, [
+            createBaseVNode("div", _hoisted_25$1, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "WIFI"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_21$3, toDisplayString(unref(status).rssi) + " dBm - " + toDisplayString(unref(status).wifi_ssid), 1)
+                  createBaseVNode("p", _hoisted_26$1, toDisplayString(unref(status).rssi) + " dBm - " + toDisplayString(unref(status).wifi_ssid), 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_22$3, [
+            createBaseVNode("div", _hoisted_27, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "IP Address"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_23$3, toDisplayString(unref(status).ip), 1)
+                  createBaseVNode("p", _hoisted_28, toDisplayString(unref(status).ip), 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_24$3, [
+            createBaseVNode("div", _hoisted_29, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Memory"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_25$1, " Free: " + toDisplayString(unref(status).free_heap) + " kb, Total: " + toDisplayString(unref(status).total_heap) + " kb ", 1)
+                  createBaseVNode("p", _hoisted_30, " Free: " + toDisplayString(unref(status).free_heap) + " kb, Total: " + toDisplayString(unref(status).total_heap) + " kb ", 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_26$1, [
+            createBaseVNode("div", _hoisted_31, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Software version"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_27, " Firmware: " + toDisplayString(unref(status).app_ver) + " (" + toDisplayString(unref(status).app_build) + ") UI: " + toDisplayString(unref(global$1).uiVersion) + " (" + toDisplayString(unref(global$1).uiBuild) + ") ", 1)
+                  createBaseVNode("p", _hoisted_32, " Firmware: " + toDisplayString(unref(status).app_ver) + " (" + toDisplayString(unref(status).app_build) + ") UI: " + toDisplayString(unref(global$1).uiVersion) + " (" + toDisplayString(unref(global$1).uiBuild) + ") ", 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_28, [
+            createBaseVNode("div", _hoisted_33, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Platform"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_29, toDisplayString(unref(status).platform) + " (id: " + toDisplayString(unref(status).id) + ")", 1)
+                  createBaseVNode("p", _hoisted_34, toDisplayString(unref(status).platform) + " (id: " + toDisplayString(unref(status).id) + ")", 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_30, [
+            createBaseVNode("div", _hoisted_35, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Uptime"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_31, toDisplayString(unref(status).uptime_days) + " days " + toDisplayString(unref(status).uptime_hours) + " hours " + toDisplayString(unref(status).uptime_minutes) + " minutes " + toDisplayString(unref(status).uptime_seconds) + " seconds ", 1)
+                  createBaseVNode("p", _hoisted_36, toDisplayString(unref(status).uptime_days) + " days " + toDisplayString(unref(status).uptime_hours) + " hours " + toDisplayString(unref(status).uptime_minutes) + " minutes " + toDisplayString(unref(status).uptime_seconds) + " seconds ", 1)
                 ]),
                 _: 1
               })
             ])
+          ])
+        ])) : createCommentVNode("", true)
+      ]);
+    };
+  }
+};
+const _hoisted_1$I = { class: "container" };
+const _hoisted_2$E = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
+const _hoisted_3$w = {
+  key: 0,
+  class: "container overflow-hidden text-center"
+};
+const _hoisted_4$j = { class: "row gy-4" };
+const _hoisted_5$e = { class: "text-center" };
+const _hoisted_6$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _sfc_main$I = {
+  __name: "RawDataView",
+  setup(__props) {
+    const polling = ref(null);
+    function refresh() {
+      status.load(() => {
+      });
+    }
+    onBeforeMount(() => {
+      refresh();
+      polling.value = setInterval(refresh, 4e3);
+    });
+    onBeforeUnmount(() => {
+      clearInterval(polling.value);
+    });
+    return (_ctx, _cache) => {
+      const _component_BsCard = resolveComponent("BsCard");
+      return openBlock(), createElementBlock("div", _hoisted_1$I, [
+        _hoisted_2$E,
+        unref(status) ? (openBlock(), createElementBlock("div", _hoisted_3$w, [
+          createBaseVNode("div", _hoisted_4$j, [
+            (openBlock(true), createElementBlock(Fragment, null, renderList(unref(status).victron_device, (g) => {
+              return openBlock(), createElementBlock("div", {
+                key: g.mac,
+                class: "col-md-6"
+              }, [
+                createVNode(_component_BsCard, {
+                  header: g.data.name,
+                  color: "info",
+                  title: g.name
+                }, {
+                  header: withCtx(() => []),
+                  default: withCtx(() => [
+                    renderSlot(_ctx.$slots, "default", {}, () => [
+                      createBaseVNode("p", _hoisted_5$e, [
+                        (openBlock(true), createElementBlock(Fragment, null, renderList(Object.entries(g.data), ([key, val]) => {
+                          return openBlock(), createElementBlock(Fragment, { key }, [
+                            createTextVNode(toDisplayString(key) + ": " + toDisplayString(val), 1),
+                            _hoisted_6$d
+                          ], 64);
+                        }), 128))
+                      ])
+                    ])
+                  ]),
+                  _: 2
+                }, 1032, ["header", "title"])
+              ]);
+            }), 128))
           ])
         ])) : createCommentVNode("", true)
       ]);
@@ -10969,6 +11051,11 @@ const routes = [
   {
     path: "/",
     name: "home",
+    component: _sfc_main$J
+  },
+  {
+    path: "/data",
+    name: "data",
     component: _sfc_main$I
   },
   {
@@ -11076,6 +11163,12 @@ const items = ref([
         path: "/device/wifi"
       }
     ]
+  },
+  {
+    label: "Data Explorer",
+    icon: "IconEye",
+    path: "/data",
+    subs: []
   },
   {
     label: "Push targets",
