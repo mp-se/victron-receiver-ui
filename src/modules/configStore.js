@@ -24,6 +24,10 @@ export const useConfigStore = defineStore('config', {
       // Push - Generic
       push_timeout: 0,
       push_resend_time: 300,
+      // Push - POST
+      http_post_target: '',
+      http_post_header1: '',
+      http_post_header2: '',
       // Push - MQTT
       mqtt_target: '',
       mqtt_port: '',
@@ -80,6 +84,10 @@ export const useConfigStore = defineStore('config', {
           // Push - Generic
           this.push_timeout = json.push_timeout
           this.push_resend_time = json.push_resend_time
+          // Push - POST
+          this.http_post_target = json.http_post_target
+          this.http_post_header1 = json.http_post_header1
+          this.http_post_header2 = json.http_post_header2
           // Push - MQTT
           this.mqtt_target = json.mqtt_target
           this.mqtt_port = json.mqtt_port

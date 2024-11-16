@@ -11,7 +11,8 @@ import DeviceHardwareView from '@/views/DeviceHardwareView.vue'
 import DeviceSecurityView from '@/views/DeviceSecurityView.vue'
 import DeviceWifiView from '@/views/DeviceWifiView.vue'
 import PushSettingsView from '@/views/PushSettingsView.vue'
-import PushHassView from '@/views/PushHassView.vue'
+import PushHassMqttView from '@/views/PushHassMqttView.vue'
+import PushHassRestView from '@/views/PushHassRestView.vue'
 import AboutView from '@/views/AboutView.vue'
 import FirmwareView from '@/views/FirmwareView.vue'
 import SupportView from '@/views/SupportView.vue'
@@ -61,9 +62,14 @@ const routes = [
     component: PushSettingsView
   },
   {
-    path: '/push/hass',
-    name: 'push-hass',
-    component: PushHassView
+    path: '/push/hass-mqtt',
+    name: 'push-hass-mqtt',
+    component: PushHassMqttView
+  },
+  {
+    path: '/push/hass-rest',
+    name: 'push-hass-rest',
+    component: PushHassRestView
   },
   {
     path: '/other/support',
@@ -161,9 +167,14 @@ const items = ref([
         path: '/push/settings'
       },
       {
-        label: 'Home Assistant',
+        label: 'Home Assistant (MQTT)',
         badge: badge.pushMqttBadge,
-        path: '/push/hass'
+        path: '/push/hass-mqtt'
+      },
+      {
+        label: 'Home Assistant (REST API)',
+        badge: badge.pushMqttBadge,
+        path: '/push/hass-rest'
       }
     ]
   },

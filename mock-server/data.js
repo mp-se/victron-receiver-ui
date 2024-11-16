@@ -24,6 +24,10 @@ export var configData = {
   // Push - Generic
   push_timeout: 10,
   push_resend_time: 300, 
+  // Push - post
+  http_post_target: 'http://post.home.arpa:9090/api/v1/ZYfjlUNeiuyu9N/telemetry',
+  http_post_header1: 'Auth: Basic T7IF9DD9fF3RDddE=',
+  http_post_header2: '',
   // Push - mqtt
   mqtt_target: "192.168.1.10",
   mqtt_port: 142,
