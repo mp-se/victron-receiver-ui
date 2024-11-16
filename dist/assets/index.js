@@ -6660,7 +6660,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.2.0";
     },
     uiBuild() {
-      return "..5ba45a";
+      return "..d0ceeb";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -10255,7 +10255,7 @@ const _sfc_main$A = {
                 modelValue: unref(config).http_post_header2,
                 "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(config).http_post_header2 = $event),
                 type: "text",
-                maxlength: "200",
+                maxlength: "300",
                 label: "Authorization header",
                 help: "Format should be Authorization: Bearer <Home Assistant long lived access token>",
                 disabled: unref(global$1).disabled
