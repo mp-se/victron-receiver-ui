@@ -6660,7 +6660,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.2.0";
     },
     uiBuild() {
-      return "..e48378";
+      return "..37297b";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -10217,6 +10217,8 @@ const _sfc_main$A = {
   setup(__props) {
     const save = () => {
       if (!validateCurrentForm()) return;
+      if (!config.http_post_target.endsWith("/"))
+        config.http_post_target += "/";
       global$1.clearMessages();
       if (!config.http_post_header1.startsWith("Authorization: Bearer")) {
         global$1.messageError = "Invalid format for Authorization header, needs to start with 'Authorization: Bearer'";
