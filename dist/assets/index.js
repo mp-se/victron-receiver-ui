@@ -6660,7 +6660,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.2.0";
     },
     uiBuild() {
-      return "..37297b";
+      return "..51d623";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -8961,7 +8961,7 @@ const _hoisted_9$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_10$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_11$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_12$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_13$b = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_13$c = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_14$9 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_15$8 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_16$6 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
@@ -9064,7 +9064,7 @@ const _sfc_main$K = {
                           _hoisted_12$d,
                           createTextVNode(" State: " + toDisplayString(g.data.state_message) + " ", 1),
                           g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-                            _hoisted_13$b,
+                            _hoisted_13$c,
                             createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
                             _hoisted_14$9
                           ], 64)) : createCommentVNode("", true)
@@ -9266,7 +9266,7 @@ const _hoisted_11$c = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
 const _hoisted_12$c = { class: "col-md-3" };
-const _hoisted_13$a = ["disabled"];
+const _hoisted_13$b = ["disabled"];
 const _hoisted_14$8 = ["hidden"];
 const _hoisted_15$7 = { class: "col-md-3" };
 const _hoisted_16$5 = ["disabled"];
@@ -9386,7 +9386,7 @@ const _sfc_main$I = {
                   hidden: !unref(global$1).disabled
                 }, null, 8, _hoisted_14$8),
                 createTextVNode("  Save ")
-              ], 8, _hoisted_13$a)
+              ], 8, _hoisted_13$b)
             ]),
             createBaseVNode("div", _hoisted_15$7, [
               createBaseVNode("button", {
@@ -9532,7 +9532,7 @@ const _hoisted_9$c = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12"
 const _hoisted_10$c = { class: "col-md-3" };
 const _hoisted_11$b = ["disabled"];
 const _hoisted_12$b = ["hidden"];
-const _hoisted_13$9 = { class: "col-md-3" };
+const _hoisted_13$a = { class: "col-md-3" };
 const _hoisted_14$7 = ["disabled"];
 const _hoisted_15$6 = ["hidden"];
 const _sfc_main$F = {
@@ -9610,7 +9610,7 @@ const _sfc_main$F = {
                 createTextVNode("  Save ")
               ], 8, _hoisted_11$b)
             ]),
-            createBaseVNode("div", _hoisted_13$9, [
+            createBaseVNode("div", _hoisted_13$a, [
               createBaseVNode("button", {
                 onClick: _cache[2] || (_cache[2] = ($event) => unref(restart)()),
                 type: "button",
@@ -9644,7 +9644,7 @@ const _hoisted_9$b = ["onUpdate:modelValue", "disabled"];
 const _hoisted_10$b = { class: "col-md-6 gy-2" };
 const _hoisted_11$a = ["onUpdate:modelValue", "disabled"];
 const _hoisted_12$a = /* @__PURE__ */ createStaticVNode('<div class="row"><div class="col-md-3"><div class="form-text"> Unique name of the device used to identify it in Home Assistant. </div></div><div class="col-md-3"><div class="form-text"> Paste the mac adress from the victron app, press save to validate and format the name. </div></div><div class="col-md-6"><div class="form-text"> Paste the encryption key from the Victron app, should be 32 chars. </div></div></div>', 1);
-const _hoisted_13$8 = { class: "row gy-2" };
+const _hoisted_13$9 = { class: "row gy-2" };
 const _hoisted_14$6 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
@@ -9757,7 +9757,7 @@ const _sfc_main$E = {
             ]);
           }), 128)),
           _hoisted_12$a,
-          createBaseVNode("div", _hoisted_13$8, [
+          createBaseVNode("div", _hoisted_13$9, [
             _hoisted_14$6,
             createBaseVNode("div", _hoisted_15$5, [
               createBaseVNode("button", {
@@ -9827,7 +9827,7 @@ const _hoisted_9$a = { class: "col-md-6" };
 const _hoisted_10$a = { class: "col-md-6" };
 const _hoisted_11$9 = { class: "col-md-6" };
 const _hoisted_12$9 = { class: "row gy-2" };
-const _hoisted_13$7 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
+const _hoisted_13$8 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
 const _hoisted_14$5 = { class: "col-md-3" };
@@ -9973,7 +9973,7 @@ const _sfc_main$D = {
             ])
           ]),
           createBaseVNode("div", _hoisted_12$9, [
-            _hoisted_13$7,
+            _hoisted_13$8,
             createBaseVNode("div", _hoisted_14$5, [
               createBaseVNode("button", {
                 type: "submit",
@@ -10110,7 +10110,7 @@ const _hoisted_11$7 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
 const _hoisted_12$7 = { class: "col-md-3" };
-const _hoisted_13$6 = ["disabled"];
+const _hoisted_13$7 = ["disabled"];
 const _hoisted_14$4 = ["hidden"];
 const _sfc_main$B = {
   __name: "PushHassMqttView",
@@ -10190,7 +10190,7 @@ const _sfc_main$B = {
                   hidden: !unref(global$1).disabled
                 }, null, 8, _hoisted_14$4),
                 createTextVNode("  Save ")
-              ], 8, _hoisted_13$6)
+              ], 8, _hoisted_13$7)
             ])
           ])
         ], 32)
@@ -10201,17 +10201,18 @@ const _sfc_main$B = {
 const _hoisted_1$A = { class: "container" };
 const _hoisted_2$w = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
 const _hoisted_3$o = /* @__PURE__ */ createBaseVNode("p", { class: "h3" }, "Integration - Home Assistant (REST API)", -1);
-const _hoisted_4$d = /* @__PURE__ */ createBaseVNode("hr", null, null, -1);
-const _hoisted_5$8 = { class: "row" };
-const _hoisted_6$7 = { class: "col-md-9" };
-const _hoisted_7$7 = { class: "col-md-12" };
-const _hoisted_8$8 = { class: "row gy-2" };
-const _hoisted_9$7 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
+const _hoisted_4$d = /* @__PURE__ */ createBaseVNode("p", null, "Only one Home Assistant integration will be enabled and MQTT is enabled when MQTT target is defined.", -1);
+const _hoisted_5$8 = /* @__PURE__ */ createBaseVNode("hr", null, null, -1);
+const _hoisted_6$7 = { class: "row" };
+const _hoisted_7$7 = { class: "col-md-9" };
+const _hoisted_8$8 = { class: "col-md-12" };
+const _hoisted_9$7 = { class: "row gy-2" };
+const _hoisted_10$7 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
-const _hoisted_10$7 = { class: "col-md-3" };
-const _hoisted_11$6 = ["disabled"];
-const _hoisted_12$6 = ["hidden"];
+const _hoisted_11$6 = { class: "col-md-3" };
+const _hoisted_12$6 = ["disabled"];
+const _hoisted_13$6 = ["hidden"];
 const _sfc_main$A = {
   __name: "PushHassRestView",
   setup(__props) {
@@ -10220,7 +10221,7 @@ const _sfc_main$A = {
       if (!config.http_post_target.endsWith("/"))
         config.http_post_target += "/";
       global$1.clearMessages();
-      if (!config.http_post_header1.startsWith("Authorization: Bearer")) {
+      if (!config.http_post_header2.startsWith("Authorization: Bearer")) {
         global$1.messageError = "Invalid format for Authorization header, needs to start with 'Authorization: Bearer'";
         return;
       }
@@ -10232,13 +10233,14 @@ const _sfc_main$A = {
         _hoisted_2$w,
         _hoisted_3$o,
         _hoisted_4$d,
+        _hoisted_5$8,
         createBaseVNode("form", {
           onSubmit: withModifiers(save, ["prevent"]),
           class: "needs-validation",
           novalidate: ""
         }, [
-          createBaseVNode("div", _hoisted_5$8, [
-            createBaseVNode("div", _hoisted_6$7, [
+          createBaseVNode("div", _hoisted_6$7, [
+            createBaseVNode("div", _hoisted_7$7, [
               createVNode(_component_BsInputText, {
                 modelValue: unref(config).http_post_target,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => unref(config).http_post_target = $event),
@@ -10248,10 +10250,10 @@ const _sfc_main$A = {
                 disabled: unref(global$1).disabled
               }, null, 8, ["modelValue", "disabled"])
             ]),
-            createBaseVNode("div", _hoisted_7$7, [
+            createBaseVNode("div", _hoisted_8$8, [
               createVNode(_component_BsInputText, {
-                modelValue: unref(config).http_post_header1,
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(config).http_post_header1 = $event),
+                modelValue: unref(config).http_post_header2,
+                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(config).http_post_header2 = $event),
                 type: "text",
                 maxlength: "100",
                 label: "Authorization header",
@@ -10260,9 +10262,9 @@ const _sfc_main$A = {
               }, null, 8, ["modelValue", "disabled"])
             ])
           ]),
-          createBaseVNode("div", _hoisted_8$8, [
-            _hoisted_9$7,
-            createBaseVNode("div", _hoisted_10$7, [
+          createBaseVNode("div", _hoisted_9$7, [
+            _hoisted_10$7,
+            createBaseVNode("div", _hoisted_11$6, [
               createBaseVNode("button", {
                 type: "submit",
                 class: "btn btn-primary w-2",
@@ -10273,9 +10275,9 @@ const _sfc_main$A = {
                   role: "status",
                   "aria-hidden": "true",
                   hidden: !unref(global$1).disabled
-                }, null, 8, _hoisted_12$6),
+                }, null, 8, _hoisted_13$6),
                 createTextVNode("  Save ")
-              ], 8, _hoisted_11$6)
+              ], 8, _hoisted_12$6)
             ])
           ])
         ], 32)
