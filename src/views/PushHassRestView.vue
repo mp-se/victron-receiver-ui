@@ -59,7 +59,7 @@ import { global, config } from '@/modules/pinia'
 const save = () => {
   if (!validateCurrentForm()) return
 
-  if(!config.http_post_target.endsWith("/"))
+  if(config.http_post_target != "" && !config.http_post_target.endsWith("/"))
     config.http_post_target += "/"
   
   global.clearMessages()
