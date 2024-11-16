@@ -21,7 +21,7 @@
           <BsInputText
             v-model="config.http_post_header2"
             type="text"
-            maxlength="200"
+            maxlength="300"
             label="Authorization header"
             help="Format should be Authorization: Bearer <Home Assistant long lived access token>"
             :disabled="global.disabled"
