@@ -26,8 +26,8 @@ export var configData = {
   push_resend_time: 300, 
   // Push - post
   http_post_target: 'http://post.home.arpa:9090/',
-  http_post_header1: 'Authorization: Bearer',
-  http_post_header2: '',
+  http_post_header1: 'Content-Type: application/json',
+  http_post_header2: 'Authorization: Bearer',
   // Push - mqtt
   mqtt_target: "192.168.1.10",
   mqtt_port: 142,

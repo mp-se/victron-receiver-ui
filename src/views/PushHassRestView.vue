@@ -2,6 +2,8 @@
   <div class="container">
     <p></p>
     <p class="h3">Integration - Home Assistant (REST API)</p>
+
+    <p>Only one Home Assistant integration will be enabled and MQTT is enabled when MQTT target is defined.</p>
     <hr />
 
     <form @submit.prevent="save" class="needs-validation" novalidate>
@@ -17,7 +19,7 @@
         </div>
         <div class="col-md-12">
           <BsInputText
-            v-model="config.http_post_header1"
+            v-model="config.http_post_header2"
             type="text"
             maxlength="100"
             label="Authorization header"
@@ -62,7 +64,7 @@ const save = () => {
   
   global.clearMessages()
 
-  if(!config.http_post_header1.startsWith("Authorization: Bearer")) {
+  if(!config.http_post_header2.startsWith("Authorization: Bearer")) {
     global.messageError = "Invalid format for Authorization header, needs to start with 'Authorization: Bearer'"
     return
   }
