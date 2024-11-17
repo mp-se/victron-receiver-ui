@@ -22,12 +22,12 @@
           />
         </div>
         <div class="col-md-12">
-          <BsInputText
-            v-model="config.http_post_header2"
+          <BsInputTextArea @keypress="updateToken()"
+            v-model="token"
             type="text"
             maxlength="300"
-            label="Authorization header"
-            help="Format should be Authorization: Bearer <Home Assistant long lived access token>"
+            label="Long lived Home Assistant Token"
+            help="Paste the long lived authorization token here."
             :disabled="global.disabled"
           />
         </div>
@@ -57,8 +57,16 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { validateCurrentForm } from '@/modules/utils'
 import { global, config } from '@/modules/pinia'
+import { logDebug } from '@/modules/logger'
+
+const token = ref(config.http_post_header2.replace("Authorization: Bearer ", ""))
+
+const updateToken = () => {
+  config.http_post_header2 = "Authorization: Bearer " + token.value
+}
 
 const save = () => {
   if (!validateCurrentForm()) return
