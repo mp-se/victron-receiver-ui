@@ -66,15 +66,15 @@
                   </template>
 
                   <template v-if="g.data.name == 'Solar Charger'">
-                    State: {{ g.data.state_message }} V<br />
+                    State: {{ g.data.state_message }}<br />
                     <template v-if="g.data.battery_voltage != undefined"
-                      >Voltage: {{ g.data.battery_voltage }} A<br
+                      >Voltage: {{ g.data.battery_voltage }} V<br
                     /></template>
                     <template v-if="g.data.battery_current != undefined"
-                      >Current: {{ g.data.battery_current }} min<br
+                      >Current: {{ g.data.battery_current }} A<br
                     /></template>
                     <template v-if="g.data.pv_power != undefined"
-                      >PV: {{ g.data.pv_power }} Ah<br
+                      >PV: {{ g.data.pv_power }} W<br
                     /></template>
                     <template v-if="g.data.error > 0"
                       >Error: {{ g.data.error_message }}<br
