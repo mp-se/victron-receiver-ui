@@ -410,7 +410,7 @@ export const useStatusStore = defineStore('status', {
         case 0xc030:
           return 'SmartShunt IP65 500A/50mV'
       }
-      return 'Unknown device ' + id
+      return 'Unknown device 0x' + id.toString(16).toUpperCase()
     }
   }
 })

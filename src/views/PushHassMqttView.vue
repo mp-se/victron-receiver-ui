@@ -2,6 +2,10 @@
   <div class="container">
     <p></p>
     <p class="h3">Integration - Home Assistant (MQTT)</p>
+
+    <p>
+      Only one Home Assistant integration will be enabled at any time. MQTT is prioritized and targets are enabled when a Url / Server is defined.
+    </p>
     <hr />
 
     <form @submit.prevent="save" class="needs-validation" novalidate>

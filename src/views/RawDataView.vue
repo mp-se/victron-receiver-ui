@@ -8,9 +8,9 @@
           <div class="col-md-6">
             <BsCard :header="g.data.name" color="info" :title="g.name">
               <template #header> </template>
-
               <slot>
                 <p class="text-center">
+                  model string: {{ status.getModelString(Number(g.data.model)) }}<br/>
                   <template v-for="[key, val] in Object.entries(g.data)" :key="key">
                     {{ key }}: {{ val }}<br />
                   </template>

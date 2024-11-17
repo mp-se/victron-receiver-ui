@@ -4,8 +4,7 @@
     <p class="h3">Integration - Home Assistant (REST API)</p>
 
     <p>
-      Only one Home Assistant integration will be enabled and MQTT is enabled when MQTT target is
-      defined.
+      Only one Home Assistant integration will be enabled at any time. MQTT is prioritized and targets are enabled when a Url / Server is defined.
     </p>
     <hr />
 
