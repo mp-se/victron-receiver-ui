@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <p></p>
+    <p class="fs-6">
+      This shows all the parsed data fields and these are also pushed to Home Assistant. If you see anything that is faulty please open an issue on github.
+    </p>
 
     <div v-if="status" class="container overflow-hidden text-center">
       <div class="row gy-4">
@@ -10,7 +12,7 @@
               <template #header> </template>
               <slot>
                 <p class="text-center">
-                  model string: {{ status.getModelString(Number(g.data.model)) }}<br/>
+                  model string: {{ status.getModelString(Number(g.data.model)) }}<br />
                   <template v-for="[key, val] in Object.entries(g.data)" :key="key">
                     {{ key }}: {{ val }}<br />
                   </template>

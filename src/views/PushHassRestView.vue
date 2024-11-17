@@ -3,8 +3,10 @@
     <p></p>
     <p class="h3">Integration - Home Assistant (REST API)</p>
 
-    <p>
-      Only one Home Assistant integration will be enabled at any time. MQTT is prioritized and targets are enabled when a Url / Server is defined.
+    <p class="fs-6">
+      Only one Home Assistant integration will be enabled at any time. MQTT is prioritized and
+      targets are enabled when a Url / Server is defined. The needed token can be created under your
+      personal settings page in Home Assistant, just select the Security tab on the top.
     </p>
     <hr />
 

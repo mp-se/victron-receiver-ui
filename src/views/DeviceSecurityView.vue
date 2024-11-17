@@ -1,7 +1,13 @@
 <template>
   <div class="container">
     <p></p>
-    <p class="h2">Device - Settings</p>
+    <p class="h2">Device - Security</p>
+
+    <p class="fs-6">
+      Here you register your victron devices and the decryption key which can be found in the
+      Victron APP. The assigned name will be used when sending data to Home Assistant. Currently up
+      to 8 devices can be defined, if you need more, then open a issue on github.
+    </p>
     <hr />
 
     <form @submit.prevent="saveSettings" class="needs-validation" novalidate>

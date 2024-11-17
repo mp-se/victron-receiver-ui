@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <p></p>
+    <p class="fs-6">
+      All detected devices will be displayed here. The numbers in the header shows how long ago data was last recevied and when it was last pushed to Home Assistant.
+    </p>
 
     <div v-if="status" class="container overflow-hidden text-center">
       <div class="row gy-4">
