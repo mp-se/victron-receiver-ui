@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <p class="fs-6">
-      This shows all the parsed data fields and these are also pushed to Home Assistant. If you see anything that is faulty please open an issue on github.
+      This shows all the parsed data fields and these are also pushed to Home Assistant. If you see
+      anything that is faulty please open an issue on github.
     </p>
 
     <div v-if="status" class="container overflow-hidden text-center">
