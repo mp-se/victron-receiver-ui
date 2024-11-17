@@ -27,15 +27,23 @@
                   </template>
 
                   <template v-if="g.data.name == 'DC-DC Charger'">
-                    <template v-if="g.data.input_voltage != undefined">Input: {{ g.data.input_voltage }} V<br /></template>
-                    <template v-if="g.data.output_voltage != undefined">Output: {{ g.data.output_voltage }} V<br /></template>
+                    <template v-if="g.data.input_voltage != undefined"
+                      >Input: {{ g.data.input_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.output_voltage != undefined"
+                      >Output: {{ g.data.output_voltage }} V<br
+                    /></template>
                     State: {{ g.data.state_message }}<br />
                     Message: {{ g.data.off_reason_message }}<br />
                   </template>
 
                   <template v-if="g.data.name == 'AC Charger'">
-                    <template v-if="g.data.battery_voltage1 != undefined">Battery: {{ g.data.battery_voltage1 }} V<br /></template>
-                    <template v-if="g.data.ac_current != undefined">Current: {{ g.data.ac_current }} A<br /></template>
+                    <template v-if="g.data.battery_voltage1 != undefined"
+                      >Battery: {{ g.data.battery_voltage1 }} V<br
+                    /></template>
+                    <template v-if="g.data.ac_current != undefined"
+                      >Current: {{ g.data.ac_current }} A<br
+                    /></template>
                     State: {{ g.data.state_message }}<br />
                     <template v-if="g.data.error > 0"
                       ><br />Error: {{ g.data.error_message }}<br
@@ -43,18 +51,34 @@
                   </template>
 
                   <template v-if="g.data.name == 'Shunt'">
-                    <template v-if="g.data.battery_voltage != undefined">Battery: {{ g.data.battery_voltage }} V<br /></template>
-                    <template v-if="g.data.battery_current != undefined">Current: {{ g.data.battery_current }} A<br /></template>
-                    <template v-if="g.data.remaning_mins != undefined">Remaning: {{ g.data.remaning_mins }} min<br /></template>
-                    <template v-if="g.data.consumed_ah != undefined">Consumed: {{ g.data.consumed_ah }} Ah<br /></template>
+                    <template v-if="g.data.battery_voltage != undefined"
+                      >Battery: {{ g.data.battery_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.battery_current != undefined"
+                      >Current: {{ g.data.battery_current }} A<br
+                    /></template>
+                    <template v-if="g.data.remaning_mins != undefined"
+                      >Remaning: {{ g.data.remaning_mins }} min<br
+                    /></template>
+                    <template v-if="g.data.consumed_ah != undefined"
+                      >Consumed: {{ g.data.consumed_ah }} Ah<br
+                    /></template>
                   </template>
 
                   <template v-if="g.data.name == 'Solar Charger'">
                     State: {{ g.data.state_message }} V<br />
-                    <template v-if="g.data.battery_voltage != undefined">Voltage: {{ g.data.battery_voltage }} A<br /></template>
-                    <template v-if="g.data.battery_current != undefined">Current: {{ g.data.battery_current }} min<br /></template>
-                    <template v-if="g.data.pv_power != undefined">PV: {{ g.data.pv_power }} Ah<br /></template>
-                    <template v-if="g.data.error > 0">Error: {{ g.data.error_message }}<br /></template>
+                    <template v-if="g.data.battery_voltage != undefined"
+                      >Voltage: {{ g.data.battery_voltage }} A<br
+                    /></template>
+                    <template v-if="g.data.battery_current != undefined"
+                      >Current: {{ g.data.battery_current }} min<br
+                    /></template>
+                    <template v-if="g.data.pv_power != undefined"
+                      >PV: {{ g.data.pv_power }} Ah<br
+                    /></template>
+                    <template v-if="g.data.error > 0"
+                      >Error: {{ g.data.error_message }}<br
+                    /></template>
                   </template>
 
                   <template v-if="g.data.name == 'Unknown'">

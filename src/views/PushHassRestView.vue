@@ -3,7 +3,10 @@
     <p></p>
     <p class="h3">Integration - Home Assistant (REST API)</p>
 
-    <p>Only one Home Assistant integration will be enabled and MQTT is enabled when MQTT target is defined.</p>
+    <p>
+      Only one Home Assistant integration will be enabled and MQTT is enabled when MQTT target is
+      defined.
+    </p>
     <hr />
 
     <form @submit.prevent="save" class="needs-validation" novalidate>
@@ -59,13 +62,14 @@ import { global, config } from '@/modules/pinia'
 const save = () => {
   if (!validateCurrentForm()) return
 
-  if(config.http_post_target != "" && !config.http_post_target.endsWith("/"))
-    config.http_post_target += "/"
-  
+  if (config.http_post_target != '' && !config.http_post_target.endsWith('/'))
+    config.http_post_target += '/'
+
   global.clearMessages()
 
-  if(!config.http_post_header2.startsWith("Authorization: Bearer")) {
-    global.messageError = "Invalid format for Authorization header, needs to start with 'Authorization: Bearer'"
+  if (!config.http_post_header2.startsWith('Authorization: Bearer')) {
+    global.messageError =
+      "Invalid format for Authorization header, needs to start with 'Authorization: Bearer'"
     return
   }
 
