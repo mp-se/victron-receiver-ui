@@ -6657,10 +6657,10 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return this.url;
     },
     uiVersion() {
-      return "0.2.0";
+      return "0.1.9";
     },
     uiBuild() {
-      return "..88c18b";
+      return "..0618da";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -6748,6 +6748,329 @@ const useStatusStore = /* @__PURE__ */ defineStore("status", {
         logError("statusStore.auth()", err);
         callback(false);
       });
+    },
+    getModelString(id) {
+      switch (id) {
+        case 515:
+          return "BMV-700";
+        case 516:
+          return "BMV-702";
+        case 517:
+          return "BMV-700H";
+        case 768:
+          return "BlueSolar MPPT 70|15";
+        case 41024:
+          return "BlueSolar MPPT 75|50";
+        case 41025:
+          return "BlueSolar MPPT 150|35";
+        case 41026:
+          return "BlueSolar MPPT 75|15";
+        case 41027:
+          return "BlueSolar MPPT 100|15";
+        case 41028:
+          return "BlueSolar MPPT 100|30";
+        case 41029:
+          return "BlueSolar MPPT 100|50";
+        case 41030:
+          return "BlueSolar MPPT 150|70";
+        case 41031:
+          return "BlueSolar MPPT 150|100";
+        case 41033:
+          return "BlueSolar MPPT 100|50 rev2";
+        case 41034:
+          return "BlueSolar MPPT 100|30 rev2";
+        case 41035:
+          return "BlueSolar MPPT 150|35 rev2";
+        case 41036:
+          return "BlueSolar MPPT 75|10";
+        case 41037:
+          return "BlueSolar MPPT 150|45";
+        case 41038:
+          return "BlueSolar MPPT 150|60";
+        case 41039:
+          return "BlueSolar MPPT 150|85";
+        case 41040:
+          return "SmartSolar MPPT 250|100";
+        case 41041:
+          return "SmartSolar MPPT 150|100";
+        case 41042:
+          return "SmartSolar MPPT 150|85";
+        case 41043:
+          return "SmartSolar MPPT 75|15";
+        case 41044:
+          return "SmartSolar MPPT 75|10";
+        case 41045:
+          return "SmartSolar MPPT 100|15";
+        case 41046:
+          return "SmartSolar MPPT 100|30";
+        case 41047:
+          return "SmartSolar MPPT 100|50";
+        case 41048:
+          return "SmartSolar MPPT 150|35";
+        case 41049:
+          return "SmartSolar MPPT 150|100 rev2";
+        case 41050:
+          return "SmartSolar MPPT 150|85 rev2";
+        case 41051:
+          return "SmartSolar MPPT 250|70";
+        case 41052:
+          return "SmartSolar MPPT 250|85";
+        case 41053:
+          return "SmartSolar MPPT 250|60";
+        case 41054:
+          return "SmartSolar MPPT 250|45";
+        case 41055:
+          return "SmartSolar MPPT 100|20";
+        case 41056:
+          return "SmartSolar MPPT 100|20 48V";
+        case 41057:
+          return "SmartSolar MPPT 150|45";
+        case 41058:
+          return "SmartSolar MPPT 150|60";
+        case 41059:
+          return "SmartSolar MPPT 150|70";
+        case 41060:
+          return "SmartSolar MPPT 250|85 rev2";
+        case 41061:
+          return "SmartSolar MPPT 250|100 rev2";
+        case 41062:
+          return "BlueSolar MPPT 100|20";
+        case 41063:
+          return "BlueSolar MPPT 100|20 48V";
+        case 41064:
+          return "SmartSolar MPPT 250|60 rev2";
+        case 41065:
+          return "SmartSolar MPPT 250|70 rev2";
+        case 41066:
+          return "SmartSolar MPPT 150|45 rev2";
+        case 41067:
+          return "SmartSolar MPPT 150|60 rev2";
+        case 41068:
+          return "SmartSolar MPPT 150|70 rev2";
+        case 41069:
+          return "SmartSolar MPPT 150|85 rev3";
+        case 41070:
+          return "SmartSolar MPPT 150|100 rev3";
+        case 41071:
+          return "BlueSolar MPPT 150|45 rev2";
+        case 41072:
+          return "BlueSolar MPPT 150|60 rev2";
+        case 41073:
+          return "BlueSolar MPPT 150|70 rev2";
+        case 41218:
+          return "SmartSolar MPPT VE.Can 150/70";
+        case 41219:
+          return "SmartSolar MPPT VE.Can 150/45";
+        case 41220:
+          return "SmartSolar MPPT VE.Can 150/60";
+        case 41221:
+          return "SmartSolar MPPT VE.Can 150/85";
+        case 41222:
+          return "SmartSolar MPPT VE.Can 150/100";
+        case 41223:
+          return "SmartSolar MPPT VE.Can 250/45";
+        case 41224:
+          return "SmartSolar MPPT VE.Can 250/60";
+        case 41225:
+          return "SmartSolar MPPT VE.Can 250/70";
+        case 41226:
+          return "SmartSolar MPPT VE.Can 250/85";
+        case 41227:
+          return "SmartSolar MPPT VE.Can 250/100";
+        case 41228:
+          return "SmartSolar MPPT VE.Can 150/70 rev2";
+        case 41229:
+          return "SmartSolar MPPT VE.Can 150/85 rev2";
+        case 41230:
+          return "SmartSolar MPPT VE.Can 150/100 rev2";
+        case 41231:
+          return "BlueSolar MPPT VE.Can 150/100";
+        case 41234:
+          return "BlueSolar MPPT VE.Can 250/70";
+        case 41235:
+          return "BlueSolar MPPT VE.Can 250/100";
+        case 41236:
+          return "SmartSolar MPPT VE.Can 250/70 rev2";
+        case 41237:
+          return "SmartSolar MPPT VE.Can 250/100 rev2";
+        case 41238:
+          return "SmartSolar MPPT VE.Can 250/85 rev2";
+        case 41473:
+          return "Phoenix Inverter 12V 250VA 230V";
+        case 41474:
+          return "Phoenix Inverter 24V 250VA 230V";
+        case 41476:
+          return "Phoenix Inverter 48V 250VA 230V";
+        case 41489:
+          return "Phoenix Inverter 12V 375VA 230V";
+        case 41490:
+          return "Phoenix Inverter 24V 375VA 230V";
+        case 41492:
+          return "Phoenix Inverter 48V 375VA 230V";
+        case 41505:
+          return "Phoenix Inverter 12V 500VA 230V";
+        case 41506:
+          return "Phoenix Inverter 24V 500VA 230V";
+        case 41508:
+          return "Phoenix Inverter 48V 500VA 230V";
+        case 41521:
+          return "Phoenix Inverter 12V 250VA 230V";
+        case 41522:
+          return "Phoenix Inverter 24V 250VA 230V";
+        case 41524:
+          return "Phoenix Inverter 48V 250VA 230V";
+        case 41529:
+          return "Phoenix Inverter 12V 250VA 120V";
+        case 41530:
+          return "Phoenix Inverter 24V 250VA 120V";
+        case 41532:
+          return "Phoenix Inverter 48V 250VA 120V";
+        case 41537:
+          return "Phoenix Inverter 12V 375VA 230V";
+        case 41538:
+          return "Phoenix Inverter 24V 375VA 230V";
+        case 41540:
+          return "Phoenix Inverter 48V 375VA 230V";
+        case 41545:
+          return "Phoenix Inverter 12V 375VA 120V";
+        case 41546:
+          return "Phoenix Inverter 24V 375VA 120V";
+        case 41548:
+          return "Phoenix Inverter 48V 375VA 120V";
+        case 41553:
+          return "Phoenix Inverter 12V 500VA 230V";
+        case 41554:
+          return "Phoenix Inverter 24V 500VA 230V";
+        case 41556:
+          return "Phoenix Inverter 48V 500VA 230V";
+        case 41561:
+          return "Phoenix Inverter 12V 500VA 120V";
+        case 41562:
+          return "Phoenix Inverter 24V 500VA 120V";
+        case 41564:
+          return "Phoenix Inverter 48V 500VA 120V";
+        case 41569:
+          return "Phoenix Inverter 12V 800VA 230V";
+        case 41570:
+          return "Phoenix Inverter 24V 800VA 230V";
+        case 41572:
+          return "Phoenix Inverter 48V 800VA 230V";
+        case 41577:
+          return "Phoenix Inverter 12V 800VA 120V";
+        case 41578:
+          return "Phoenix Inverter 24V 800VA 120V";
+        case 41580:
+          return "Phoenix Inverter 48V 800VA 120V";
+        case 41585:
+          return "Phoenix Inverter 12V 1200VA 230V";
+        case 41586:
+          return "Phoenix Inverter 24V 1200VA 230V";
+        case 41588:
+          return "Phoenix Inverter 48V 1200VA 230V";
+        case 41593:
+          return "Phoenix Inverter 12V 1200VA 120V";
+        case 41594:
+          return "Phoenix Inverter 24V 1200VA 120V";
+        case 41596:
+          return "Phoenix Inverter 48V 1200VA 120V";
+        case 41601:
+          return "Phoenix Inverter 12V 1600VA 230V";
+        case 41602:
+          return "Phoenix Inverter 24V 1600VA 230V";
+        case 41604:
+          return "Phoenix Inverter 48V 1600VA 230V";
+        case 41617:
+          return "Phoenix Inverter 12V 2000VA 230V";
+        case 41618:
+          return "Phoenix Inverter 24V 2000VA 230V";
+        case 41620:
+          return "Phoenix Inverter 48V 2000VA 230V";
+        case 41633:
+          return "Phoenix Inverter 12V 3000VA 230V";
+        case 41634:
+          return "Phoenix Inverter 24V 3000VA 230V";
+        case 41636:
+          return "Phoenix Inverter 48V 3000VA 230V";
+        case 41792:
+          return "Phoenix Smart IP43 Charger 12|50 (1+1)";
+        case 41793:
+          return "Phoenix Smart IP43 Charger 12|50 (3)";
+        case 41794:
+          return "Phoenix Smart IP43 Charger 24|25 (1+1)";
+        case 41795:
+          return "Phoenix Smart IP43 Charger 24|25 (3)";
+        case 41796:
+          return "Phoenix Smart IP43 Charger 12|30 (1+1)";
+        case 41797:
+          return "Phoenix Smart IP43 Charger 12|30 (3)";
+        case 41798:
+          return "Phoenix Smart IP43 Charger 24|16 (1+1)";
+        case 41799:
+          return "Phoenix Smart IP43 Charger 24|16 (3)";
+        case 41857:
+          return "BMV-712 Smart";
+        case 41858:
+          return "BMV-710H Smart";
+        case 41859:
+          return "BMV-712 Smart Rev2";
+        case 41865:
+          return "SmartShunt 500A/50mV";
+        case 41866:
+          return "SmartShunt 1000A/50mV";
+        case 41867:
+          return "SmartShunt 2000A/50mV";
+        case 41892:
+          return "Smart Battery Sense";
+        case 41893:
+          return "Smart Battery Sense";
+        case 41920:
+          return "Orion Smart 12V|12V-18A Isolated DC-DC Charger";
+        case 41928:
+          return "Orion Smart 12V|12V-30A Isolated DC-DC Charger";
+        case 41936:
+          return "Orion Smart 12V|12V-30A Non-isolated DC-DC Charger";
+        case 41921:
+          return "Orion Smart 12V|24V-10A Isolated DC-DC Charger";
+        case 41929:
+          return "Orion Smart 12V|24V-15A Isolated DC-DC Charger";
+        case 41937:
+          return "Orion Smart 12V|24V-15A Non-isolated DC-DC Charger";
+        case 41922:
+          return "Orion Smart 24V|12V-20A Isolated DC-DC Charger";
+        case 41930:
+          return "Orion Smart 24V|12V-30A Isolated DC-DC Charger";
+        case 41938:
+          return "Orion Smart 24V|12V-30A Non-isolated DC-DC Charger";
+        case 41923:
+          return "Orion Smart 24V|24V-12A Isolated DC-DC Charger";
+        case 41931:
+          return "Orion Smart 24V|24V-17A Isolated DC-DC Charger";
+        case 41939:
+          return "Orion Smart 24V|24V-17A Non-isolated DC-DC Charger";
+        case 41924:
+          return "Orion Smart 24V|48V-6A Isolated DC-DC Charger";
+        case 41932:
+          return "Orion Smart 24V|48V-8.5A Isolated DC-DC Charger";
+        case 41925:
+          return "Orion Smart 48V|12V-20A Isolated DC-DC Charger";
+        case 41933:
+          return "Orion Smart 48V|12V-30A Isolated DC-DC Charger";
+        case 41926:
+          return "Orion Smart 48V|24V-12A Isolated DC-DC Charger";
+        case 41934:
+          return "Orion Smart 48V|24V-16A Isolated DC-DC Charger";
+        case 41927:
+          return "Orion Smart 48V|48V-6A Isolated DC-DC Charger";
+        case 41935:
+          return "Orion Smart 48V|48V-8.5A Isolated DC-DC Charger";
+        case 41958:
+          return "Lynx Smart BMS 1000";
+        case 10112:
+          return "Victron Multiplus II 12/3000/120-50 2x120V";
+        case 49200:
+          return "SmartShunt IP65 500A/50mV";
+      }
+      return "Unknown device 0x" + id.toString(16).toUpperCase();
     }
   }
 });
@@ -8948,14 +9271,14 @@ function pushMqttBadge() {
 }
 const _hoisted_1$K = { class: "container" };
 const _hoisted_2$G = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
-const _hoisted_3$y = {
+const _hoisted_3$y = /* @__PURE__ */ createBaseVNode("p", { class: "fs-6" }, " All detected devices will be displayed here. The numbers in the header shows how long ago data was last recevied and when it was last pushed to Home Assistant. ", -1);
+const _hoisted_4$l = {
   key: 0,
   class: "container overflow-hidden text-center"
 };
-const _hoisted_4$l = { class: "row gy-4" };
-const _hoisted_5$g = { class: "text-center" };
-const _hoisted_6$f = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_7$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_5$g = { class: "row gy-4" };
+const _hoisted_6$f = { class: "text-center" };
+const _hoisted_7$f = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_8$f = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_9$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_10$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
@@ -8963,7 +9286,7 @@ const _hoisted_11$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_12$d = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_13$c = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_14$9 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_15$8 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_15$9 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_16$6 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_17$6 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_18$6 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
@@ -8972,11 +9295,11 @@ const _hoisted_20$4 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_21$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_22$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_23$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_24$3 = ["onClick"];
-const _hoisted_25$1 = { class: "col-md-4" };
-const _hoisted_26$1 = { class: "text-center" };
-const _hoisted_27 = { class: "col-md-4" };
-const _hoisted_28 = { class: "text-center" };
+const _hoisted_24$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_25$2 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_26$1 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_27 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_28 = ["onClick"];
 const _hoisted_29 = { class: "col-md-4" };
 const _hoisted_30 = { class: "text-center" };
 const _hoisted_31 = { class: "col-md-4" };
@@ -8985,6 +9308,10 @@ const _hoisted_33 = { class: "col-md-4" };
 const _hoisted_34 = { class: "text-center" };
 const _hoisted_35 = { class: "col-md-4" };
 const _hoisted_36 = { class: "text-center" };
+const _hoisted_37 = { class: "col-md-4" };
+const _hoisted_38 = { class: "text-center" };
+const _hoisted_39 = { class: "col-md-4" };
+const _hoisted_40 = { class: "text-center" };
 const _sfc_main$K = {
   __name: "HomeView",
   setup(__props) {
@@ -9026,8 +9353,9 @@ const _sfc_main$K = {
       const _component_BsCard = resolveComponent("BsCard");
       return openBlock(), createElementBlock("div", _hoisted_1$K, [
         _hoisted_2$G,
-        unref(status) ? (openBlock(), createElementBlock("div", _hoisted_3$y, [
-          createBaseVNode("div", _hoisted_4$l, [
+        _hoisted_3$y,
+        unref(status) ? (openBlock(), createElementBlock("div", _hoisted_4$l, [
+          createBaseVNode("div", _hoisted_5$g, [
             (openBlock(true), createElementBlock(Fragment, null, renderList(unref(status).victron_device, (g) => {
               return openBlock(), createElementBlock("div", {
                 key: g.mac,
@@ -9041,61 +9369,86 @@ const _sfc_main$K = {
                   header: withCtx(() => []),
                   default: withCtx(() => [
                     renderSlot(_ctx.$slots, "default", {}, () => [
-                      createBaseVNode("p", _hoisted_5$g, [
-                        g.data.name == "Smart Battery Monitor" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                      createBaseVNode("p", _hoisted_6$f, [
+                        g.data.name == "Battery Monitor" ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                           createTextVNode(" Temperature: " + toDisplayString(convertTemperature(g.data.temperature)) + " °" + toDisplayString(unref(config).temp_format), 1),
-                          _hoisted_6$f,
-                          createTextVNode(" Battery: " + toDisplayString(g.data.battery_voltage) + " V ", 1)
+                          _hoisted_7$f,
+                          createTextVNode(" Battery: " + toDisplayString(g.data.battery_voltage) + " V", 1),
+                          _hoisted_8$f
                         ], 64)) : createCommentVNode("", true),
-                        g.data.name == "Smart DC-DC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-                          createTextVNode(" Input: " + toDisplayString(g.data.input_voltage) + " V", 1),
-                          _hoisted_7$e,
-                          createTextVNode(" Output: " + toDisplayString(g.data.output_voltage) + " V", 1),
-                          _hoisted_8$f,
+                        g.data.name == "DC-DC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                          g.data.input_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                            createTextVNode("Input: " + toDisplayString(g.data.input_voltage) + " V", 1),
+                            _hoisted_9$e
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.output_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                            createTextVNode("Output: " + toDisplayString(g.data.output_voltage) + " V", 1),
+                            _hoisted_10$e
+                          ], 64)) : createCommentVNode("", true),
                           createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
-                          _hoisted_9$e,
-                          createTextVNode(" Message: " + toDisplayString(g.data.off_reason_message), 1),
-                          _hoisted_10$e
-                        ], 64)) : createCommentVNode("", true),
-                        g.data.name == "Smart AC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
-                          createTextVNode(" Battery: " + toDisplayString(g.data.battery_voltage1) + " V", 1),
                           _hoisted_11$d,
-                          createTextVNode(" Current: " + toDisplayString(g.data.ac_current) + " A", 1),
-                          _hoisted_12$d,
-                          createTextVNode(" State: " + toDisplayString(g.data.state_message) + " ", 1),
-                          g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-                            _hoisted_13$c,
-                            createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
+                          createTextVNode(" Message: " + toDisplayString(g.data.off_reason_message), 1),
+                          _hoisted_12$d
+                        ], 64)) : createCommentVNode("", true),
+                        g.data.name == "AC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                          g.data.battery_voltage1 != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                            createTextVNode("Battery: " + toDisplayString(g.data.battery_voltage1) + " V", 1),
+                            _hoisted_13$c
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.ac_current != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                            createTextVNode("Current: " + toDisplayString(g.data.ac_current) + " A", 1),
                             _hoisted_14$9
+                          ], 64)) : createCommentVNode("", true),
+                          createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
+                          _hoisted_15$9,
+                          g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                            _hoisted_16$6,
+                            createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
+                            _hoisted_17$6
                           ], 64)) : createCommentVNode("", true)
                         ], 64)) : createCommentVNode("", true),
-                        g.data.name == "Smart Shunt" ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
-                          createTextVNode(" Battery: " + toDisplayString(g.data.battery_voltage) + " V", 1),
-                          _hoisted_15$8,
-                          createTextVNode(" Current: " + toDisplayString(g.data.battery_current) + " A", 1),
-                          _hoisted_16$6,
-                          createTextVNode(" Remaning: " + toDisplayString(g.data.remaning_mins) + " min", 1),
-                          _hoisted_17$6,
-                          createTextVNode(" Consumed: " + toDisplayString(g.data.consumed_ah) + " Ah ", 1)
+                        g.data.name == "Shunt" ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
+                          g.data.battery_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                            createTextVNode("Battery: " + toDisplayString(g.data.battery_voltage) + " V", 1),
+                            _hoisted_18$6
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.battery_current != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                            createTextVNode("Current: " + toDisplayString(g.data.battery_current) + " A", 1),
+                            _hoisted_19$5
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.remaning_mins != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                            createTextVNode("Remaning: " + toDisplayString(g.data.remaning_mins) + " min", 1),
+                            _hoisted_20$4
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.consumed_ah != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
+                            createTextVNode("Consumed: " + toDisplayString(g.data.consumed_ah) + " Ah", 1),
+                            _hoisted_21$3
+                          ], 64)) : createCommentVNode("", true)
                         ], 64)) : createCommentVNode("", true),
                         g.data.name == "Solar Charger" ? (openBlock(), createElementBlock(Fragment, { key: 4 }, [
-                          createTextVNode(" State: " + toDisplayString(g.data.state_message) + " V", 1),
-                          _hoisted_18$6,
-                          createTextVNode(" Voltage: " + toDisplayString(g.data.battery_voltage) + " A", 1),
-                          _hoisted_19$5,
-                          createTextVNode(" Current: " + toDisplayString(g.data.battery_current) + " min", 1),
-                          _hoisted_20$4,
-                          createTextVNode(" PV: " + toDisplayString(g.data.pv_power) + " Ah ", 1),
-                          g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-                            _hoisted_21$3,
+                          createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
+                          _hoisted_22$3,
+                          g.data.battery_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                            createTextVNode("Voltage: " + toDisplayString(g.data.battery_voltage) + " V", 1),
+                            _hoisted_23$3
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.battery_current != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                            createTextVNode("Current: " + toDisplayString(g.data.battery_current) + " A", 1),
+                            _hoisted_24$3
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.pv_power != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                            createTextVNode("PV: " + toDisplayString(g.data.pv_power) + " W", 1),
+                            _hoisted_25$2
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
                             createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
-                            _hoisted_22$3
+                            _hoisted_26$1
                           ], 64)) : createCommentVNode("", true)
                         ], 64)) : createCommentVNode("", true),
                         g.data.name == "Unknown" ? (openBlock(), createElementBlock(Fragment, { key: 5 }, [
                           createTextVNode(" Unknown victron device found, copy the payload and create an issue on Github to support the device. ")
                         ], 64)) : createCommentVNode("", true),
-                        _hoisted_23$3,
+                        _hoisted_27,
                         createBaseVNode("button", {
                           onClick: ($event) => copyToClipboard(g.data),
                           type: "button",
@@ -9107,7 +9460,7 @@ const _sfc_main$K = {
                             height: "16"
                           }),
                           createTextVNode(" Copy data ")
-                        ], 8, _hoisted_24$3)
+                        ], 8, _hoisted_28)
                       ])
                     ])
                   ]),
@@ -9115,35 +9468,13 @@ const _sfc_main$K = {
                 }, 1032, ["header", "title"])
               ]);
             }), 128)),
-            createBaseVNode("div", _hoisted_25$1, [
+            createBaseVNode("div", _hoisted_29, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "WIFI"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_26$1, toDisplayString(unref(status).rssi) + " dBm - " + toDisplayString(unref(status).wifi_ssid), 1)
-                ]),
-                _: 1
-              })
-            ]),
-            createBaseVNode("div", _hoisted_27, [
-              createVNode(_component_BsCard, {
-                header: "Device",
-                title: "IP Address"
-              }, {
-                default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_28, toDisplayString(unref(status).ip), 1)
-                ]),
-                _: 1
-              })
-            ]),
-            createBaseVNode("div", _hoisted_29, [
-              createVNode(_component_BsCard, {
-                header: "Device",
-                title: "Memory"
-              }, {
-                default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_30, " Free: " + toDisplayString(unref(status).free_heap) + " kb, Total: " + toDisplayString(unref(status).total_heap) + " kb ", 1)
+                  createBaseVNode("p", _hoisted_30, toDisplayString(unref(status).rssi) + " dBm - " + toDisplayString(unref(status).wifi_ssid), 1)
                 ]),
                 _: 1
               })
@@ -9151,10 +9482,10 @@ const _sfc_main$K = {
             createBaseVNode("div", _hoisted_31, [
               createVNode(_component_BsCard, {
                 header: "Device",
-                title: "Software version"
+                title: "IP Address"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_32, " Firmware: " + toDisplayString(unref(status).app_ver) + " (" + toDisplayString(unref(status).app_build) + ") UI: " + toDisplayString(unref(global$1).uiVersion) + " (" + toDisplayString(unref(global$1).uiBuild) + ") ", 1)
+                  createBaseVNode("p", _hoisted_32, toDisplayString(unref(status).ip), 1)
                 ]),
                 _: 1
               })
@@ -9162,10 +9493,10 @@ const _sfc_main$K = {
             createBaseVNode("div", _hoisted_33, [
               createVNode(_component_BsCard, {
                 header: "Device",
-                title: "Platform"
+                title: "Memory"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_34, toDisplayString(unref(status).platform) + " (id: " + toDisplayString(unref(status).id) + ")", 1)
+                  createBaseVNode("p", _hoisted_34, " Free: " + toDisplayString(unref(status).free_heap) + " kb, Total: " + toDisplayString(unref(status).total_heap) + " kb ", 1)
                 ]),
                 _: 1
               })
@@ -9173,10 +9504,32 @@ const _sfc_main$K = {
             createBaseVNode("div", _hoisted_35, [
               createVNode(_component_BsCard, {
                 header: "Device",
+                title: "Software version"
+              }, {
+                default: withCtx(() => [
+                  createBaseVNode("p", _hoisted_36, " Firmware: " + toDisplayString(unref(status).app_ver) + " (" + toDisplayString(unref(status).app_build) + ") UI: " + toDisplayString(unref(global$1).uiVersion) + " (" + toDisplayString(unref(global$1).uiBuild) + ") ", 1)
+                ]),
+                _: 1
+              })
+            ]),
+            createBaseVNode("div", _hoisted_37, [
+              createVNode(_component_BsCard, {
+                header: "Device",
+                title: "Platform"
+              }, {
+                default: withCtx(() => [
+                  createBaseVNode("p", _hoisted_38, toDisplayString(unref(status).platform) + " (id: " + toDisplayString(unref(status).id) + ")", 1)
+                ]),
+                _: 1
+              })
+            ]),
+            createBaseVNode("div", _hoisted_39, [
+              createVNode(_component_BsCard, {
+                header: "Device",
                 title: "Uptime"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_36, toDisplayString(unref(status).uptime_days) + " days " + toDisplayString(unref(status).uptime_hours) + " hours " + toDisplayString(unref(status).uptime_minutes) + " minutes " + toDisplayString(unref(status).uptime_seconds) + " seconds ", 1)
+                  createBaseVNode("p", _hoisted_40, toDisplayString(unref(status).uptime_days) + " days " + toDisplayString(unref(status).uptime_hours) + " hours " + toDisplayString(unref(status).uptime_minutes) + " minutes " + toDisplayString(unref(status).uptime_seconds) + " seconds ", 1)
                 ]),
                 _: 1
               })
@@ -9188,7 +9541,7 @@ const _sfc_main$K = {
   }
 };
 const _hoisted_1$J = { class: "container" };
-const _hoisted_2$F = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
+const _hoisted_2$F = /* @__PURE__ */ createBaseVNode("p", { class: "fs-6" }, " This shows all the parsed data fields and these are also pushed to Home Assistant. If you see anything that is faulty please open an issue on github. ", -1);
 const _hoisted_3$x = {
   key: 0,
   class: "container overflow-hidden text-center"
@@ -9196,6 +9549,7 @@ const _hoisted_3$x = {
 const _hoisted_4$k = { class: "row gy-4" };
 const _hoisted_5$f = { class: "text-center" };
 const _hoisted_6$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_7$e = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _sfc_main$J = {
   __name: "RawDataView",
   setup(__props) {
@@ -9231,10 +9585,12 @@ const _sfc_main$J = {
                   default: withCtx(() => [
                     renderSlot(_ctx.$slots, "default", {}, () => [
                       createBaseVNode("p", _hoisted_5$f, [
+                        createTextVNode(" model string: " + toDisplayString(unref(status).getModelString(Number(g.data.model))), 1),
+                        _hoisted_6$e,
                         (openBlock(true), createElementBlock(Fragment, null, renderList(Object.entries(g.data), ([key, val]) => {
                           return openBlock(), createElementBlock(Fragment, { key }, [
                             createTextVNode(toDisplayString(key) + ": " + toDisplayString(val), 1),
-                            _hoisted_6$e
+                            _hoisted_7$e
                           ], 64);
                         }), 128))
                       ])
@@ -9268,7 +9624,7 @@ const _hoisted_11$c = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12
 const _hoisted_12$c = { class: "col-md-3" };
 const _hoisted_13$b = ["disabled"];
 const _hoisted_14$8 = ["hidden"];
-const _hoisted_15$7 = { class: "col-md-3" };
+const _hoisted_15$8 = { class: "col-md-3" };
 const _hoisted_16$5 = ["disabled"];
 const _hoisted_17$5 = ["hidden"];
 const _hoisted_18$5 = { class: "col-sm-4" };
@@ -9388,7 +9744,7 @@ const _sfc_main$I = {
                 createTextVNode("  Save ")
               ], 8, _hoisted_13$b)
             ]),
-            createBaseVNode("div", _hoisted_15$7, [
+            createBaseVNode("div", _hoisted_15$8, [
               createBaseVNode("button", {
                 onClick: _cache[3] || (_cache[3] = ($event) => unref(restart)()),
                 type: "button",
@@ -9534,7 +9890,7 @@ const _hoisted_11$b = ["disabled"];
 const _hoisted_12$b = ["hidden"];
 const _hoisted_13$a = { class: "col-md-3" };
 const _hoisted_14$7 = ["disabled"];
-const _hoisted_15$6 = ["hidden"];
+const _hoisted_15$7 = ["hidden"];
 const _sfc_main$F = {
   __name: "DeviceHardwareView",
   setup(__props) {
@@ -9622,7 +9978,7 @@ const _sfc_main$F = {
                   role: "status",
                   "aria-hidden": "true",
                   hidden: !unref(global$1).disabled
-                }, null, 8, _hoisted_15$6),
+                }, null, 8, _hoisted_15$7),
                 createTextVNode("  Restart device ")
               ], 8, _hoisted_14$7)
             ])
@@ -9634,30 +9990,31 @@ const _sfc_main$F = {
 };
 const _hoisted_1$E = { class: "container" };
 const _hoisted_2$A = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
-const _hoisted_3$s = /* @__PURE__ */ createBaseVNode("p", { class: "h2" }, "Device - Settings", -1);
-const _hoisted_4$h = /* @__PURE__ */ createBaseVNode("hr", null, null, -1);
-const _hoisted_5$c = /* @__PURE__ */ createStaticVNode('<div class="row"><div class="col-md-3"><label class="form-label fw-bold">Name</label></div><div class="col-md-3"><label class="form-label fw-bold">Mac</label></div><div class="col-md-6"><label class="form-label fw-bold">Decryption key</label></div></div>', 1);
-const _hoisted_6$b = { class: "col-md-3 gy-2" };
-const _hoisted_7$b = ["onUpdate:modelValue", "disabled"];
-const _hoisted_8$c = { class: "col-md-3 gy-2" };
-const _hoisted_9$b = ["onUpdate:modelValue", "disabled"];
-const _hoisted_10$b = { class: "col-md-6 gy-2" };
-const _hoisted_11$a = ["onUpdate:modelValue", "disabled"];
-const _hoisted_12$a = /* @__PURE__ */ createStaticVNode('<div class="row"><div class="col-md-3"><div class="form-text"> Unique name of the device used to identify it in Home Assistant. </div></div><div class="col-md-3"><div class="form-text"> Paste the mac adress from the victron app, press save to validate and format the name. </div></div><div class="col-md-6"><div class="form-text"> Paste the encryption key from the Victron app, should be 32 chars. </div></div></div>', 1);
-const _hoisted_13$9 = { class: "row gy-2" };
-const _hoisted_14$6 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
+const _hoisted_3$s = /* @__PURE__ */ createBaseVNode("p", { class: "h2" }, "Device - Security", -1);
+const _hoisted_4$h = /* @__PURE__ */ createBaseVNode("p", { class: "fs-6" }, " Here you register your victron devices and the decryption key which can be found in the Victron APP. The assigned name will be used when sending data to Home Assistant. Currently up to 8 devices can be defined, if you need more, then open a issue on github. ", -1);
+const _hoisted_5$c = /* @__PURE__ */ createBaseVNode("hr", null, null, -1);
+const _hoisted_6$b = /* @__PURE__ */ createStaticVNode('<div class="row"><div class="col-md-3"><label class="form-label fw-bold">Name</label></div><div class="col-md-3"><label class="form-label fw-bold">Mac</label></div><div class="col-md-6"><label class="form-label fw-bold">Decryption key</label></div></div>', 1);
+const _hoisted_7$b = { class: "col-md-3 gy-2" };
+const _hoisted_8$c = ["onUpdate:modelValue", "disabled"];
+const _hoisted_9$b = { class: "col-md-3 gy-2" };
+const _hoisted_10$b = ["onUpdate:modelValue", "disabled"];
+const _hoisted_11$a = { class: "col-md-6 gy-2" };
+const _hoisted_12$a = ["onUpdate:modelValue", "disabled"];
+const _hoisted_13$9 = /* @__PURE__ */ createStaticVNode('<div class="row"><div class="col-md-3"><div class="form-text"> Unique name of the device used to identify it in Home Assistant. </div></div><div class="col-md-3"><div class="form-text"> Paste the mac adress from the victron app, press save to validate and format the name. </div></div><div class="col-md-6"><div class="form-text"> Paste the encryption key from the Victron app, should be 32 chars. </div></div></div>', 1);
+const _hoisted_14$6 = { class: "row gy-2" };
+const _hoisted_15$6 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
-const _hoisted_15$5 = { class: "col-md-3" };
-const _hoisted_16$4 = ["disabled"];
-const _hoisted_17$4 = ["hidden"];
-const _hoisted_18$4 = { class: "col-md-3" };
-const _hoisted_19$3 = ["disabled"];
-const _hoisted_20$2 = ["hidden"];
-const _hoisted_21$2 = { class: "col-sm-4" };
-const _hoisted_22$2 = ["disabled"];
-const _hoisted_23$2 = ["hidden"];
-const _hoisted_24$2 = /* @__PURE__ */ createBaseVNode("div", { class: "col-sm-12" }, [
+const _hoisted_16$4 = { class: "col-md-3" };
+const _hoisted_17$4 = ["disabled"];
+const _hoisted_18$4 = ["hidden"];
+const _hoisted_19$3 = { class: "col-md-3" };
+const _hoisted_20$2 = ["disabled"];
+const _hoisted_21$2 = ["hidden"];
+const _hoisted_22$2 = { class: "col-sm-4" };
+const _hoisted_23$2 = ["disabled"];
+const _hoisted_24$2 = ["hidden"];
+const _hoisted_25$1 = /* @__PURE__ */ createBaseVNode("div", { class: "col-sm-12" }, [
   /* @__PURE__ */ createBaseVNode("p", null, "Press save and the mac adress will be validated and formatted.")
 ], -1);
 const _sfc_main$E = {
@@ -9709,29 +10066,30 @@ const _sfc_main$E = {
         _hoisted_2$A,
         _hoisted_3$s,
         _hoisted_4$h,
+        _hoisted_5$c,
         createBaseVNode("form", {
           onSubmit: withModifiers(saveSettings, ["prevent"]),
           class: "needs-validation",
           novalidate: ""
         }, [
-          _hoisted_5$c,
+          _hoisted_6$b,
           (openBlock(true), createElementBlock(Fragment, null, renderList(unref(config).victron_config, (device, index) => {
             return openBlock(), createElementBlock("div", {
               class: "row",
               key: index
             }, [
-              createBaseVNode("div", _hoisted_6$b, [
+              createBaseVNode("div", _hoisted_7$b, [
                 withDirectives(createBaseVNode("input", {
                   class: normalizeClass(["form-control", checkName(unref(config).victron_config[index].name) ? "" : "is-invalid"]),
                   type: "text",
                   "onUpdate:modelValue": ($event) => unref(config).victron_config[index].name = $event,
                   maxlength: "20",
                   disabled: unref(global$1).disabled
-                }, null, 10, _hoisted_7$b), [
+                }, null, 10, _hoisted_8$c), [
                   [vModelText, unref(config).victron_config[index].name]
                 ])
               ]),
-              createBaseVNode("div", _hoisted_8$c, [
+              createBaseVNode("div", _hoisted_9$b, [
                 withDirectives(createBaseVNode("input", {
                   class: normalizeClass(["form-control", checkMac(unref(config).victron_config[index].mac) ? "" : "is-invalid"]),
                   type: "text",
@@ -9739,27 +10097,27 @@ const _sfc_main$E = {
                   maxlength: "17",
                   placeholder: "XX:XX:XX:XX:XX:XX",
                   disabled: unref(global$1).disabled
-                }, null, 10, _hoisted_9$b), [
+                }, null, 10, _hoisted_10$b), [
                   [vModelText, unref(config).victron_config[index].mac]
                 ])
               ]),
-              createBaseVNode("div", _hoisted_10$b, [
+              createBaseVNode("div", _hoisted_11$a, [
                 withDirectives(createBaseVNode("input", {
                   class: normalizeClass(["form-control", checkKey(unref(config).victron_config[index].key) ? "" : "is-invalid"]),
                   type: "text",
                   "onUpdate:modelValue": ($event) => unref(config).victron_config[index].key = $event,
                   maxlength: "32",
                   disabled: unref(global$1).disabled
-                }, null, 10, _hoisted_11$a), [
+                }, null, 10, _hoisted_12$a), [
                   [vModelText, unref(config).victron_config[index].key]
                 ])
               ])
             ]);
           }), 128)),
-          _hoisted_12$a,
-          createBaseVNode("div", _hoisted_13$9, [
-            _hoisted_14$6,
-            createBaseVNode("div", _hoisted_15$5, [
+          _hoisted_13$9,
+          createBaseVNode("div", _hoisted_14$6, [
+            _hoisted_15$6,
+            createBaseVNode("div", _hoisted_16$4, [
               createBaseVNode("button", {
                 type: "submit",
                 class: "btn btn-primary w-2",
@@ -9770,11 +10128,11 @@ const _sfc_main$E = {
                   role: "status",
                   "aria-hidden": "true",
                   hidden: !unref(global$1).disabled
-                }, null, 8, _hoisted_17$4),
+                }, null, 8, _hoisted_18$4),
                 createTextVNode("  Save ")
-              ], 8, _hoisted_16$4)
+              ], 8, _hoisted_17$4)
             ]),
-            createBaseVNode("div", _hoisted_18$4, [
+            createBaseVNode("div", _hoisted_19$3, [
               createBaseVNode("button", {
                 onClick: _cache[0] || (_cache[0] = ($event) => unref(restart)()),
                 type: "button",
@@ -9786,11 +10144,11 @@ const _sfc_main$E = {
                   role: "status",
                   "aria-hidden": "true",
                   hidden: !unref(global$1).disabled
-                }, null, 8, _hoisted_20$2),
+                }, null, 8, _hoisted_21$2),
                 createTextVNode("  Restart device ")
-              ], 8, _hoisted_19$3)
+              ], 8, _hoisted_20$2)
             ]),
-            createBaseVNode("div", _hoisted_21$2, [
+            createBaseVNode("div", _hoisted_22$2, [
               createBaseVNode("button", {
                 onClick: _cache[1] || (_cache[1] = (...args) => _ctx.factory && _ctx.factory(...args)),
                 type: "button",
@@ -9802,11 +10160,11 @@ const _sfc_main$E = {
                   role: "status",
                   "aria-hidden": "true",
                   hidden: !unref(global$1).disabled
-                }, null, 8, _hoisted_23$2),
+                }, null, 8, _hoisted_24$2),
                 createTextVNode("  Restore factory defaults ")
-              ], 8, _hoisted_22$2)
+              ], 8, _hoisted_23$2)
             ]),
-            _hoisted_24$2
+            _hoisted_25$1
           ])
         ], 32)
       ]);
@@ -9831,7 +10189,7 @@ const _hoisted_13$8 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
 const _hoisted_14$5 = { class: "col-md-3" };
-const _hoisted_15$4 = ["disabled"];
+const _hoisted_15$5 = ["disabled"];
 const _hoisted_16$3 = ["hidden"];
 const _hoisted_17$3 = { class: "col-md-3" };
 const _hoisted_18$3 = ["disabled"];
@@ -9987,7 +10345,7 @@ const _sfc_main$D = {
                   hidden: !unref(global$1).disabled
                 }, null, 8, _hoisted_16$3),
                 createTextVNode("  Save ")
-              ], 8, _hoisted_15$4)
+              ], 8, _hoisted_15$5)
             ]),
             createBaseVNode("div", _hoisted_17$3, [
               createBaseVNode("button", {
@@ -10099,19 +10457,20 @@ const _sfc_main$C = {
 const _hoisted_1$B = { class: "container" };
 const _hoisted_2$x = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
 const _hoisted_3$p = /* @__PURE__ */ createBaseVNode("p", { class: "h3" }, "Integration - Home Assistant (MQTT)", -1);
-const _hoisted_4$e = /* @__PURE__ */ createBaseVNode("hr", null, null, -1);
-const _hoisted_5$9 = { class: "row" };
-const _hoisted_6$8 = { class: "col-md-9" };
-const _hoisted_7$8 = { class: "col-md-3" };
-const _hoisted_8$9 = { class: "col-md-6" };
+const _hoisted_4$e = /* @__PURE__ */ createBaseVNode("p", { class: "fs-6" }, " Only one Home Assistant integration will be enabled at any time. MQTT is prioritized and targets are enabled when a Url / Server is defined. ", -1);
+const _hoisted_5$9 = /* @__PURE__ */ createBaseVNode("hr", null, null, -1);
+const _hoisted_6$8 = { class: "row" };
+const _hoisted_7$8 = { class: "col-md-9" };
+const _hoisted_8$9 = { class: "col-md-3" };
 const _hoisted_9$8 = { class: "col-md-6" };
-const _hoisted_10$8 = { class: "row gy-2" };
-const _hoisted_11$7 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
+const _hoisted_10$8 = { class: "col-md-6" };
+const _hoisted_11$7 = { class: "row gy-2" };
+const _hoisted_12$7 = /* @__PURE__ */ createBaseVNode("div", { class: "col-md-12" }, [
   /* @__PURE__ */ createBaseVNode("hr")
 ], -1);
-const _hoisted_12$7 = { class: "col-md-3" };
-const _hoisted_13$7 = ["disabled"];
-const _hoisted_14$4 = ["hidden"];
+const _hoisted_13$7 = { class: "col-md-3" };
+const _hoisted_14$4 = ["disabled"];
+const _hoisted_15$4 = ["hidden"];
 const _sfc_main$B = {
   __name: "PushHassMqttView",
   setup(__props) {
@@ -10126,13 +10485,14 @@ const _sfc_main$B = {
         _hoisted_2$x,
         _hoisted_3$p,
         _hoisted_4$e,
+        _hoisted_5$9,
         createBaseVNode("form", {
           onSubmit: withModifiers(save, ["prevent"]),
           class: "needs-validation",
           novalidate: ""
         }, [
-          createBaseVNode("div", _hoisted_5$9, [
-            createBaseVNode("div", _hoisted_6$8, [
+          createBaseVNode("div", _hoisted_6$8, [
+            createBaseVNode("div", _hoisted_7$8, [
               createVNode(_component_BsInputText, {
                 modelValue: unref(config).mqtt_target,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => unref(config).mqtt_target = $event),
@@ -10142,7 +10502,7 @@ const _sfc_main$B = {
                 disabled: unref(global$1).disabled
               }, null, 8, ["modelValue", "disabled"])
             ]),
-            createBaseVNode("div", _hoisted_7$8, [
+            createBaseVNode("div", _hoisted_8$9, [
               createVNode(_component_BsInputNumber, {
                 modelValue: unref(config).mqtt_port,
                 "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(config).mqtt_port = $event),
@@ -10153,7 +10513,7 @@ const _sfc_main$B = {
                 disabled: unref(global$1).disabled
               }, null, 8, ["modelValue", "disabled"])
             ]),
-            createBaseVNode("div", _hoisted_8$9, [
+            createBaseVNode("div", _hoisted_9$8, [
               createVNode(_component_BsInputText, {
                 modelValue: unref(config).mqtt_user,
                 "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => unref(config).mqtt_user = $event),
@@ -10163,7 +10523,7 @@ const _sfc_main$B = {
                 disabled: unref(global$1).disabled
               }, null, 8, ["modelValue", "disabled"])
             ]),
-            createBaseVNode("div", _hoisted_9$8, [
+            createBaseVNode("div", _hoisted_10$8, [
               createVNode(_component_BsInputText, {
                 modelValue: unref(config).mqtt_pass,
                 "onUpdate:modelValue": _cache[3] || (_cache[3] = ($event) => unref(config).mqtt_pass = $event),
@@ -10175,9 +10535,9 @@ const _sfc_main$B = {
               }, null, 8, ["modelValue", "disabled"])
             ])
           ]),
-          createBaseVNode("div", _hoisted_10$8, [
-            _hoisted_11$7,
-            createBaseVNode("div", _hoisted_12$7, [
+          createBaseVNode("div", _hoisted_11$7, [
+            _hoisted_12$7,
+            createBaseVNode("div", _hoisted_13$7, [
               createBaseVNode("button", {
                 type: "submit",
                 class: "btn btn-primary w-2",
@@ -10188,9 +10548,9 @@ const _sfc_main$B = {
                   role: "status",
                   "aria-hidden": "true",
                   hidden: !unref(global$1).disabled
-                }, null, 8, _hoisted_14$4),
+                }, null, 8, _hoisted_15$4),
                 createTextVNode("  Save ")
-              ], 8, _hoisted_13$7)
+              ], 8, _hoisted_14$4)
             ])
           ])
         ], 32)
@@ -10201,7 +10561,7 @@ const _sfc_main$B = {
 const _hoisted_1$A = { class: "container" };
 const _hoisted_2$w = /* @__PURE__ */ createBaseVNode("p", null, null, -1);
 const _hoisted_3$o = /* @__PURE__ */ createBaseVNode("p", { class: "h3" }, "Integration - Home Assistant (REST API)", -1);
-const _hoisted_4$d = /* @__PURE__ */ createBaseVNode("p", null, "Only one Home Assistant integration will be enabled and MQTT is enabled when MQTT target is defined.", -1);
+const _hoisted_4$d = /* @__PURE__ */ createBaseVNode("p", { class: "fs-6" }, " Only one Home Assistant integration will be enabled at any time. MQTT is prioritized and targets are enabled when a Url / Server is defined. The needed token can be created under your personal settings page in Home Assistant, just select the Security tab on the top. ", -1);
 const _hoisted_5$8 = /* @__PURE__ */ createBaseVNode("hr", null, null, -1);
 const _hoisted_6$7 = { class: "row" };
 const _hoisted_7$7 = { class: "col-md-9" };
@@ -10216,6 +10576,10 @@ const _hoisted_13$6 = ["hidden"];
 const _sfc_main$A = {
   __name: "PushHassRestView",
   setup(__props) {
+    const token = ref(config.http_post_header2.replace("Authorization: Bearer ", ""));
+    const updateToken = () => {
+      config.http_post_header2 = "Authorization: Bearer " + token.value;
+    };
     const save = () => {
       if (!validateCurrentForm()) return;
       if (config.http_post_target != "" && !config.http_post_target.endsWith("/"))
@@ -10229,6 +10593,7 @@ const _sfc_main$A = {
     };
     return (_ctx, _cache) => {
       const _component_BsInputText = resolveComponent("BsInputText");
+      const _component_BsInputTextArea = resolveComponent("BsInputTextArea");
       return openBlock(), createElementBlock("div", _hoisted_1$A, [
         _hoisted_2$w,
         _hoisted_3$o,
@@ -10251,13 +10616,14 @@ const _sfc_main$A = {
               }, null, 8, ["modelValue", "disabled"])
             ]),
             createBaseVNode("div", _hoisted_8$8, [
-              createVNode(_component_BsInputText, {
-                modelValue: unref(config).http_post_header2,
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(config).http_post_header2 = $event),
+              createVNode(_component_BsInputTextArea, {
+                onKeypress: _cache[1] || (_cache[1] = ($event) => updateToken()),
+                modelValue: token.value,
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => token.value = $event),
                 type: "text",
                 maxlength: "300",
-                label: "Authorization header",
-                help: "Format should be Authorization: Bearer <Home Assistant long lived access token>",
+                label: "Long lived Home Assistant Token",
+                help: "Paste the long lived authorization token here.",
                 disabled: unref(global$1).disabled
               }, null, 8, ["modelValue", "disabled"])
             ])
