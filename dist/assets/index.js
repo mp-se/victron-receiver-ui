@@ -6660,7 +6660,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.1.9";
     },
     uiBuild() {
-      return "..0618da";
+      return "..5b8e59";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -9395,8 +9395,8 @@ const _sfc_main$K = {
                             createTextVNode("Battery: " + toDisplayString(g.data.battery_voltage1) + " V", 1),
                             _hoisted_13$c
                           ], 64)) : createCommentVNode("", true),
-                          g.data.ac_current != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-                            createTextVNode("Current: " + toDisplayString(g.data.ac_current) + " A", 1),
+                          g.data.battery_current1 != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                            createTextVNode("Current: " + toDisplayString(g.data.battery_current1) + " A", 1),
                             _hoisted_14$9
                           ], 64)) : createCommentVNode("", true),
                           createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
