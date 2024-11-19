@@ -45,8 +45,8 @@
                     <template v-if="g.data.battery_voltage1 != undefined"
                       >Battery: {{ g.data.battery_voltage1 }} V<br
                     /></template>
-                    <template v-if="g.data.ac_current != undefined"
-                      >Current: {{ g.data.ac_current }} A<br
+                    <template v-if="g.data.battery_current1 != undefined"
+                      >Current: {{ g.data.battery_current1 }} A<br
                     /></template>
                     State: {{ g.data.state_message }}<br />
                     <template v-if="g.data.error > 0"
