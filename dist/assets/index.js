@@ -6660,7 +6660,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.1.9";
     },
     uiBuild() {
-      return "..5b8e59";
+      return "..6a5c08";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -10475,6 +10475,10 @@ const _sfc_main$B = {
   __name: "PushHassMqttView",
   setup(__props) {
     const save = () => {
+      if (config.mqtt_target.startsWith("http://")) {
+        global$1.messageError = "MQTT target looks like an URL and not servername/ip.";
+        return;
+      }
       if (!validateCurrentForm()) return;
       config.saveAll();
     };
