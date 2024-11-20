@@ -79,6 +79,11 @@ import { validateCurrentForm } from '@/modules/utils'
 import { global, config } from '@/modules/pinia'
 
 const save = () => {
+  if(config.mqtt_target.startsWith('http://')) {
+    global.messageError = "MQTT target looks like an URL and not servername/ip."
+    return
+  }
+
   if (!validateCurrentForm()) return
 
   config.saveAll()
