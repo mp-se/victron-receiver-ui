@@ -15,6 +15,7 @@
           <BsInputText
             v-model="config.mqtt_target"
             maxlength="120"
+            placeholder="Example: 192.168.1.99"
             label="Server"
             help="Name of server to connect to, use format servername.com"
             :disabled="global.disabled"
@@ -24,6 +25,7 @@
           <BsInputNumber
             v-model="config.mqtt_port"
             label="Port"
+            placeholder="Typical: 1883"
             min="0"
             max="65535"
             help="Port number, 1883 is standard. Ports above 8000 means SSL"

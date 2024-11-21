@@ -17,6 +17,7 @@
             v-model="config.http_post_target"
             maxlength="120"
             label="Base Url"
+            placeholder="Example: http://192.168.1.98:8123/"
             help="Name of server to connect to, use url"
             :disabled="global.disabled"
           />
@@ -25,6 +26,7 @@
           <BsInputTextArea @keypress="updateToken()"
             v-model="token"
             type="text"
+            placeholder="Token is created in Home Assistant and is around 200 chars long"
             maxlength="300"
             label="Long lived Home Assistant Token"
             help="Paste the long lived authorization token here."
