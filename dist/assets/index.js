@@ -6657,10 +6657,10 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return this.url;
     },
     uiVersion() {
-      return "0.1.9";
+      return "0.2.1";
     },
     uiBuild() {
-      return "..6a5c08";
+      return "..51fb7f";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -9299,31 +9299,37 @@ const _hoisted_24$3 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_25$2 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_26$1 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
 const _hoisted_27 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
-const _hoisted_28 = ["onClick"];
-const _hoisted_29 = { class: "col-md-4" };
-const _hoisted_30 = { class: "text-center" };
-const _hoisted_31 = { class: "col-md-4" };
-const _hoisted_32 = { class: "text-center" };
-const _hoisted_33 = { class: "col-md-4" };
-const _hoisted_34 = { class: "text-center" };
-const _hoisted_35 = { class: "col-md-4" };
-const _hoisted_36 = { class: "text-center" };
-const _hoisted_37 = { class: "col-md-4" };
-const _hoisted_38 = { class: "text-center" };
-const _hoisted_39 = { class: "col-md-4" };
-const _hoisted_40 = { class: "text-center" };
+const _hoisted_28 = /* @__PURE__ */ createBaseVNode("br", null, null, -1);
+const _hoisted_29 = ["onClick"];
+const _hoisted_30 = { class: "col-md-4" };
+const _hoisted_31 = { class: "text-center" };
+const _hoisted_32 = { class: "col-md-4" };
+const _hoisted_33 = { class: "text-center" };
+const _hoisted_34 = { class: "col-md-4" };
+const _hoisted_35 = { class: "text-center" };
+const _hoisted_36 = { class: "col-md-4" };
+const _hoisted_37 = { class: "text-center" };
+const _hoisted_38 = { class: "col-md-4" };
+const _hoisted_39 = { class: "text-center" };
+const _hoisted_40 = { class: "col-md-4" };
+const _hoisted_41 = { class: "text-center" };
 const _sfc_main$K = {
   __name: "HomeView",
   setup(__props) {
     const polling = ref(null);
     function formatTime(t) {
-      if (t < 60)
-        return new Number(t).toFixed(0) + "s";
-      if (t < 60 * 60)
-        return new Number(t / 60).toFixed(0) + "m";
-      if (t < 60 * 60 * 24)
-        return new Number(t / (60 * 60)).toFixed(0) + "h";
-      return new Number(t / (60 * 60 * 24)).toFixed(0) + "d";
+      var seconds = Math.floor(t % 60);
+      var minutes = Math.floor(t % (60 * 60) / 60);
+      var hours = Math.floor(t % (24 * 60 * 60) / (60 * 60));
+      var days = Math.floor(t % (7 * 24 * 60 * 60) / (24 * 60 * 60));
+      var weeks = Math.floor(t % (4 * 7 * 24 * 60 * 60) / (7 * 24 * 60 * 60));
+      var s = "";
+      if (weeks > 0) s += weeks + "w ";
+      if (days > 0) s += days + "d ";
+      if (hours > 0) s += hours + "h ";
+      if (minutes > 0) s += minutes + "m ";
+      if (seconds > 0) s += seconds + "s ";
+      return s;
     }
     function convertTemperature(t) {
       if (config.temp_format == "C") return t;
@@ -9408,47 +9414,51 @@ const _sfc_main$K = {
                           ], 64)) : createCommentVNode("", true)
                         ], 64)) : createCommentVNode("", true),
                         g.data.name == "Shunt" ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
-                          g.data.battery_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
-                            createTextVNode("Battery: " + toDisplayString(g.data.battery_voltage) + " V", 1),
+                          g.data.soc != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
+                            createTextVNode("SOC: " + toDisplayString(g.data.soc) + " %", 1),
                             _hoisted_18$6
                           ], 64)) : createCommentVNode("", true),
-                          g.data.battery_current != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
-                            createTextVNode("Current: " + toDisplayString(g.data.battery_current) + " A", 1),
+                          g.data.battery_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                            createTextVNode("Battery: " + toDisplayString(g.data.battery_voltage) + " V", 1),
                             _hoisted_19$5
                           ], 64)) : createCommentVNode("", true),
-                          g.data.remaning_mins != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
-                            createTextVNode("Remaning: " + toDisplayString(g.data.remaning_mins) + " min", 1),
+                          g.data.battery_current != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                            createTextVNode("Current: " + toDisplayString(g.data.battery_current) + " A", 1),
                             _hoisted_20$4
                           ], 64)) : createCommentVNode("", true),
-                          g.data.consumed_ah != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
-                            createTextVNode("Consumed: " + toDisplayString(g.data.consumed_ah) + " Ah", 1),
+                          g.data.remaning_mins != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
+                            createTextVNode("Remaning: " + toDisplayString(formatTime(g.data.remaning_mins * 60)), 1),
                             _hoisted_21$3
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.consumed_ah != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 4 }, [
+                            createTextVNode("Consumed: " + toDisplayString(g.data.consumed_ah) + " Ah", 1),
+                            _hoisted_22$3
                           ], 64)) : createCommentVNode("", true)
                         ], 64)) : createCommentVNode("", true),
                         g.data.name == "Solar Charger" ? (openBlock(), createElementBlock(Fragment, { key: 4 }, [
                           createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
-                          _hoisted_22$3,
+                          _hoisted_23$3,
                           g.data.battery_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                             createTextVNode("Voltage: " + toDisplayString(g.data.battery_voltage) + " V", 1),
-                            _hoisted_23$3
+                            _hoisted_24$3
                           ], 64)) : createCommentVNode("", true),
                           g.data.battery_current != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
                             createTextVNode("Current: " + toDisplayString(g.data.battery_current) + " A", 1),
-                            _hoisted_24$3
+                            _hoisted_25$2
                           ], 64)) : createCommentVNode("", true),
                           g.data.pv_power != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
                             createTextVNode("PV: " + toDisplayString(g.data.pv_power) + " W", 1),
-                            _hoisted_25$2
+                            _hoisted_26$1
                           ], 64)) : createCommentVNode("", true),
                           g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
                             createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
-                            _hoisted_26$1
+                            _hoisted_27
                           ], 64)) : createCommentVNode("", true)
                         ], 64)) : createCommentVNode("", true),
                         g.data.name == "Unknown" ? (openBlock(), createElementBlock(Fragment, { key: 5 }, [
                           createTextVNode(" Unknown victron device found, copy the payload and create an issue on Github to support the device. ")
                         ], 64)) : createCommentVNode("", true),
-                        _hoisted_27,
+                        _hoisted_28,
                         createBaseVNode("button", {
                           onClick: ($event) => copyToClipboard(g.data),
                           type: "button",
@@ -9460,7 +9470,7 @@ const _sfc_main$K = {
                             height: "16"
                           }),
                           createTextVNode(" Copy data ")
-                        ], 8, _hoisted_28)
+                        ], 8, _hoisted_29)
                       ])
                     ])
                   ]),
@@ -9468,68 +9478,68 @@ const _sfc_main$K = {
                 }, 1032, ["header", "title"])
               ]);
             }), 128)),
-            createBaseVNode("div", _hoisted_29, [
+            createBaseVNode("div", _hoisted_30, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "WIFI"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_30, toDisplayString(unref(status).rssi) + " dBm - " + toDisplayString(unref(status).wifi_ssid), 1)
+                  createBaseVNode("p", _hoisted_31, toDisplayString(unref(status).rssi) + " dBm - " + toDisplayString(unref(status).wifi_ssid), 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_31, [
+            createBaseVNode("div", _hoisted_32, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "IP Address"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_32, toDisplayString(unref(status).ip), 1)
+                  createBaseVNode("p", _hoisted_33, toDisplayString(unref(status).ip), 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_33, [
+            createBaseVNode("div", _hoisted_34, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Memory"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_34, " Free: " + toDisplayString(unref(status).free_heap) + " kb, Total: " + toDisplayString(unref(status).total_heap) + " kb ", 1)
+                  createBaseVNode("p", _hoisted_35, " Free: " + toDisplayString(unref(status).free_heap) + " kb, Total: " + toDisplayString(unref(status).total_heap) + " kb ", 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_35, [
+            createBaseVNode("div", _hoisted_36, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Software version"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_36, " Firmware: " + toDisplayString(unref(status).app_ver) + " (" + toDisplayString(unref(status).app_build) + ") UI: " + toDisplayString(unref(global$1).uiVersion) + " (" + toDisplayString(unref(global$1).uiBuild) + ") ", 1)
+                  createBaseVNode("p", _hoisted_37, " Firmware: " + toDisplayString(unref(status).app_ver) + " (" + toDisplayString(unref(status).app_build) + ") UI: " + toDisplayString(unref(global$1).uiVersion) + " (" + toDisplayString(unref(global$1).uiBuild) + ") ", 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_37, [
+            createBaseVNode("div", _hoisted_38, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Platform"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_38, toDisplayString(unref(status).platform) + " (id: " + toDisplayString(unref(status).id) + ")", 1)
+                  createBaseVNode("p", _hoisted_39, toDisplayString(unref(status).platform) + " (id: " + toDisplayString(unref(status).id) + ")", 1)
                 ]),
                 _: 1
               })
             ]),
-            createBaseVNode("div", _hoisted_39, [
+            createBaseVNode("div", _hoisted_40, [
               createVNode(_component_BsCard, {
                 header: "Device",
                 title: "Uptime"
               }, {
                 default: withCtx(() => [
-                  createBaseVNode("p", _hoisted_40, toDisplayString(unref(status).uptime_days) + " days " + toDisplayString(unref(status).uptime_hours) + " hours " + toDisplayString(unref(status).uptime_minutes) + " minutes " + toDisplayString(unref(status).uptime_seconds) + " seconds ", 1)
+                  createBaseVNode("p", _hoisted_41, toDisplayString(unref(status).uptime_days) + " days " + toDisplayString(unref(status).uptime_hours) + " hours " + toDisplayString(unref(status).uptime_minutes) + " minutes " + toDisplayString(unref(status).uptime_seconds) + " seconds ", 1)
                 ]),
                 _: 1
               })
@@ -10501,6 +10511,7 @@ const _sfc_main$B = {
                 modelValue: unref(config).mqtt_target,
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => unref(config).mqtt_target = $event),
                 maxlength: "120",
+                placeholder: "Example: 192.168.1.99",
                 label: "Server",
                 help: "Name of server to connect to, use format servername.com",
                 disabled: unref(global$1).disabled
@@ -10511,6 +10522,7 @@ const _sfc_main$B = {
                 modelValue: unref(config).mqtt_port,
                 "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(config).mqtt_port = $event),
                 label: "Port",
+                placeholder: "Typical: 1883",
                 min: "0",
                 max: "65535",
                 help: "Port number, 1883 is standard. Ports above 8000 means SSL",
@@ -10615,6 +10627,7 @@ const _sfc_main$A = {
                 "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => unref(config).http_post_target = $event),
                 maxlength: "120",
                 label: "Base Url",
+                placeholder: "Example: http://192.168.1.98:8123/",
                 help: "Name of server to connect to, use url",
                 disabled: unref(global$1).disabled
               }, null, 8, ["modelValue", "disabled"])
@@ -10625,6 +10638,7 @@ const _sfc_main$A = {
                 modelValue: token.value,
                 "onUpdate:modelValue": _cache[2] || (_cache[2] = ($event) => token.value = $event),
                 type: "text",
+                placeholder: "Token is created in Home Assistant and is around 200 chars long",
                 maxlength: "300",
                 label: "Long lived Home Assistant Token",
                 help: "Paste the long lived authorization token here.",
