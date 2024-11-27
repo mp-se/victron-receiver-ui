@@ -65,7 +65,7 @@
                       >Current: {{ g.data.battery_current }} A<br
                     /></template>
                     <template v-if="g.data.remaning_mins != undefined"
-                      >Remaning: {{ formatTime(g.data.remaning_mins*60) }}<br
+                      >Remaning: {{ formatTime(g.data.remaning_mins * 60) }}<br
                     /></template>
                     <template v-if="g.data.consumed_ah != undefined"
                       >Consumed: {{ g.data.consumed_ah }} Ah<br

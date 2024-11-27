@@ -23,7 +23,8 @@
           />
         </div>
         <div class="col-md-12">
-          <BsInputTextArea @keypress="updateToken()"
+          <BsInputTextArea
+            @keypress="updateToken()"
             v-model="token"
             type="text"
             placeholder="Token is created in Home Assistant and is around 200 chars long"
@@ -62,12 +63,11 @@
 import { ref } from 'vue'
 import { validateCurrentForm } from '@/modules/utils'
 import { global, config } from '@/modules/pinia'
-import { logDebug } from '@/modules/logger'
 
-const token = ref(config.http_post_header2.replace("Authorization: Bearer ", ""))
+const token = ref(config.http_post_header2.replace('Authorization: Bearer ', ''))
 
 const updateToken = () => {
-  config.http_post_header2 = "Authorization: Bearer " + token.value
+  config.http_post_header2 = 'Authorization: Bearer ' + token.value
 }
 
 const save = () => {
