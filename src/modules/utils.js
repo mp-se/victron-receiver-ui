@@ -73,3 +73,5 @@ export function restart() {
       global.disabled = false
     })
 }
+
+// EOF

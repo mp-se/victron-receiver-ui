@@ -55,6 +55,9 @@
                   </template>
 
                   <template v-if="g.data.name == 'Shunt'">
+                    <template v-if="g.data.soc != undefined"
+                      >SOC: {{ g.data.soc }} %<br
+                    /></template>
                     <template v-if="g.data.battery_voltage != undefined"
                       >Battery: {{ g.data.battery_voltage }} V<br
                     /></template>
@@ -62,7 +65,7 @@
                       >Current: {{ g.data.battery_current }} A<br
                     /></template>
                     <template v-if="g.data.remaning_mins != undefined"
-                      >Remaning: {{ g.data.remaning_mins }} min<br
+                      >Remaning: {{ formatTime(g.data.remaning_mins*60) }}<br
                     /></template>
                     <template v-if="g.data.consumed_ah != undefined"
                       >Consumed: {{ g.data.consumed_ah }} Ah<br
@@ -164,19 +167,20 @@ import { tempToF } from '@/modules/utils'
 const polling = ref(null)
 
 function formatTime(t) {
-  if (t < 60)
-    // less than 1 min
-    return new Number(t).toFixed(0) + 's'
+  var seconds = Math.floor(t % 60)
+  var minutes = Math.floor((t % (60 * 60)) / 60)
+  var hours = Math.floor((t % (24 * 60 * 60)) / (60 * 60))
+  var days = Math.floor((t % (7 * 24 * 60 * 60)) / (24 * 60 * 60))
+  var weeks = Math.floor((t % (4 * 7 * 24 * 60 * 60)) / (7 * 24 * 60 * 60))
 
-  if (t < 60 * 60)
-    // less than 1 hour
-    return new Number(t / 60).toFixed(0) + 'm'
+  var s = ''
 
-  if (t < 60 * 60 * 24)
-    // less than 1 day
-    return new Number(t / (60 * 60)).toFixed(0) + 'h'
-
-  return new Number(t / (60 * 60 * 24)).toFixed(0) + 'd'
+  if (weeks > 0) s += weeks + 'w '
+  if (days > 0) s += days + 'd '
+  if (hours > 0) s += hours + 'h '
+  if (minutes > 0) s += minutes + 'm '
+  if (seconds > 0) s += seconds + 's '
+  return s
 }
 
 function convertTemperature(t) {
