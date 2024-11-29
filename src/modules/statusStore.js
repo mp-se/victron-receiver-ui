@@ -57,12 +57,19 @@ export const useStatusStore = defineStore('status', {
           this.total_heap = Math.round(this.total_heap / 1024).toFixed(0)
           this.free_heap = Math.round(this.free_heap / 1024).toFixed(0)
 
+          var devices = []
+
           this.victron_device.forEach((vd) => {
-            logInfo('statusStore.load()', vd.data)
-            vd.data = JSON.parse(vd.data)
+            logDebug('statusStore.load()', vd)
+            if(vd.data !== undefined && vd.data !== null) {
+              vd.data = JSON.parse(vd.data)
+              devices.push(vd)
+            }
           })
 
-          logInfo('statusStore.load()', 'Fetching /api/status completed')
+          this.victron_device = devices        
+
+          logInfo('statusStore.load()', 'Fetching /api/status completed', this.victron_device)
           callback(true)
         })
         .catch((err) => {
