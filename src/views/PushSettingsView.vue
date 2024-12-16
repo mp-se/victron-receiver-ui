@@ -25,7 +25,7 @@
             label="Push minimum resend time"
             unit="s"
             min="10"
-            max="1800"
+            max="86400"
             step="1"
             width="5"
             help="The number of seconds before a value can be resent to a push target"
