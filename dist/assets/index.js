@@ -6657,10 +6657,10 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return this.url;
     },
     uiVersion() {
-      return "0.2.1";
+      return "0.2.5";
     },
     uiBuild() {
-      return "..51fb7f";
+      return "..41d975";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -6723,11 +6723,15 @@ const useStatusStore = /* @__PURE__ */ defineStore("status", {
         this.uptime_days = json.uptime_days;
         this.total_heap = Math.round(this.total_heap / 1024).toFixed(0);
         this.free_heap = Math.round(this.free_heap / 1024).toFixed(0);
+        var devices = [];
         this.victron_device.forEach((vd) => {
-          logInfo("statusStore.load()", vd.data);
-          vd.data = JSON.parse(vd.data);
+          if (vd.data !== void 0 && vd.data !== null) {
+            vd.data = JSON.parse(vd.data);
+            devices.push(vd);
+          }
         });
-        logInfo("statusStore.load()", "Fetching /api/status completed");
+        this.victron_device = devices;
+        logInfo("statusStore.load()", "Fetching /api/status completed", this.victron_device);
         callback(true);
       }).catch((err) => {
         logError("statusStore.load()", err);
@@ -10433,7 +10437,7 @@ const _sfc_main$C = {
                 label: "Push minimum resend time",
                 unit: "s",
                 min: "10",
-                max: "1800",
+                max: "86400",
                 step: "1",
                 width: "5",
                 help: "The number of seconds before a value can be resent to a push target",
