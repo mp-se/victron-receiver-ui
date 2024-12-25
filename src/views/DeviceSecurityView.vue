@@ -79,7 +79,7 @@
         <div class="col-md-12">
           <hr />
         </div>
-        <div class="col-md-3">
+        <div class="col-md-12">
           <button type="submit" class="btn btn-primary w-2" :disabled="global.disabled">
             <span
               class="spinner-border spinner-border-sm"
@@ -88,9 +88,8 @@
               :hidden="!global.disabled"
             ></span>
             &nbsp;Save
-          </button>
-        </div>
-        <div class="col-md-3">
+          </button>&nbsp;
+
           <button
             @click="restart()"
             type="button"
@@ -104,9 +103,8 @@
               :hidden="!global.disabled"
             ></span>
             &nbsp;Restart device
-          </button>
-        </div>
-        <div class="col-sm-4">
+          </button>&nbsp;
+
           <button
             @click="factory"
             type="button"
