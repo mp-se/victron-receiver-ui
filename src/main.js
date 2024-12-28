@@ -22,6 +22,7 @@ import BsInputNumber from '@/components/BsInputNumber.vue'
 import BsInputSwitch from '@/components/BsInputSwitch.vue'
 import BsInputRadio from '@/components/BsInputRadio.vue'
 import BsDropdown from '@/components/BsDropdown.vue'
+import BsModalConfirm from '@/components/BsModalConfirm.vue'
 
 app.component('BsMessage', BsMessage)
 app.component('BsDropdown', BsDropdown)
@@ -36,6 +37,7 @@ app.component('BsInputTextArea', BsInputTextArea)
 app.component('BsInputNumber', BsInputNumber)
 app.component('BsInputRadio', BsInputRadio)
 app.component('BsInputSwitch', BsInputSwitch)
+app.component('BsModalConfirm', BsModalConfirm)
 
 import IconHome from './components/IconHome.vue'
 import IconClipboard from './components/IconClipboard.vue'
