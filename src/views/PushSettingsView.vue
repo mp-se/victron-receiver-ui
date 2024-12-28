@@ -22,7 +22,7 @@
         <div class="col-md-6">
           <BsInputNumber
             v-model="config.push_resend_time"
-            label="Push minimum resend time"
+            :label="'Push minimum resend time ' + intervalLabel"
             unit="s"
             min="10"
             max="86400"
@@ -31,6 +31,7 @@
             help="The number of seconds before a value can be resent to a push target"
             :disabled="global.disabled"
           />
+
         </div>
       </div>
 
@@ -59,8 +60,27 @@
 </template>
 
 <script setup>
+import { onMounted, ref, watch } from 'vue'
 import { validateCurrentForm } from '@/modules/utils'
 import { global, config } from '@/modules/pinia'
+import { storeToRefs } from 'pinia'
+
+const intervalLabel = ref('')
+
+const { push_resend_time } = storeToRefs(config)
+
+watch(push_resend_time, () => {
+  createIntervalLabel()
+})
+
+onMounted(() => {
+  createIntervalLabel()
+})
+
+const createIntervalLabel = () => {
+  var s = Math.floor(push_resend_time.value / 3600) + ' h ' + Math.floor((push_resend_time.value % 3600) / 60) + ' min ' + (push_resend_time.value % 60) + ' sec'
+  intervalLabel.value = '(' + s + ')'
+}
 
 const save = () => {
   if (!validateCurrentForm()) return
