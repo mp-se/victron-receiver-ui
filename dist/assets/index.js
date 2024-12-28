@@ -6657,10 +6657,10 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return this.url;
     },
     uiVersion() {
-      return "0.2.5";
+      return "0.3.0";
     },
     uiBuild() {
-      return "..ef712c";
+      return "..54e893";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -10388,6 +10388,18 @@ const _hoisted_12$8 = ["hidden"];
 const _sfc_main$C = {
   __name: "PushSettingsView",
   setup(__props) {
+    const intervalLabel = ref("");
+    const { push_resend_time } = storeToRefs(config);
+    watch(push_resend_time, () => {
+      createIntervalLabel();
+    });
+    onMounted(() => {
+      createIntervalLabel();
+    });
+    const createIntervalLabel = () => {
+      var s = Math.floor(push_resend_time.value / 3600) + " h " + Math.floor(push_resend_time.value % 3600 / 60) + " min " + push_resend_time.value % 60 + " sec";
+      intervalLabel.value = "(" + s + ")";
+    };
     const save = () => {
       if (!validateCurrentForm()) return;
       config.saveAll();
@@ -10422,7 +10434,7 @@ const _sfc_main$C = {
               createVNode(_component_BsInputNumber, {
                 modelValue: unref(config).push_resend_time,
                 "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => unref(config).push_resend_time = $event),
-                label: "Push minimum resend time",
+                label: "Push minimum resend time " + intervalLabel.value,
                 unit: "s",
                 min: "10",
                 max: "86400",
@@ -10430,7 +10442,7 @@ const _sfc_main$C = {
                 width: "5",
                 help: "The number of seconds before a value can be resent to a push target",
                 disabled: unref(global$1).disabled
-              }, null, 8, ["modelValue", "disabled"])
+              }, null, 8, ["modelValue", "label", "disabled"])
             ])
           ]),
           createBaseVNode("div", _hoisted_8$a, [
