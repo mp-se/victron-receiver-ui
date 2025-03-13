@@ -57,7 +57,7 @@ export var statusData = {
   uptime_hours: 3,
   uptime_days: 4,
   victron_device: [ 
-    { mac: "00:11:22:33:44:55", data: "{\"name\":\"Smart Battery Monitor\",\"model\":\"0xA3A4\",\"battery_voltage\":11.34,\"temperature\":23}", name: "Cranking battery", update_time: 100, push_time: 600 },  
+    { mac: "00:11:22:33:44:55", data: "{\"name\":\"Battery Monitor\",\"model\":\"0xA3A4\",\"battery_voltage\":11.34,\"temperature\":23}", name: "Cranking battery", update_time: 100, push_time: 600 },  
     { mac: "00:11:22:33:44:56", data: "{\"name\":\"Orion Smart DC-DC Charger\",\"model\":\"0xA3C0\",\"input_voltage\":14.45,\"output_voltage\":13.67,\"state_message\":\"Off\",\"error\":0,\"error_message\":\"No error\",\"off_reason\":0,\"off_reason_message\":\"No input power. \"}", name: "Boat charger", update_time: 200, push_time: 300 },  
     { mac: "00:11:22:33:44:57", data: "{\"name\":\"Unknown\",\"model\":\"0x1234\",\"data\":\"0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x00,0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x10,0x21\"}", name: "Solar charger", update_time: 10, push_time: 0 },  
   ]

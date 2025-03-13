@@ -88,6 +88,20 @@
                     /></template>
                   </template>
 
+                  <template v-if="g.data.name == 'Battery Protect'">
+                    State: {{ g.data.state_message }}<br />
+                    <template v-if="g.data.input_voltage != undefined"
+                      >Input Voltage: {{ g.data.input_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.output_voltage != undefined"
+                      >Output Voltage: {{ g.data.output_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.error > 0"
+                      >Error: {{ g.data.error_message }}<br
+                    /></template>
+                    Message: {{ g.data.off_reason_message }}<br />
+                  </template>
+
                   <template v-if="g.data.name == 'Unknown'">
                     Unknown victron device found, copy the payload and create an issue on Github to
                     support the device.
