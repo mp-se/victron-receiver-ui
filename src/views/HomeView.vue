@@ -31,24 +31,26 @@
                   </template>
 
                   <template v-if="g.data.name == 'DC-DC Charger'">
+                    State: {{ g.data.state_message }}<br />
                     <template v-if="g.data.input_voltage != undefined"
                       >Input: {{ g.data.input_voltage }} V<br
                     /></template>
                     <template v-if="g.data.output_voltage != undefined"
                       >Output: {{ g.data.output_voltage }} V<br
                     /></template>
-                    State: {{ g.data.state_message }}<br />
-                    Message: {{ g.data.off_reason_message }}<br />
+                    <template v-if="g.data.off_reason != 0"
+                      >Message: {{ g.data.off_reason_message }}<br />
+                    </template>
                   </template>
 
                   <template v-if="g.data.name == 'AC Charger'">
+                    State: {{ g.data.state_message }}<br />
                     <template v-if="g.data.battery_voltage1 != undefined"
                       >Battery: {{ g.data.battery_voltage1 }} V<br
                     /></template>
                     <template v-if="g.data.battery_current1 != undefined"
                       >Current: {{ g.data.battery_current1 }} A<br
                     /></template>
-                    State: {{ g.data.state_message }}<br />
                     <template v-if="g.data.error > 0"
                       ><br />Error: {{ g.data.error_message }}<br
                     /></template>
@@ -102,7 +104,9 @@
                     <template v-if="g.data.error > 0"
                       >Error: {{ g.data.error_message }}<br
                     /></template>
-                    Message: {{ g.data.off_reason_message }}<br />
+                    <template v-if="g.data.off_reason != 0"
+                      >Message: {{ g.data.off_reason_message }}<br />
+                    </template>
                     <template v-if="g.data.alarm != 0"
                       >Alarm: {{ g.data.alarm_message }}<br
                     /></template>                    
