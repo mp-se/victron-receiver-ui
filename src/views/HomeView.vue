@@ -70,6 +70,9 @@
                     <template v-if="g.data.consumed_ah != undefined"
                       >Consumed: {{ g.data.consumed_ah }} Ah<br
                     /></template>
+                    <template v-if="g.data.alarm != 0"
+                      >Alarm: {{ g.data.alarm_message }}<br
+                    /></template>                    
                   </template>
 
                   <template v-if="g.data.name == 'Solar Charger'">
@@ -100,6 +103,12 @@
                       >Error: {{ g.data.error_message }}<br
                     /></template>
                     Message: {{ g.data.off_reason_message }}<br />
+                    <template v-if="g.data.alarm != 0"
+                      >Alarm: {{ g.data.alarm_message }}<br
+                    /></template>                    
+                    <template v-if="g.data.warning != 0"
+                      >Warning: {{ g.data.warning_message }}<br
+                    /></template>                    
                   </template>
 
                   <template v-if="g.data.name == 'Unknown'">
