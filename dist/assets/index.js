@@ -6660,7 +6660,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.5.0";
     },
     uiBuild() {
-      return "..3a7f9b";
+      return "..18f445";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -9395,30 +9395,32 @@ const _sfc_main$M = {
                           _hoisted_8$h
                         ], 64)) : createCommentVNode("", true),
                         g.data.name == "DC-DC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
+                          createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
+                          _hoisted_9$f,
                           g.data.input_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                             createTextVNode("Input: " + toDisplayString(g.data.input_voltage) + " V", 1),
-                            _hoisted_9$f
+                            _hoisted_10$e
                           ], 64)) : createCommentVNode("", true),
                           g.data.output_voltage != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
                             createTextVNode("Output: " + toDisplayString(g.data.output_voltage) + " V", 1),
-                            _hoisted_10$e
+                            _hoisted_11$e
                           ], 64)) : createCommentVNode("", true),
-                          createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
-                          _hoisted_11$e,
-                          createTextVNode(" Message: " + toDisplayString(g.data.off_reason_message), 1),
-                          _hoisted_12$e
+                          g.data.off_reason != 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                            createTextVNode("Message: " + toDisplayString(g.data.off_reason_message), 1),
+                            _hoisted_12$e
+                          ], 64)) : createCommentVNode("", true)
                         ], 64)) : createCommentVNode("", true),
                         g.data.name == "AC Charger" ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
+                          createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
+                          _hoisted_13$d,
                           g.data.battery_voltage1 != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 0 }, [
                             createTextVNode("Battery: " + toDisplayString(g.data.battery_voltage1) + " V", 1),
-                            _hoisted_13$d
+                            _hoisted_14$a
                           ], 64)) : createCommentVNode("", true),
                           g.data.battery_current1 != void 0 ? (openBlock(), createElementBlock(Fragment, { key: 1 }, [
                             createTextVNode("Current: " + toDisplayString(g.data.battery_current1) + " A", 1),
-                            _hoisted_14$a
+                            _hoisted_15$9
                           ], 64)) : createCommentVNode("", true),
-                          createTextVNode(" State: " + toDisplayString(g.data.state_message), 1),
-                          _hoisted_15$9,
                           g.data.error > 0 ? (openBlock(), createElementBlock(Fragment, { key: 2 }, [
                             _hoisted_16$7,
                             createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
@@ -9486,13 +9488,15 @@ const _sfc_main$M = {
                             createTextVNode("Error: " + toDisplayString(g.data.error_message), 1),
                             _hoisted_32
                           ], 64)) : createCommentVNode("", true),
-                          createTextVNode(" Message: " + toDisplayString(g.data.off_reason_message), 1),
-                          _hoisted_33,
-                          g.data.alarm != 0 ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
+                          g.data.off_reason != 0 ? (openBlock(), createElementBlock(Fragment, { key: 3 }, [
+                            createTextVNode("Message: " + toDisplayString(g.data.off_reason_message), 1),
+                            _hoisted_33
+                          ], 64)) : createCommentVNode("", true),
+                          g.data.alarm != 0 ? (openBlock(), createElementBlock(Fragment, { key: 4 }, [
                             createTextVNode("Alarm: " + toDisplayString(g.data.alarm_message), 1),
                             _hoisted_34
                           ], 64)) : createCommentVNode("", true),
-                          g.data.warning != 0 ? (openBlock(), createElementBlock(Fragment, { key: 4 }, [
+                          g.data.warning != 0 ? (openBlock(), createElementBlock(Fragment, { key: 5 }, [
                             createTextVNode("Warning: " + toDisplayString(g.data.warning_message), 1),
                             _hoisted_35
                           ], 64)) : createCommentVNode("", true)
