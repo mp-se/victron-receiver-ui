@@ -64,8 +64,8 @@
               aria-hidden="true"
               :hidden="!global.disabled"
             ></span>
-            &nbsp;Save
-          </button>&nbsp;
+            &nbsp;Save</button
+          >&nbsp;
 
           <button
             @click="restart()"
@@ -79,8 +79,8 @@
               aria-hidden="true"
               :hidden="!global.disabled"
             ></span>
-            &nbsp;Restart device
-          </button>&nbsp;
+            &nbsp;Restart device</button
+          >&nbsp;
 
           <button
             @click="factory"

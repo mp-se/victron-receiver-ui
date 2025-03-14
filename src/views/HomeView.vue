@@ -74,7 +74,7 @@
                     /></template>
                     <template v-if="g.data.alarm != 0"
                       >Alarm: {{ g.data.alarm_message }}<br
-                    /></template>                    
+                    /></template>
                   </template>
 
                   <template v-if="g.data.name == 'Solar Charger'">
@@ -109,10 +109,10 @@
                     </template>
                     <template v-if="g.data.alarm != 0"
                       >Alarm: {{ g.data.alarm_message }}<br
-                    /></template>                    
+                    /></template>
                     <template v-if="g.data.warning != 0"
                       >Warning: {{ g.data.warning_message }}<br
-                    /></template>                    
+                    /></template>
                   </template>
 
                   <template v-if="g.data.name == 'Unknown'">

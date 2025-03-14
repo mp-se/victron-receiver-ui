@@ -31,7 +31,6 @@
             help="The number of seconds before a value can be resent to a push target"
             :disabled="global.disabled"
           />
-
         </div>
       </div>
 
@@ -78,7 +77,13 @@ onMounted(() => {
 })
 
 const createIntervalLabel = () => {
-  var s = Math.floor(push_resend_time.value / 3600) + ' h ' + Math.floor((push_resend_time.value % 3600) / 60) + ' min ' + (push_resend_time.value % 60) + ' sec'
+  var s =
+    Math.floor(push_resend_time.value / 3600) +
+    ' h ' +
+    Math.floor((push_resend_time.value % 3600) / 60) +
+    ' min ' +
+    (push_resend_time.value % 60) +
+    ' sec'
   intervalLabel.value = '(' + s + ')'
 }
 

@@ -133,7 +133,7 @@ function download(content, mimeType, filename) {
 
 function doRestore(json) {
   for (var k in json) {
-      config[k] = json[k]
+    config[k] = json[k]
   }
 
   getConfigChanges()

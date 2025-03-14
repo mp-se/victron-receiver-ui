@@ -61,13 +61,13 @@ export const useStatusStore = defineStore('status', {
 
           this.victron_device.forEach((vd) => {
             logDebug('statusStore.load()', vd)
-            if(vd.data !== undefined && vd.data !== null) {
+            if (vd.data !== undefined && vd.data !== null) {
               vd.data = JSON.parse(vd.data)
               devices.push(vd)
             }
           })
 
-          this.victron_device = devices        
+          this.victron_device = devices
 
           logInfo('statusStore.load()', 'Fetching /api/status completed', this.victron_device)
           callback(true)
@@ -354,6 +354,8 @@ export const useStatusStore = defineStore('status', {
           return 'Phoenix Smart IP43 Charger 24|16 (1+1)'
         case 0xa347:
           return 'Phoenix Smart IP43 Charger 24|16 (3)'
+        case 0xa3b0:
+          return 'Smart BatteryProtect 12/24V-65A'
         case 0xa381:
           return 'BMV-712 Smart'
         case 0xa382:
