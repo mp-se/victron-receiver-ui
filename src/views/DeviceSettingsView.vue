@@ -23,6 +23,17 @@
           </BsInputText>
         </div>
 
+        <div class="col-md-6">
+          <BsInputText
+            v-model="config.admin_pass"
+            type="password"
+            maxlength="50"
+            label="Admin password"
+            help="Enter admin password"
+            :disabled="global.disabled"
+          ></BsInputText>
+        </div>
+        
         <div class="col-md-12">
           <hr />
         </div>

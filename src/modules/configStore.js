@@ -10,6 +10,7 @@ export const useConfigStore = defineStore('config', {
       mdns: '',
       temp_format: '',
       dark_mode: false,
+      admin_pass: '',
       // Hardware
       ble_scan_time: 5,
       timezone: 'CET-1CEST,M3.5.0,M10.5.0/3',
@@ -68,6 +69,7 @@ export const useConfigStore = defineStore('config', {
           this.mdns = json.mdns
           this.temp_format = json.temp_format
           this.dark_mode = json.dark_mode
+          this.admin_pass = json.admin_pass
           // Security
           this.victron_config = json.victron_config
           // Hardware

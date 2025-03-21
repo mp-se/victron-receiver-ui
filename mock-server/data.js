@@ -36,14 +36,15 @@ export var configData = {
   // Devices
   victron_config: [
     { name: "name", mac: "11:22:33:44:55:66", key: "123456789012345678901234567890"},
-  ]
+  ],
+  admin_pass: ''
 }
 
 export var statusData = {
   id: "7376ef",
   angle: 22.4,
   rssi: -56,
-  app_ver: "2.0.0",
+  app_ver: "1.0.0",
   app_build: "gitrev",
   mdns: "gravmon",
   platform: "esp32s3",

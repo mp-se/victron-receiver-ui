@@ -1,10 +1,11 @@
 /*
  * Common mock server functions for espframework
  *
- * (c) 2023-2024 Magnus Persson
+ * (c) 2023-2025 Magnus Persson
  */
 
 import { createRequire } from 'module'
+import { Buffer } from 'buffer'
 import { configData, statusData } from './data.js'
 const require = createRequire(import.meta.url)
 const multer = require('multer')
@@ -70,18 +71,46 @@ export function registerEspFwk(app) {
     console.log('GET: /api/auth')
     /* 
      * Description:    Perform device authentication and receive access token
-     * Authentication: No
+     * Authentication: Yes (Authorization basic header)
      * Limitation:     - 
      * Return:         200 OK, 401 Access Denied
-     * Request body:
-       {
-         push_format: "http_format|http_format2|http_format3|influxdb2_format|mqtt_format"
-       }
+     * Request body:   None
      */
-    var data = { token: statusData.id }
+
+    const authHeader = req.headers['authorization'];
+    const base64Credentials = authHeader.split(' ')[1];
+    const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
+    const [username, password] = credentials.split(':'); 
+       
+    if ((username === 'admin' && password === configData.admin_pass) || statusData.wifi_setup) {
+      var data = { token: statusData.id }
+      console.log(req.headers['authorization'])
+      return res.send(data)
+    } else {
+      return res.sendStatus(401);
+    }
+  })
+
+  app.get('/api/login', function (req, res) {
+    console.log('GET: /api/login')
+    /* 
+     * Description:    Perform login and validate admin password
+     * Authentication: Yes (Bearer + password)
+     * Limitation:     - 
+     * Return:         200 OK, 401 Access Denied
+     * Request body:   None
+     */
+    var pass = 'Bearer ' + configData.admin_pass
 
     console.log(req.headers['authorization'])
-    res.send(data)
+
+    if(pass == req.headers['authorization'] || configData.admin_pass == '') {
+      console.log("Login OK")
+      res.sendStatus(200)
+    } else {
+      console.log("Login Failed")
+      res.sendStatus(401)
+    }
   })
 
   app.get('/api/config', (req, res) => {

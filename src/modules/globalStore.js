@@ -35,6 +35,9 @@ export const useGlobalStore = defineStore('global', {
     token() {
       return 'Bearer ' + this.id
     },
+    isSSL() {
+      return this.baseURL.startsWith('https')
+    },
     baseURL() {
       if (this.url !== undefined) return this.url
 

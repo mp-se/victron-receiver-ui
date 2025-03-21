@@ -77,22 +77,24 @@ export const useStatusStore = defineStore('status', {
           callback(false)
         })
     },
-    auth(callback) {
-      logInfo('statusStore.auth()', 'Fetching /api/auth')
-      var base = btoa('gravitymon:password')
+    auth(password, callback) {
+      logDebug('statusStore:auth()', 'Fetching /api/auth')
+      var base = btoa('admin:' + password)
 
       fetch(global.baseURL + 'api/auth', {
         method: 'GET',
-        headers: { Authorization: 'Basic ' + base },
-        signal: AbortSignal.timeout(global.fetchTimout)
+        headers: { Authorization: 'Basic ' + base }
       })
-        .then((res) => res.json())
+        .then((res) => {
+          if (res.status == 200) res.json()
+          else throw new Error('Unauthorized')
+        })
         .then((json) => {
-          logInfo('statusStore.auth()', 'Fetching /api/auth completed')
+          logInfo('statusStore:auth()', 'Fetching /api/auth completed')
           callback(true, json)
         })
         .catch((err) => {
-          logError('statusStore.auth()', err)
+          logError('statusStore:auth()', 'Fetching /api/auth failed', err)
           callback(false)
         })
     },

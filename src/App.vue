@@ -65,16 +65,21 @@
 
   <router-view v-if="global.initialized" />
   <BsFooter v-if="global.initialized" text="(c) 2024 Magnus Persson" />
+  <BsModalLogin v-if="showLogin" :callback="confirmLoginCallback" id="login" />
 </template>
 
 <script setup>
 import BsMenuBar from '@/components/BsMenuBar.vue'
 import BsFooter from '@/components/BsFooter.vue'
-import { onMounted, watch } from 'vue'
+import { onMounted, watch, ref } from 'vue'
 import { global, status, config, saveConfigState } from '@/modules/pinia'
 import { storeToRefs } from 'pinia'
+import BsModalLogin from './components/BsModalLogin.vue'
+import { logDebug } from './modules/logger'
 
 const { disabled } = storeToRefs(global)
+
+const showLogin = ref(false)
 
 const close = (alert) => {
   if (alert == 'danger') global.messageError = ''
@@ -83,11 +88,69 @@ const close = (alert) => {
   else if (alert == 'info') global.messageInfo = ''
 }
 
+function showLoginModal() {
+  logDebug('App.showLoginModal')
+  hideSpinner()
+  showLogin.value = true
+}
+
+function confirmLoginCallback(password) {
+  logDebug('App.login', 'Login using password', password)
+  showLogin.value = false
+
+  try {
+    status.auth(password, (success, data) => {
+      logDebug('App.login', success, data)
+      if (success) {
+        global.password = password
+        loadConfig()
+      } else {
+        showLoginModal()
+      }
+    })
+  } catch {
+    showLoginModal()
+  }
+}
+
+function loadConfig() {
+  config.load((success) => {
+    if (success) {
+      saveConfigState()
+      global.initialized = true
+      hideSpinner()
+    } else {
+      global.messageError =
+        'Failed to load configuration data from device, please try to reload page!'
+    }
+  })
+}
+
 watch(disabled, () => {
   if (global.disabled) document.body.style.cursor = 'wait'
   else document.body.style.cursor = 'default'
 })
 
+onMounted(() => {
+  showLoginModal()
+
+  if (!global.initialized) {
+    showSpinner()
+    logDebug('App.onMounted', 'Starting up ssl =', global.isSSL)
+
+    status.load((success) => {
+      if (success) {
+        global.platform = status.platform
+        if (!status.wifi_setup && global.isSSL) showLoginModal()
+        else loadConfig()
+      } else {
+        global.messageError = 'Failed to load status from device, please try to reload page!'
+      }
+    })
+  }
+})
+
+/*
 onMounted(() => {
   if (!global.initialized) {
     showSpinner()
@@ -121,7 +184,7 @@ onMounted(() => {
       }
     })
   }
-})
+})*/
 
 function showSpinner() {
   document.querySelector('#spinner').showModal()
