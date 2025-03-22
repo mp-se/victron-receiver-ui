@@ -7074,7 +7074,8 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return this.messageInfo != "" ? true : false;
     },
     token() {
-      return "Bearer " + this.id;
+      if (this.password === void 0 || !this.isSSL) return "Bearer " + this.id;
+      return "Bearer " + this.password;
     },
     isSSL() {
       return this.baseURL.startsWith("https");
@@ -7091,7 +7092,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.6.0";
     },
     uiBuild() {
-      return "..27c35a";
+      return "..bad1aa";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -7293,6 +7294,32 @@ const useStatusStore = /* @__PURE__ */ defineStore("status", {
           return "BlueSolar MPPT 150|60 rev2";
         case 41073:
           return "BlueSolar MPPT 150|70 rev2";
+        case 41074:
+          return "BlueSolar MPPT 150|45 rev3";
+        case 41075:
+          return "SmartSolar MPPT 150|45 rev3";
+        case 41076:
+          return "SmartSolar MPPT 75|10 rev2";
+        case 41077:
+          return "SmartSolar MPPT 75|15 rev2";
+        case 41078:
+          return "BlueSolar MPPT 100|30 rev3";
+        case 41079:
+          return "BlueSolar MPPT 100|50 rev3";
+        case 41080:
+          return "BlueSolar MPPT 150|35 rev2";
+        case 41081:
+          return "BlueSolar MPPT 75|10 rev2";
+        case 41082:
+          return "BlueSolar MPPT 75|15 rev2";
+        case 41083:
+          return "BlueSolar MPPT 100|15 rev2";
+        case 41084:
+          return "BlueSolar MPPT 75/10 rev3";
+        case 41085:
+          return "BlueSolar MPPT 75/15 rev3";
+        case 41086:
+          return "SmartSolar Charger MPPT 100/30";
         case 41218:
           return "SmartSolar MPPT VE.Can 150/70";
         case 41219:
@@ -12593,13 +12620,13 @@ const _sfc_main$p = {
       else document.body.style.cursor = "default";
     });
     onMounted(() => {
-      showLoginModal();
       if (!global$1.initialized) {
         showSpinner();
         logDebug("App.onMounted", "Starting up ssl =", global$1.isSSL);
         status.load((success) => {
           if (success) {
             global$1.platform = status.platform;
+            global$1.id = status.id;
             if (!status.wifi_setup && global$1.isSSL) showLoginModal();
             else loadConfig();
           } else {
