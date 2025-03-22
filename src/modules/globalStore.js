@@ -33,7 +33,9 @@ export const useGlobalStore = defineStore('global', {
       return this.messageInfo != '' ? true : false
     },
     token() {
-      return 'Bearer ' + this.id
+      if (this.password === undefined || !this.isSSL) return 'Bearer ' + this.id
+
+      return 'Bearer ' + this.password
     },
     isSSL() {
       return this.baseURL.startsWith('https')

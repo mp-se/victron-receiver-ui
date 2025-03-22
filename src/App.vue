@@ -132,8 +132,6 @@ watch(disabled, () => {
 })
 
 onMounted(() => {
-  showLoginModal()
-
   if (!global.initialized) {
     showSpinner()
     logDebug('App.onMounted', 'Starting up ssl =', global.isSSL)
@@ -141,6 +139,7 @@ onMounted(() => {
     status.load((success) => {
       if (success) {
         global.platform = status.platform
+        global.id = status.id
         if (!status.wifi_setup && global.isSSL) showLoginModal()
         else loadConfig()
       } else {
@@ -149,42 +148,6 @@ onMounted(() => {
     })
   }
 })
-
-/*
-onMounted(() => {
-  if (!global.initialized) {
-    showSpinner()
-    status.auth((success, data) => {
-      if (success) {
-        global.id = data.token
-
-        status.load((success) => {
-          global.platform = status.platform
-
-          if (success) {
-            config.load((success) => {
-              if (success) {
-                saveConfigState()
-                global.initialized = true
-                hideSpinner()
-              } else {
-                global.messageError =
-                  'Failed to load configuration data from device, please try to reload page!'
-                hideSpinner()
-              }
-            })
-          } else {
-            global.messageError = 'Failed to load status from device, please try to reload page!'
-            hideSpinner()
-          }
-        })
-      } else {
-        global.messageError = 'Failed to authenticate with device, please try to reload page!'
-        hideSpinner()
-      }
-    })
-  }
-})*/
 
 function showSpinner() {
   document.querySelector('#spinner').showModal()
