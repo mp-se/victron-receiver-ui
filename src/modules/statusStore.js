@@ -206,6 +206,32 @@ export const useStatusStore = defineStore('status', {
           return 'BlueSolar MPPT 150|60 rev2'
         case 0xa071:
           return 'BlueSolar MPPT 150|70 rev2'
+        case 0xa072:
+          return 'BlueSolar MPPT 150|45 rev3'
+        case 0xa073:
+          return 'SmartSolar MPPT 150|45 rev3'
+        case 0xa074:
+          return 'SmartSolar MPPT 75|10 rev2'
+        case 0xa075:
+          return 'SmartSolar MPPT 75|15 rev2'
+        case 0xa076:
+          return 'BlueSolar MPPT 100|30 rev3'
+        case 0xa077:
+          return 'BlueSolar MPPT 100|50 rev3'
+        case 0xa078:
+          return 'BlueSolar MPPT 150|35 rev2'
+        case 0xa079:
+          return 'BlueSolar MPPT 75|10 rev2'
+        case 0xa07a:
+          return 'BlueSolar MPPT 75|15 rev2'
+        case 0xa07b:
+          return 'BlueSolar MPPT 100|15 rev2'
+        case 0xa07c:
+          return 'BlueSolar MPPT 75/10 rev3'
+        case 0xa07d:
+          return 'BlueSolar MPPT 75/15 rev3'
+        case 0xa07e:
+          return 'SmartSolar Charger MPPT 100/30'
         case 0xa102:
           return 'SmartSolar MPPT VE.Can 150/70'
         case 0xa103:

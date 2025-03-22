@@ -33,7 +33,7 @@
             :disabled="global.disabled"
           ></BsInputText>
         </div>
-        
+
         <div class="col-md-12">
           <hr />
         </div>
