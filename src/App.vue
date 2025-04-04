@@ -99,6 +99,7 @@ function confirmLoginCallback(password) {
   showLogin.value = false
 
   try {
+    showSpinner()
     status.auth(password, (success, data) => {
       logDebug('App.login', success, data)
       if (success) {
