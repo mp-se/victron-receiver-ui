@@ -7092,7 +7092,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.6.0";
     },
     uiBuild() {
-      return "..bad1aa";
+      return "..1289fb";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -12591,6 +12591,7 @@ const _sfc_main$p = {
     function confirmLoginCallback(password) {
       showLogin.value = false;
       try {
+        showSpinner();
         status.auth(password, (success, data) => {
           logDebug("App.login", success, data);
           if (success) {
