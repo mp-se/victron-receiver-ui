@@ -7092,7 +7092,7 @@ const useGlobalStore = /* @__PURE__ */ defineStore("global", {
       return "0.6.0";
     },
     uiBuild() {
-      return "..1289fb";
+      return "..209d9b";
     },
     disabled32() {
       if (this.disabled) return true;
@@ -12737,7 +12737,7 @@ const _sfc_main$p = {
         unref(global$1).initialized ? (openBlock(), createBlock(_component_router_view, { key: 2 })) : createCommentVNode("", true),
         unref(global$1).initialized ? (openBlock(), createBlock(_sfc_main$r, {
           key: 3,
-          text: "(c) 2024 Magnus Persson"
+          text: "(c) 2024-2025 Magnus Persson"
         })) : createCommentVNode("", true),
         showLogin.value ? (openBlock(), createBlock(_sfc_main$q, {
           key: 4,
