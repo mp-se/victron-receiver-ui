@@ -53,9 +53,9 @@ app.component('IconCloudUpArrow', IconCloudUpArrow)
 app.component('IconUpArrow', IconUpArrow)
 app.component('IconCpu', IconCpu)
 
+// Import CSS before mounting
 import 'bootstrap/dist/css/bootstrap.css'
-
-app.mount('#app')
-
 //import '@popperjs/core/dist/umd/popper.min.js'
 import 'bootstrap/dist/js/bootstrap.bundle.js'
+
+app.mount('#app')
