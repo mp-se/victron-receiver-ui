@@ -37,7 +37,7 @@
             value="upload"
             data-bs-toggle="tooltip"
             title="Update the device with the selected firmware"
-            :disabled="global.disabled"
+            :disabled="global.disabled || !hasFile"
           >
             <span
               class="spinner-border spinner-border-sm"
@@ -59,14 +59,31 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { global, status } from '@/modules/pinia'
 import { logDebug, logError } from '@/modules/logger'
 
 const progress = ref(0)
+const hasFile = ref(false)
+
+function onFileChange(event) {
+  const files = event.target.files
+  hasFile.value = files && files.length > 0
+}
+
+onMounted(() => {
+  // Set up direct event listener for file input
+  const fileElement = document.getElementById('upload')
+  if (fileElement) {
+    fileElement.addEventListener('change', onFileChange)
+  }
+})
 
 function upload() {
   const fileElement = document.getElementById('upload')
+  
+  // Update file state in case the change event didn't fire
+  hasFile.value = fileElement.files.length > 0
 
   function errorAction(e) {
     logError('FirmwareView.upload()', e.type)
