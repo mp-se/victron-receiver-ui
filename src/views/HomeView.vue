@@ -189,18 +189,18 @@
 import { global, status, config } from '@/modules/pinia'
 import { logDebug } from '@/modules/logger'
 import { ref, onBeforeMount, onBeforeUnmount } from 'vue'
-import { tempToF } from '@/modules/utils'
+import { tempToF, copyToClipboard } from '@/modules/utils'
 
 const polling = ref(null)
 
 function formatTime(t) {
-  var seconds = Math.floor(t % 60)
-  var minutes = Math.floor((t % (60 * 60)) / 60)
-  var hours = Math.floor((t % (24 * 60 * 60)) / (60 * 60))
-  var days = Math.floor((t % (7 * 24 * 60 * 60)) / (24 * 60 * 60))
-  var weeks = Math.floor((t % (4 * 7 * 24 * 60 * 60)) / (7 * 24 * 60 * 60))
+  const seconds = Math.floor(t % 60)
+  const minutes = Math.floor((t % (60 * 60)) / 60)
+  const hours = Math.floor((t % (24 * 60 * 60)) / (60 * 60))
+  const days = Math.floor((t % (7 * 24 * 60 * 60)) / (24 * 60 * 60))
+  const weeks = Math.floor((t % (4 * 7 * 24 * 60 * 60)) / (7 * 24 * 60 * 60))
 
-  var s = ''
+  let s = ''
 
   if (weeks > 0) s += weeks + 'w '
   if (days > 0) s += days + 'd '
@@ -217,20 +217,7 @@ function convertTemperature(t) {
   return tempToF(t)
 }
 
-function copyToClipboard(d) {
-  logDebug('HomeView::copyToClipboard()', d)
 
-  // if (navigator.clipboard) {
-  //   navigator.clipboard.writeText(JSON.stringify(d))
-  // } else {
-  const input = document.createElement('textarea')
-  input.value = JSON.stringify(d)
-  document.body.appendChild(input)
-  input.select()
-  document.execCommand('copy')
-  document.body.removeChild(input)
-  // }
-}
 
 function refresh() {
   status.load(() => {})

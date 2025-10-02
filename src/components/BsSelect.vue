@@ -26,30 +26,53 @@ defineOptions({
 /**
  * Ref to bind value to (required).
  */
-const model = defineModel()
+const model = defineModel({
+  required: true
+})
 /**
  * This text is shown above the form component (optional).
  */
-const label = defineModel('label')
+const label = defineModel('label', {
+  type: String,
+  default: undefined
+})
 /**
  * Help text is shown below the field to provide user help with input (optional).
  */
-const help = defineModel('help')
+const help = defineModel('help', {
+  type: String,
+  default: undefined
+})
 /**
  * Specify the width to force a specific size (optional).
  */
-const width = defineModel('width')
+const width = defineModel('width', {
+  type: [String, Number],
+  default: undefined
+})
 /**
  * Options for the dropdown in the format [ { label: "label", value: "value" } ]
  * Label is displayed in the list and value is stored in the bound ref (required).
  */
-const options = defineModel('options')
+const options = defineModel('options', {
+  type: Array,
+  required: true,
+  validator: (value) => Array.isArray(value) && value.every(
+    item => item && typeof item.label === 'string' && 'value' in item
+  )
+})
 /**
  * Ref that steers if this component is enabled or not (optional).
  */
-const disabled = defineModel('disabled')
+const disabled = defineModel('disabled', {
+  type: Boolean,
+  default: false
+})
 /**
  * Specify if an badge should be shown to guide the user (optional).
  */
-const badge = defineModel('badge')
+const badge = defineModel('badge', {
+  type: Boolean,
+  default: false
+})
 </script>

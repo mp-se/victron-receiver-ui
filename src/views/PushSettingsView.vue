@@ -77,7 +77,7 @@ onMounted(() => {
 })
 
 const createIntervalLabel = () => {
-  var s =
+  const s =
     Math.floor(push_resend_time.value / 3600) +
     ' h ' +
     Math.floor((push_resend_time.value % 3600) / 60) +

@@ -52,17 +52,29 @@ defineOptions({
 /**
  * Ref to callback where true/false will be a parameter (required)
  */
-const callback = defineModel('callback')
+const callback = defineModel('callback', {
+  type: Function,
+  required: true
+})
 /**
  * Ref to dialog message (required)
  */
-const message = defineModel('message')
+const message = defineModel('message', {
+  type: String,
+  required: true
+})
 /**
  * Ref to dialog id (required)
  */
-const id = defineModel('id')
+const id = defineModel('id', {
+  type: String,
+  required: true
+})
 /**
  * Modal title (required).
  */
-const title = defineModel('title')
+const title = defineModel('title', {
+  type: String,
+  required: true
+})
 </script>

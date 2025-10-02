@@ -68,7 +68,7 @@ const calculateFactor = () => {
   global.disabled = true
   global.clearMessages()
 
-  var mv = parseFloat(measuredVoltage.value)
+  const mv = parseFloat(measuredVoltage.value)
 
   if (isNaN(mv)) {
     global.messageError = 'Not a valid measurement'

@@ -21,12 +21,12 @@ const saveConfigState = () => {
   logInfo('pinia.saveConfigState()', 'Saving state')
 
   configCompare.value = {}
-  for (var key in config) {
+  for (const key in config) {
     if (typeof config[key] !== 'function' && key !== '$id') {
       if (key === 'victron_config') {
         configCompare.value[key] = []
-        for (var i in config[key]) {
-          var o = { name: config[key][i].name, mac: config[key][i].mac, key: config[key][i].key }
+        for (const i in config[key]) {
+          const o = { name: config[key][i].name, mac: config[key][i].mac, key: config[key][i].key }
           configCompare.value[key].push(o)
         }
       } else {
@@ -40,7 +40,8 @@ const saveConfigState = () => {
 }
 
 const getConfigChanges = () => {
-  var changes = {}
+  logDebug('pinia.getConfigChanges()', 'Getting changes')
+  const changes = {}
 
   if (configCompare.value === null) {
     logInfo('pinia.getConfigChanges()', 'configState not saved')

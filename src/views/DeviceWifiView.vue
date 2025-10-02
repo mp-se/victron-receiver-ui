@@ -146,7 +146,7 @@ const scanning = ref(false)
 const networks = ref([])
 
 function wifiName(label, rssi, encr) {
-  var l = label
+  let l = label
   if (encr) l += ' \u{1f512}'
   if (rssi > -50) l += ' (Excellent)'
   else if (rssi > -60) l += ' (Good)'
@@ -160,9 +160,9 @@ onMounted(() => {
   config.runWifiScan((success, data) => {
     if (success) {
       networks.value = [{ label: '-blank-', value: '', rssi: 0, encryption: 0, channel: 0 }]
-      for (var n in data.networks) {
-        var d = data.networks[n]
-        var o = {
+      for (const n in data.networks) {
+        const d = data.networks[n]
+        const o = {
           label: wifiName(d.wifi_ssid, d.rssi, d.encryption),
           value: d.wifi_ssid,
           rssi: d.rssi,
@@ -170,7 +170,7 @@ onMounted(() => {
           channel: d.channel
         }
 
-        var f = networks.value.filter((obj) => {
+        const f = networks.value.filter((obj) => {
           return obj.value === d.wifi_ssid
         })
         logDebug('DeviceWifiView.onMounted()', 'result:', f, d.wifi_ssid)

@@ -49,7 +49,7 @@ export function pushBadge() {
 }
 
 function pushTargetCount() {
-  var cnt = 0
+  let cnt = 0
   cnt += config.mqtt_target === '' && config.http_post_target === '' ? 0 : 1
   return cnt
 }

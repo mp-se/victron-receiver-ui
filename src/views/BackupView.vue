@@ -75,12 +75,13 @@
 <script setup>
 import { ref } from 'vue'
 import { global, config, getConfigChanges } from '@/modules/pinia'
-import { logDebug } from '@/modules/logger'
+import { logDebug, logError } from '@/modules/logger'
+import { saveAs } from '@/modules/utils'
 
 const progress = ref(0)
 
 function backup() {
-  var backup = {
+  const backup = {
     meta: { version: '0.3.0', software: 'VictronReceiver', created: '' },
     config: JSON.parse(config.toJson())
   }
@@ -89,9 +90,9 @@ function backup() {
 
   logDebug('BackupView.backup()', backup)
 
-  var s = JSON.stringify(backup, null, 2)
-  var name = config.mdns + '.txt'
-  download(s, 'text/plain', name)
+  const s = JSON.stringify(backup, null, 2)
+  const name = config.mdns + '.txt'
+  saveAs(s, name, 'text/plain')
   global.messageSuccess = 'Backup file created and downloaded as: ' + name
 }
 
@@ -114,7 +115,10 @@ function restore() {
           global.messageFailed = 'Unknown format, unable to process'
         }
       } catch (error) {
-        console.error(error)
+        logError('BackupView.restoreSettings()', error, {
+          fileName: fileElement.files[0]?.name || 'unknown',
+          fileSize: fileElement.files[0]?.size || 0
+        })
         global.messageFailed = 'Unable to parse configuration file for VictronReceiver.'
       }
     })
@@ -122,17 +126,8 @@ function restore() {
   }
 }
 
-function download(content, mimeType, filename) {
-  const a = document.createElement('a')
-  const blob = new Blob([content], { type: mimeType })
-  const url = URL.createObjectURL(blob)
-  a.setAttribute('href', url)
-  a.setAttribute('download', filename)
-  a.click()
-}
-
 function doRestore(json) {
-  for (var k in json) {
+  for (const k in json) {
     config[k] = json[k]
   }
 

@@ -37,6 +37,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { logDebug } from '@/modules/logger'
 
 const password = ref('')
 
@@ -50,14 +51,20 @@ defineOptions({
 /**
  * Ref to callback where true/false will be a parameter (required)
  */
-const callback = defineModel('callback')
+const callback = defineModel('callback', {
+  type: Function,
+  required: true
+})
 /**
  * Ref to dialog id (required)
  */
-const id = defineModel('id')
+const id = defineModel('id', {
+  type: String,
+  required: true
+})
 
 onMounted(() => {
-  console.log('Login - onMounted')
+  logDebug('BsModalLogin.onMounted()', 'Modal initialized for ID: ' + id.value)
   document.getElementById(id.value).click()
 })
 </script>

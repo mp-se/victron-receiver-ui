@@ -40,9 +40,9 @@ export const useConfigStore = defineStore('config', {
   actions: {
     toJson() {
       logInfo('configStore.toJSON()')
-      var dest = {}
+      const dest = {}
 
-      for (var key in this.$state) {
+      for (const key in this.$state) {
         if (!key.startsWith('$')) {
           dest[key] = this[key]
         }
@@ -107,7 +107,7 @@ export const useConfigStore = defineStore('config', {
       global.disabled = true
       logInfo('configStore.sendConfig()', 'Sending /api/config')
 
-      var data = getConfigChanges()
+      const data = getConfigChanges()
       logDebug('configStore.sendConfig()', data)
 
       if (JSON.stringify(data).length == 2) {
@@ -214,7 +214,7 @@ export const useConfigStore = defineStore('config', {
       global.disabled = true
       this.sendWifiScan((success) => {
         if (success) {
-          var check = setInterval(() => {
+          const check = setInterval(() => {
             this.getWifiScanStatus((success, data) => {
               if (success) {
                 if (data.status) {

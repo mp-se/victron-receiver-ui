@@ -27,23 +27,38 @@ defineOptions({
 /**
  * Text to be displayed in the header of the Card (required)
  */
-const header = defineModel('header')
+const header = defineModel('header', {
+  type: String,
+  required: true
+})
 /**
  * Title shown in the top of the card body (required).
  */
-const title = defineModel('title')
+const title = defineModel('title', {
+  type: String,
+  required: true
+})
 /**
- * If defined an icon will be shown left of the title (required).
+ * If defined an icon will be shown left of the title (optional).
  */
-const icon = defineModel('icon')
+const icon = defineModel('icon', {
+  type: String,
+  default: undefined
+})
 /**
  * If set the header will be in red
  */
-const iserr = defineModel('iserr')
+const iserr = defineModel('iserr', {
+  type: Boolean,
+  default: false
+})
 /**
  * Color for the header (if not error)
  */
-const headerColor = defineModel('color')
+const headerColor = defineModel('color', {
+  type: String,
+  default: undefined
+})
 
 function headerStyle() {
   if (iserr.value !== undefined && iserr.value) return 'card-header bg-danger-subtle'
