@@ -49,7 +49,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-          :hidden="!global.disabled"
+          v-show="global.disabled"
         ></span>
         &nbsp;Calculate factor
       </button>
@@ -64,11 +64,11 @@ import { logDebug } from '@mp-se/espframework-ui-components'
 
 const measuredVoltage = ref(0)
 
-const calculateFactor = async () => {
+const calculateFactor = () => {
   global.disabled = true
   global.clearMessages()
 
-  const mv = parseFloat(measuredVoltage.value)
+  var mv = parseFloat(measuredVoltage.value)
 
   if (isNaN(mv)) {
     global.messageError = 'Not a valid measurement'
@@ -76,16 +76,18 @@ const calculateFactor = async () => {
   }
 
   config.voltage_factor = parseFloat(mv / (status.battery / config.voltage_factor)).toFixed(2)
+  ;(async () => {
+    const success = await config.sendConfig()
+    logDebug('VoltageFragment.calculateFactor()', success)
+    saveConfigState()
+    global.disabled = true
 
-  const success = await config.sendConfig()
-  logDebug('VoltageFragment.calculateFactor()', success)
-  saveConfigState()
-  global.disabled = true
-  setTimeout(async () => {
-    const success = await status.load()
-    logDebug('VoltageFragment.calculateFactor()', success, status.battery)
-    global.messageInfo = 'New factor applied, check if the current battery reading is correct'
-    global.disabled = false
-  }, 1000)
+    setTimeout(async () => {
+      const s2 = await status.load()
+      logDebug('VoltageFragment.calculateFactor()', s2, status.battery)
+      global.messageInfo = 'New factor applied, check if the current battery reading is correct'
+      global.disabled = false
+    }, 1000)
+  })()
 }
 </script>

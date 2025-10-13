@@ -10,6 +10,7 @@
           accept=""
           help="Choose a file to upload to the file system"
           :disabled="global.disabled"
+          @change="onFileChange"
         >
         </BsFileUpload>
       </div>
@@ -22,13 +23,13 @@
           value="upload"
           data-bs-toggle="tooltip"
           title="Update the device with the selected firmware"
-          :disabled="global.disabled"
+          :disabled="global.disabled || !hasFileSelected"
         >
           <span
             class="spinner-border spinner-border-sm"
             role="status"
             aria-hidden="true"
-            :hidden="!global.disabled"
+            v-show="global.disabled"
           ></span>
           &nbsp;Upload file
         </button>
@@ -58,7 +59,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-          :hidden="!global.disabled"
+          v-show="global.disabled"
         ></span>
         &nbsp;List files
       </button>
@@ -91,17 +92,19 @@
 
 <script setup>
 import { ref } from 'vue'
-import { global, config } from '@/modules/pinia'
+import { global } from '@/modules/pinia'
+import { sharedHttpClient as http } from '@mp-se/espframework-ui-components'
 import { logDebug, logError } from '@mp-se/espframework-ui-components'
 
 const fileData = ref(null)
 const filesDelete = ref([])
+const hasFileSelected = ref(false)
 
 const confirmDeleteMessage = ref(null)
 const confirmDeleteFile = ref(null)
 
-const confirmDeleteCallback = async (result) => {
-  logDebug('AdancedFilesFragment.confirmDeleteCallback()', result)
+const confirmDeleteCallback = (result) => {
+  logDebug('AdvancedFilesFragment.confirmDeleteCallback()', result)
 
   if (result) {
     global.disabled = true
@@ -109,15 +112,16 @@ const confirmDeleteCallback = async (result) => {
 
     fileData.value = null
 
-    var data = {
+    const data = {
       command: 'del',
       file: confirmDeleteFile.value
     }
 
-    const res = await config.sendFilesystemRequest(data)
-    logDebug('AdancedFilesFragment.confirmDeleteCallback()', res.success), res.text
-    filesDelete.value = []
-    global.disabled = false
+    ;(async () => {
+      await http.filesystemRequest(data)
+      filesDelete.value = []
+      global.disabled = false
+    })()
   }
 }
 
@@ -127,93 +131,69 @@ const deleteFile = (f) => {
   document.getElementById('deleteFile').click()
 }
 
-const listFilesDelete = async () => {
+const listFilesDelete = () => {
   global.disabled = true
   global.clearMessages()
 
   filesDelete.value = []
 
-  var data = {
+  const data = {
     command: 'dir'
   }
 
-  const result = await config.sendFilesystemRequest(data)
-  if (result.success) {
-    var json = JSON.parse(result.text)
-    for (var f in json.files) {
-      filesDelete.value.push(json.files[f].file)
+  ;(async () => {
+    const res = await http.filesystemRequest(data)
+    if (res && res.success) {
+      const json = JSON.parse(res.text)
+      for (const f in json.files) {
+        filesDelete.value.push(json.files[f].file)
+      }
     }
-  }
 
-  global.disabled = false
+    global.disabled = false
+  })()
 }
 
 const progress = ref(0)
 
-function upload() {
+const onFileChange = (event) => {
+  hasFileSelected.value = event.target.files.length > 0
+}
+
+async function upload() {
   const fileElement = document.getElementById('upload')
 
-  function errorAction(e) {
-    logError('AdancedFilesFragment.upload()', e.type)
-    global.messageFailed = 'File upload failed!'
-    global.disabled = false
+  if (fileElement.files.length === 0) {
+    global.messageError = 'You need to select one file with firmware to upload'
+    return
   }
 
-  if (fileElement.files.length === 0) {
-    global.messageFailed = 'You need to select one file with firmware to upload'
-  } else {
-    global.disabled = true
-    logDebug('AdancedFilesFragment.upload()', 'Selected file: ' + fileElement.files[0].name)
+  global.disabled = true
+  logDebug('AdvancedFilesFragment.upload()', 'Selected file: ' + fileElement.files[0].name)
 
-    const xhr = new XMLHttpRequest()
-    xhr.timeout = 40000 // 40 s
-    progress.value = 0
+  progress.value = 0
 
-    xhr.onabort = function (e) {
-      errorAction(e)
-    }
-    xhr.onerror = function (e) {
-      errorAction(e)
-    }
-    xhr.ontimeout = function (e) {
-      errorAction(e)
-    }
-
-    xhr.onloadstart = function () {}
-
-    xhr.onloadend = function () {
-      progress.value = 100
-      if (xhr.status == 200) {
-        global.messageSuccess = 'File upload completed!'
-        global.messageFailed = ''
+  try {
+    const res = await http.uploadFile('api/filesystem/upload', fileElement.files[0], {
+      timeoutMs: 40000,
+      onProgress: (e) => {
+        if (e.lengthComputable) progress.value = Math.round((e.loaded / e.total) * 100)
       }
+    })
 
-      global.disabled = false
-      filesDelete.value = []
+    progress.value = 100
+    if (res && res.success) {
+      global.messageSuccess = 'File upload completed!'
+      global.messageError = ''
+    } else {
+      global.messageError = `File upload failed: ${res && res.status}`
     }
-
-    // The update only seams to work when loaded from the device (i.e. when CORS is not used)
-    xhr.upload.addEventListener(
-      'progress',
-      (e) => {
-        progress.value = (e.loaded / e.total) * 100
-      },
-      false
-    )
-
-    const fileData = new FormData()
-    fileData.onprogress = function (e) {
-      logDebug(
-        'AdancedFilesFragment.upload()',
-        'progress2: ' + e.loaded + ',' + e.total + ',' + xhr.status
-      )
-    }
-
-    fileData.append('file', fileElement.files[0])
-
-    xhr.open('POST', global.baseURL + 'api/filesystem/upload')
-    xhr.setRequestHeader('Authorization', global.token)
-    xhr.send(fileData)
+  } catch (err) {
+    logError('AdvancedFilesFragment.upload()', err)
+    global.messageError = 'File upload failed!'
+  } finally {
+    global.disabled = false
+    filesDelete.value = []
   }
 }
 </script>

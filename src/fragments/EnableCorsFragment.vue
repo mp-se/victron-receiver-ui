@@ -12,7 +12,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-          :hidden="!global.disabled"
+          v-show="global.disabled"
         ></span>
         &nbsp;Enable CORS</button
       >&nbsp;
@@ -22,25 +22,31 @@
 
 <script setup>
 import { global } from '@/modules/pinia'
-import { logInfo, logError, sharedHttpClient } from '@mp-se/espframework-ui-components'
+import { logInfo, logError } from '@mp-se/espframework-ui-components'
+import { sharedHttpClient as http } from '@mp-se/espframework-ui-components'
 
 const enableCors = async () => {
-  global.disabled = true
-  global.clearMessages()
-
-  var data = {
-    cors_allowed: true
-  }
-
   try {
-    await sharedHttpClient.postJson('api/config', data)
-    global.disabled = false
-    logInfo('EnableCorsFragment.enableCors()', 'Sending /api/config completed')
-    global.messageSuccess = 'CORS enabled in configuration, reboot to take effect.'
+    global.disabled = true
+    global.clearMessages()
+
+    const data = {
+      cors_allowed: true
+    }
+
+    try {
+      await http.postJson('api/config', data)
+      logInfo('EnableCorsFragment.enableCors()', 'Sending /api/config completed')
+      global.messageSuccess = 'CORS enabled in configuration, please reboot to take effect.'
+    } catch (err) {
+      logError('EnableCorsFragment.enableCors()', 'Sending /api/config failed', err)
+      global.messageError = 'Failed to enable CORS.'
+    }
   } catch (err) {
-    logError('EnableCorsFragment.enableCors()', err)
+    logError('EnableCorsFragment.enableCors()', 'Error enabling CORS:', err)
+    global.messageError = 'Failed to enable CORS: ' + (err.message || err)
+  } finally {
     global.disabled = false
-    global.messageError = 'Failed to enable CORS.'
   }
 }
 </script>

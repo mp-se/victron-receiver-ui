@@ -12,7 +12,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-          :hidden="!global.disabled"
+          v-show="global.disabled"
         ></span>
         &nbsp;List files</button
       >&nbsp;
@@ -49,7 +49,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { global, config } from '@/modules/pinia'
+import { global } from '@/modules/pinia'
+import { sharedHttpClient as http } from '@mp-se/espframework-ui-components'
 import { isValidJson, isValidFormData, isValidMqttData } from '@mp-se/espframework-ui-components'
 
 const filesystemUsage = ref(null)
@@ -57,7 +58,7 @@ const filesystemUsageText = ref(null)
 const filesView = ref([])
 const fileData = ref(null)
 
-const viewFile = async (f) => {
+const viewFile = (f) => {
   global.disabled = true
   global.clearMessages()
 
@@ -68,18 +69,21 @@ const viewFile = async (f) => {
     file: f
   }
 
-  const result = await config.sendFilesystemRequest(data)
-  if (result.success) {
-    if (isValidJson(result.text)) fileData.value = JSON.stringify(JSON.parse(result.text), null, 2)
-    else if (isValidFormData(result.text)) fileData.value = result.text.replaceAll('&', '&\n\r')
-    else if (isValidMqttData(result.text)) fileData.value = result.text.replaceAll('|', '|\n\r')
-    else fileData.value = result.text
-  }
+  ;(async () => {
+    const res = await http.filesystemRequest(data)
+    if (res && res.success) {
+      const text = res.text
+      if (isValidJson(text)) fileData.value = JSON.stringify(JSON.parse(text), null, 2)
+      else if (isValidFormData(text)) fileData.value = text.replaceAll('&', '&\n\r')
+      else if (isValidMqttData(text)) fileData.value = text.replaceAll('|', '|\n\r')
+      else fileData.value = text
+    }
 
-  global.disabled = false
+    global.disabled = false
+  })()
 }
 
-const listFilesView = async () => {
+const listFilesView = () => {
   global.disabled = true
   global.clearMessages()
 
@@ -89,24 +93,26 @@ const listFilesView = async () => {
     command: 'dir'
   }
 
-  const result = await config.sendFilesystemRequest(data)
-  if (result.success) {
-    var json = JSON.parse(result.text)
-    filesystemUsage.value = (json.used / json.total) * 100
-    filesystemUsageText.value =
-      'Total space ' +
-      json.total / 1024 +
-      'kb, Free space ' +
-      json.free / 1024 +
-      'kb, Used space ' +
-      json.used / 1024 +
-      'kb'
+  ;(async () => {
+    const res = await http.filesystemRequest(data)
+    if (res && res.success) {
+      var json = JSON.parse(res.text)
+      filesystemUsage.value = (json.used / json.total) * 100
+      filesystemUsageText.value =
+        'Total space ' +
+        new Number(json.total / 1024).toFixed(1) +
+        'kb, Free space ' +
+        new Number(json.free / 1024).toFixed(1) +
+        'kb, Used space ' +
+        new Number(json.used / 1024).toFixed(1) +
+        'kb'
 
-    for (var f in json.files) {
-      filesView.value.push(json.files[f].file)
+      for (var f in json.files) {
+        filesView.value.push(json.files[f].file)
+      }
     }
-  }
 
-  global.disabled = false
+    global.disabled = false
+  })()
 }
 </script>

@@ -10,6 +10,7 @@ import DeviceSettingsView from '@/views/DeviceSettingsView.vue'
 import DeviceHardwareView from '@/views/DeviceHardwareView.vue'
 import DeviceSecurityView from '@/views/DeviceSecurityView.vue'
 import DeviceWifiView from '@/views/DeviceWifiView.vue'
+import DeviceWifi2View from '@/views/DeviceWifi2View.vue'
 import PushSettingsView from '@/views/PushSettingsView.vue'
 import PushHassMqttView from '@/views/PushHassMqttView.vue'
 import PushHassRestView from '@/views/PushHassRestView.vue'
@@ -51,6 +52,11 @@ const routes = [
     path: '/device/wifi',
     name: 'device-wifi',
     component: DeviceWifiView
+  },
+  {
+    path: '/device/wifi2',
+    name: 'device-wifi2',
+    component: DeviceWifi2View
   },
   {
     path: '/other/firmware',
