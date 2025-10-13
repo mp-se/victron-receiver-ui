@@ -35,6 +35,11 @@ import {
   IconClipboard
 } from '@mp-se/espframework-ui-components'
 
+import AdvancedFilesFragment from './fragments/AdvancedFilesFragment.vue'
+import EnableCorsFragment from './fragments/EnableCorsFragment.vue'
+import ListFilesFragment from './fragments/ListFilesFragment.vue'
+import VoltageFragment from './fragments/VoltageFragment.vue'
+
 app.component('BsMessage', BsMessage)
 app.component('BsDropdown', BsDropdown)
 app.component('BsCard', BsCard)
@@ -59,6 +64,11 @@ app.component('IconTools', IconTools)
 app.component('IconCloudUpArrow', IconCloudUpArrow)
 app.component('IconUpArrow', IconUpArrow)
 app.component('IconCpu', IconCpu)
+
+app.component('AdvancedFilesFragment', AdvancedFilesFragment)
+app.component('EnableCorsFragment', EnableCorsFragment)
+app.component('ListFilesFragment', ListFilesFragment)
+app.component('VoltageFragment', VoltageFragment)
 
 // Import CSS before mounting
 import 'bootstrap/dist/css/bootstrap.css'

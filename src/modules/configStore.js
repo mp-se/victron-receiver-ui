@@ -59,7 +59,6 @@ export const useConfigStore = defineStore('config', {
         const json = await sharedHttpClient.getJson('api/config')
         logDebug('configStore.load()', json)
 
-        global.disabled = false
         this.id = json.id
         // Device
         this.mdns = json.mdns
@@ -91,6 +90,7 @@ export const useConfigStore = defineStore('config', {
         this.mqtt_port = json.mqtt_port
         this.mqtt_user = json.mqtt_user
         this.mqtt_pass = json.mqtt_pass
+        global.disabled = false
         return true
       } catch (err) {
         global.disabled = false

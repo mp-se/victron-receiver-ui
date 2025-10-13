@@ -45,7 +45,7 @@
           >&nbsp;
 
           <button
-            @click="restart()"
+            @click="config.restart()"
             type="button"
             class="btn btn-secondary"
             :disabled="global.disabled"

@@ -74,13 +74,12 @@
           </div>
         </div>
       </div>
-
       <div class="row gy-2">
         <div class="col-md-12">
           <hr />
         </div>
         <div class="col-md-12">
-          <button type="submit" class="btn btn-primary w-2" :disabled="global.disabled">
+          <button type="submit" class="btn btn-primary w-2" :disabled="global.disabled || !global.configChanged">
             <span
               class="spinner-border spinner-border-sm"
               role="status"
@@ -91,7 +90,7 @@
           >&nbsp;
 
           <button
-            @click="restart()"
+            @click="config.restart()"
             type="button"
             class="btn btn-secondary"
             :disabled="global.disabled"

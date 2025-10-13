@@ -80,6 +80,7 @@ import { onMounted, watch, ref } from 'vue'
 import { global, status, config, saveConfigState } from '@/modules/pinia'
 import { storeToRefs } from 'pinia'
 import { logDebug, logInfo, logError, sharedHttpClient } from '@mp-se/espframework-ui-components'
+import { items } from '@/modules/router'
 
 const { disabled } = storeToRefs(global)
 
@@ -118,17 +119,19 @@ async function confirmLoginCallback(password) {
   }
 }
 
-function loadConfig() {
-  config.load((success) => {
-    if (success) {
-      saveConfigState()
-      global.initialized = true
-      hideSpinner()
-    } else {
-      global.messageError =
-        'Failed to load configuration data from device, please try to reload page!'
-    }
-  })
+async function loadConfig() {
+  logDebug('App.loadConfig')
+  const success = await config.load()
+  if (success) {
+    saveConfigState()
+    global.initialized = true
+    hideSpinner()
+    logDebug('App.loadConfig', 'Configuration loaded successfully')
+  } else {
+    logError('App.loadConfig', 'Failed to load config')
+    global.messageError =
+      'Failed to load configuration data from device, please try to reload page!'
+  }
 }
 
 watch(disabled, () => {
@@ -139,13 +142,12 @@ watch(disabled, () => {
 onMounted(async () => {
   if (!global.initialized) {
     showSpinner()
-    logDebug('App.onMounted', 'Starting up ssl =', sharedHttpClient.baseURL.startsWith('https'))
+    logDebug('App.onMounted', 'Starting up ssl =', sharedHttpClient.isSSL())
 
     const success = await status.load()
     if (success) {
       global.platform = status.platform
-      global.id = status.id
-      if (!status.wifi_setup && sharedHttpClient.baseURL.startsWith('https')) showLoginModal()
+      if (!status.wifi_setup && sharedHttpClient.isSSL()) showLoginModal()
       else loadConfig()
     } else {
       global.messageError = 'Failed to load status from device, please try to reload page!'
