@@ -217,8 +217,6 @@ function convertTemperature(t) {
   return tempToF(t)
 }
 
-
-
 async function refresh() {
   await status.load()
 }

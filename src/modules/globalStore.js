@@ -8,11 +8,20 @@ export const useGlobalStore = defineStore('global', {
       initialized: false,
       disabled: false,
       configChanged: false,
+      password: '',
+
+      ui: {
+        enableVoltageFragment: false,
+        enableManualWifiEntry: false,
+        enableScanForStrongestAp: false
+      },
+
+      feature: {},
 
       messageError: '',
       messageWarning: '',
       messageSuccess: '',
-      messageInfo: '',
+      messageInfo: ''
     }
   },
   getters: {
@@ -27,9 +36,6 @@ export const useGlobalStore = defineStore('global', {
     },
     isInfo() {
       return this.messageInfo != '' ? true : false
-    },
-    isSSL() {
-      return this.baseURL.startsWith('https')
     },
     uiVersion() {
       return import.meta.env.VITE_APP_VERSION

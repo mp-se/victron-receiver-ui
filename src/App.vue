@@ -19,7 +19,6 @@
     ></BsMessage>
   </div>
 
-
   <BsMenuBar
     v-if="global.initialized"
     :disabled="global.disabled"
@@ -140,20 +139,19 @@ watch(disabled, () => {
 onMounted(async () => {
   if (!global.initialized) {
     showSpinner()
-    logDebug('App.onMounted', 'Starting up ssl =', global.isSSL)
+    logDebug('App.onMounted', 'Starting up ssl =', sharedHttpClient.baseURL.startsWith('https'))
 
     const success = await status.load()
     if (success) {
       global.platform = status.platform
       global.id = status.id
-      if (!status.wifi_setup && global.isSSL) showLoginModal()
+      if (!status.wifi_setup && sharedHttpClient.baseURL.startsWith('https')) showLoginModal()
       else loadConfig()
     } else {
       global.messageError = 'Failed to load status from device, please try to reload page!'
     }
   }
 })
-
 
 // Watch for changes to config.dark_mode and call handleDarkModeUpdate
 watch(

@@ -9,7 +9,31 @@ app.use(piniaInstance)
 import router from './modules/router.js'
 app.use(router)
 
-import { BsMessage, BsCard, BsFileUpload, BsProgress, BsInputBase, BsInputText, BsInputReadonly, BsSelect, BsInputTextArea, BsInputNumber, BsInputSwitch, BsInputRadio, BsDropdown, BsModalConfirm, BsMenuBar, BsFooter, BsModalLogin, IconHome, IconTools, IconCloudUpArrow, IconUpArrow, IconCpu, IconClipboard } from '@mp-se/espframework-ui-components'
+import {
+  BsMessage,
+  BsCard,
+  BsFileUpload,
+  BsProgress,
+  BsInputBase,
+  BsInputText,
+  BsInputReadonly,
+  BsSelect,
+  BsInputTextArea,
+  BsInputNumber,
+  BsInputSwitch,
+  BsInputRadio,
+  BsDropdown,
+  BsModalConfirm,
+  BsMenuBar,
+  BsFooter,
+  BsModalLogin,
+  IconHome,
+  IconTools,
+  IconCloudUpArrow,
+  IconUpArrow,
+  IconCpu,
+  IconClipboard
+} from '@mp-se/espframework-ui-components'
 
 app.component('BsMessage', BsMessage)
 app.component('BsDropdown', BsDropdown)
