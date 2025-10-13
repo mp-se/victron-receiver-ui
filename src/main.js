@@ -32,7 +32,8 @@ import {
   IconCloudUpArrow,
   IconUpArrow,
   IconCpu,
-  IconClipboard
+  IconClipboard,
+  IconEye
 } from '@mp-se/espframework-ui-components'
 
 import AdvancedFilesFragment from './fragments/AdvancedFilesFragment.vue'
@@ -64,6 +65,7 @@ app.component('IconTools', IconTools)
 app.component('IconCloudUpArrow', IconCloudUpArrow)
 app.component('IconUpArrow', IconUpArrow)
 app.component('IconCpu', IconCpu)
+app.component('IconEye', IconEye)
 
 app.component('AdvancedFilesFragment', AdvancedFilesFragment)
 app.component('EnableCorsFragment', EnableCorsFragment)
