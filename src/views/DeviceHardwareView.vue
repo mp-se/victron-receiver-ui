@@ -66,9 +66,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { validateCurrentForm, restart } from '@/modules/utils'
+import { validateCurrentForm } from '@mp-se/espframework-ui-components'
 import { global, config } from '@/modules/pinia'
-import BsSelect from '@/components/BsSelect.vue'
 
 // List of timezones, https://github.com/nayarsystems/posix_tz_db/blob/master/zones.csv
 

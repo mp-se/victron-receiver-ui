@@ -79,63 +79,57 @@
 <script setup>
 import { ref } from 'vue'
 import { status, config, global } from '@/modules/pinia'
-import { logDebug } from '@/modules/logger'
+import { logDebug } from '@mp-se/espframework-ui-components'
 
 const logData = ref('')
 
-function fetchLog(file, callback) {
+async function fetchLog(file) {
   const data = {
     command: 'get',
     file: file
   }
 
-  config.sendFilesystemRequest(data, (success, text) => {
-    if (success) {
-      logDebug('SupportView.fetchLog()', 'Fetching ' + file + ' completed')
-      const list = text.split('\n')
-      list.forEach(function (item) {
-        if (item.length) logData.value = item + '\n' + logData.value
-      })
-      callback(true)
-    } else {
-      callback(false)
-    }
-  })
+  const result = await config.sendFilesystemRequest(data)
+  if (result.success) {
+    logDebug('SupportView.fetchLog()', 'Fetching ' + file + ' completed')
+    const list = result.text.split('\n')
+    list.forEach(function (item) {
+      if (item.length) logData.value = item + '\n' + logData.value
+    })
+    return true
+  } else {
+    return false
+  }
 }
 
-function removeLog(file, callback) {
+async function removeLog(file) {
   const data = {
     command: 'del',
     file: file
   }
 
-  config.sendFilesystemRequest(data, (success) => {
-    callback(success)
-  })
+  const result = await config.sendFilesystemRequest(data)
+  return result.success
 }
 
-function viewLogs() {
+async function viewLogs() {
   global.clearMessages()
   global.disabled = true
   logData.value = ''
 
-  fetchLog('/error2.log', () => {
-    fetchLog('/error.log', () => {
-      global.disabled = false
-    })
-  })
+  await fetchLog('/error2.log')
+  await fetchLog('/error.log')
+  global.disabled = false
 }
 
-function removeLogs() {
+async function removeLogs() {
   global.clearMessages()
   global.disabled = true
   logData.value = ''
 
-  removeLog('/error2.log', () => {
-    removeLog('/error.log', () => {
-      global.messageSuccess = 'Requested logs to be deleted'
-      global.disabled = false
-    })
-  })
+  await removeLog('/error2.log')
+  await removeLog('/error.log')
+  global.messageSuccess = 'Requested logs to be deleted'
+  global.disabled = false
 }
 </script>

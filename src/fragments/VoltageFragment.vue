@@ -60,11 +60,11 @@
 <script setup>
 import { ref } from 'vue'
 import { global, config, status, saveConfigState } from '@/modules/pinia'
-import { logDebug } from '@/modules/logger'
+import { logDebug } from '@mp-se/espframework-ui-components'
 
 const measuredVoltage = ref(0)
 
-const calculateFactor = () => {
+const calculateFactor = async () => {
   global.disabled = true
   global.clearMessages()
 
@@ -77,17 +77,15 @@ const calculateFactor = () => {
 
   config.voltage_factor = parseFloat(mv / (status.battery / config.voltage_factor)).toFixed(2)
 
-  config.sendConfig((success) => {
-    logDebug('VoltageFragment.calculateFactor()', success)
-    saveConfigState()
-    global.disabled = true
-    setTimeout(() => {
-      status.load((success) => {
-        logDebug('VoltageFragment.calculateFactor()', success, status.battery)
-        global.messageInfo = 'New factor applied, check if the current battery reading is correct'
-        global.disabled = false
-      }, 1000)
-    })
-  })
+  const success = await config.sendConfig()
+  logDebug('VoltageFragment.calculateFactor()', success)
+  saveConfigState()
+  global.disabled = true
+  setTimeout(async () => {
+    const success = await status.load()
+    logDebug('VoltageFragment.calculateFactor()', success, status.battery)
+    global.messageInfo = 'New factor applied, check if the current battery reading is correct'
+    global.disabled = false
+  }, 1000)
 }
 </script>

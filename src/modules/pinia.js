@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import { useGlobalStore } from '@/modules/globalStore'
 import { useStatusStore } from '@/modules/statusStore'
 import { useConfigStore } from '@/modules/configStore'
-import { logDebug, logInfo } from '@/modules/logger'
+import { logDebug, logInfo } from '@mp-se/espframework-ui-components'
 
 const piniaInstance = createPinia()
 

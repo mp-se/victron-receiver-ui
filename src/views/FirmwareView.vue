@@ -61,7 +61,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { global, status } from '@/modules/pinia'
-import { logDebug, logError } from '@/modules/logger'
+import { logDebug, logError, sharedHttpClient } from '@mp-se/espframework-ui-components'
 
 const progress = ref(0)
 const hasFile = ref(false)
@@ -81,15 +81,9 @@ onMounted(() => {
 
 function upload() {
   const fileElement = document.getElementById('upload')
-  
+
   // Update file state in case the change event didn't fire
   hasFile.value = fileElement.files.length > 0
-
-  function errorAction(e) {
-    logError('FirmwareView.upload()', e.type)
-    global.messageFailed = 'File upload failed!'
-    global.disabled = false
-  }
 
   if (fileElement.files.length === 0) {
     global.messageFailed = 'You need to select one file with firmware to upload'
@@ -97,53 +91,33 @@ function upload() {
     global.disabled = true
     logDebug('FirmwareView.upload()', 'Selected file: ' + fileElement.files[0].name)
 
-    const xhr = new XMLHttpRequest()
-    xhr.timeout = 1000 * 180 // 180 s
-    progress.value = 0
+    const fileData = new FormData()
+    fileData.append('file', fileElement.files[0])
 
-    xhr.onabort = function (e) {
-      errorAction(e)
-    }
-    xhr.onerror = function (e) {
-      errorAction(e)
-    }
-    xhr.ontimeout = function (e) {
-      errorAction(e)
-    }
-
-    xhr.onloadstart = function () {}
-
-    xhr.onloadend = function () {
+    sharedHttpClient.uploadFile('api/firmware', fileData, {
+      timeoutMs: 1000 * 180, // 180 s
+      onProgress: (percent) => {
+        progress.value = percent
+      }
+    }).then(result => {
       progress.value = 100
-      if (xhr.status == 200) {
+      if (result.success) {
         global.messageSuccess =
           'File upload completed, waiting for device to restart before doing refresh!'
         global.messageFailed = ''
+      } else {
+        logError('FirmwareView.upload()', `Upload failed with status ${result.status}`)
+        global.messageFailed = 'File upload failed!'
       }
+      global.disabled = false
       setTimeout(() => {
         location.href = location.href.replace('/other/firmware', '')
       }, 10000)
-    }
-
-    // The update only seams to work when loaded from the device (i.e. when CORS is not used)
-    xhr.upload.addEventListener(
-      'progress',
-      (e) => {
-        progress.value = (e.loaded / e.total) * 100
-      },
-      false
-    )
-
-    const fileData = new FormData()
-    fileData.onprogress = function (e) {
-      logDebug('FirmwareView.upload()', 'progress2: ' + e.loaded + ',' + e.total + ',' + xhr.status)
-    }
-
-    fileData.append('file', fileElement.files[0])
-
-    xhr.open('POST', global.baseURL + 'api/firmware')
-    xhr.setRequestHeader('Authorization', global.token)
-    xhr.send(fileData)
+    }).catch(err => {
+      logError('FirmwareView.upload()', err)
+      global.messageFailed = 'File upload failed!'
+      global.disabled = false
+    })
   }
 }
 </script>

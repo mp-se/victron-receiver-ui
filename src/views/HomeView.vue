@@ -187,9 +187,9 @@
 
 <script setup>
 import { global, status, config } from '@/modules/pinia'
-import { logDebug } from '@/modules/logger'
+import { logDebug, tempToF } from '@mp-se/espframework-ui-components'
 import { ref, onBeforeMount, onBeforeUnmount } from 'vue'
-import { tempToF, copyToClipboard } from '@/modules/utils'
+import { copyToClipboard } from '@/modules/utils'
 
 const polling = ref(null)
 
@@ -219,8 +219,8 @@ function convertTemperature(t) {
 
 
 
-function refresh() {
-  status.load(() => {})
+async function refresh() {
+  await status.load()
 }
 
 onBeforeMount(() => {

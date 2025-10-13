@@ -14,14 +14,22 @@
   <div v-if="!global.initialized" class="container text-center">
     <BsMessage
       message="Initalizing Victron BLE Receiver Web interface"
-      class="h2"
       :dismissable="false"
       alert="info"
     ></BsMessage>
   </div>
 
-  <BsMenuBar v-if="global.initialized" :disabled="global.disabled" brand="Victron" />
 
+  <BsMenuBar
+    v-if="global.initialized"
+    :disabled="global.disabled"
+    brand="Victron Receiver"
+    :menu-items="items"
+    :dark-mode="config.dark_mode"
+    :mdns="config.mdns"
+    :config-changed="global.configChanged"
+    @update:dark-mode="handleDarkModeUpdate"
+  />
   <div class="container">
     <div>
       <p></p>
@@ -69,13 +77,10 @@
 </template>
 
 <script setup>
-import BsMenuBar from '@/components/BsMenuBar.vue'
-import BsFooter from '@/components/BsFooter.vue'
 import { onMounted, watch, ref } from 'vue'
 import { global, status, config, saveConfigState } from '@/modules/pinia'
 import { storeToRefs } from 'pinia'
-import BsModalLogin from './components/BsModalLogin.vue'
-import { logDebug } from './modules/logger'
+import { logDebug, logInfo, logError, sharedHttpClient } from '@mp-se/espframework-ui-components'
 
 const { disabled } = storeToRefs(global)
 
@@ -94,21 +99,21 @@ function showLoginModal() {
   showLogin.value = true
 }
 
-function confirmLoginCallback(password) {
-  logDebug('App.login', 'Login using password', password)
+async function confirmLoginCallback(password) {
+  logDebug('App.login', 'Login using password')
   showLogin.value = false
 
   try {
     showSpinner()
-    status.auth(password, (success, data) => {
-      logDebug('App.login', success, data)
-      if (success) {
-        global.password = password
-        loadConfig()
-      } else {
-        showLoginModal()
-      }
-    })
+    const base = btoa('admin:' + password)
+    const success = await sharedHttpClient.auth(base)
+    logDebug('App.login', success)
+    if (success) {
+      global.password = password
+      loadConfig()
+    } else {
+      showLoginModal()
+    }
   } catch {
     showLoginModal()
   }
@@ -132,23 +137,47 @@ watch(disabled, () => {
   else document.body.style.cursor = 'default'
 })
 
-onMounted(() => {
+onMounted(async () => {
   if (!global.initialized) {
     showSpinner()
     logDebug('App.onMounted', 'Starting up ssl =', global.isSSL)
 
-    status.load((success) => {
-      if (success) {
-        global.platform = status.platform
-        global.id = status.id
-        if (!status.wifi_setup && global.isSSL) showLoginModal()
-        else loadConfig()
-      } else {
-        global.messageError = 'Failed to load status from device, please try to reload page!'
-      }
-    })
+    const success = await status.load()
+    if (success) {
+      global.platform = status.platform
+      global.id = status.id
+      if (!status.wifi_setup && global.isSSL) showLoginModal()
+      else loadConfig()
+    } else {
+      global.messageError = 'Failed to load status from device, please try to reload page!'
+    }
   }
 })
+
+
+// Watch for changes to config.dark_mode and call handleDarkModeUpdate
+watch(
+  () => config.dark_mode,
+  (newValue) => {
+    handleDarkModeUpdate(newValue)
+  }
+)
+
+// Handle dark mode changes
+const handleDarkModeUpdate = (newValue) => {
+  logInfo('App.handleDarkModeUpdate()', 'Updating dark mode settings', newValue)
+
+  // update the store value
+  config.dark_mode = newValue
+  // fallback: ensure the attribute is set on the document root so Bootstrap theme rules apply
+  try {
+    const root = document.documentElement
+    if (newValue) root.setAttribute('data-bs-theme', 'dark')
+    else root.setAttribute('data-bs-theme', 'light')
+  } catch (e) {
+    logError('App.handleDarkModeUpdate()', 'Failed to set data-bs-theme on documentElement', e)
+  }
+}
 
 function showSpinner() {
   document.querySelector('#spinner').showModal()

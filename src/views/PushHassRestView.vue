@@ -61,7 +61,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { validateCurrentForm } from '@/modules/utils'
+import { validateCurrentForm } from '@mp-se/espframework-ui-components'
 import { global, config } from '@/modules/pinia'
 
 const token = ref(config.http_post_header2.replace('Authorization: Bearer ', ''))

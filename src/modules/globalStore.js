@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { logInfo } from '@/modules/logger'
 
 export const useGlobalStore = defineStore('global', {
   state: () => {
@@ -14,9 +13,6 @@ export const useGlobalStore = defineStore('global', {
       messageWarning: '',
       messageSuccess: '',
       messageInfo: '',
-
-      fetchTimout: 8000,
-      url: undefined
     }
   },
   getters: {
@@ -32,39 +28,14 @@ export const useGlobalStore = defineStore('global', {
     isInfo() {
       return this.messageInfo != '' ? true : false
     },
-    token() {
-      if (this.password === undefined || !this.isSSL) return 'Bearer ' + this.id
-
-      return 'Bearer ' + this.password
-    },
     isSSL() {
       return this.baseURL.startsWith('https')
-    },
-    baseURL() {
-      if (this.url !== undefined) return this.url
-
-      if (import.meta.env.VITE_APP_HOST === undefined) {
-        logInfo('configStore:baseURL()', 'Using base URL from env', window.location.href)
-        this.url = window.location.href
-      } else {
-        logInfo('configStore:baseURL()', 'Using base URL from env', import.meta.env.VITE_APP_HOST)
-        this.url = import.meta.env.VITE_APP_HOST
-      }
-
-      return this.url
     },
     uiVersion() {
       return import.meta.env.VITE_APP_VERSION
     },
     uiBuild() {
       return import.meta.env.VITE_APP_BUILD
-    },
-    disabled32() {
-      if (this.disabled) return true
-
-      if (this.platform !== 'esp8266') return false
-
-      return true
     }
   },
   actions: {

@@ -92,7 +92,7 @@
 <script setup>
 import { ref } from 'vue'
 import { global, config } from '@/modules/pinia'
-import { logDebug, logError } from '@/modules/logger'
+import { logDebug, logError } from '@mp-se/espframework-ui-components'
 
 const fileData = ref(null)
 const filesDelete = ref([])
@@ -100,7 +100,7 @@ const filesDelete = ref([])
 const confirmDeleteMessage = ref(null)
 const confirmDeleteFile = ref(null)
 
-const confirmDeleteCallback = (result) => {
+const confirmDeleteCallback = async (result) => {
   logDebug('AdancedFilesFragment.confirmDeleteCallback()', result)
 
   if (result) {
@@ -114,11 +114,10 @@ const confirmDeleteCallback = (result) => {
       file: confirmDeleteFile.value
     }
 
-    config.sendFilesystemRequest(data, (success, text) => {
-      logDebug('AdancedFilesFragment.confirmDeleteCallback()', success), text
-      filesDelete.value = []
-      global.disabled = false
-    })
+    const res = await config.sendFilesystemRequest(data)
+    logDebug('AdancedFilesFragment.confirmDeleteCallback()', res.success), res.text
+    filesDelete.value = []
+    global.disabled = false
   }
 }
 
@@ -128,7 +127,7 @@ const deleteFile = (f) => {
   document.getElementById('deleteFile').click()
 }
 
-const listFilesDelete = () => {
+const listFilesDelete = async () => {
   global.disabled = true
   global.clearMessages()
 
@@ -138,16 +137,15 @@ const listFilesDelete = () => {
     command: 'dir'
   }
 
-  config.sendFilesystemRequest(data, (success, text) => {
-    if (success) {
-      var json = JSON.parse(text)
-      for (var f in json.files) {
-        filesDelete.value.push(json.files[f].file)
-      }
+  const result = await config.sendFilesystemRequest(data)
+  if (result.success) {
+    var json = JSON.parse(result.text)
+    for (var f in json.files) {
+      filesDelete.value.push(json.files[f].file)
     }
+  }
 
-    global.disabled = false
-  })
+  global.disabled = false
 }
 
 const progress = ref(0)

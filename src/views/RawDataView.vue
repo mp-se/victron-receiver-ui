@@ -33,8 +33,8 @@ import { ref, onBeforeMount, onBeforeUnmount } from 'vue'
 
 const polling = ref(null)
 
-function refresh() {
-  status.load(() => {})
+async function refresh() {
+  await status.load()
 }
 
 onBeforeMount(() => {

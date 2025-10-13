@@ -50,14 +50,14 @@
 <script setup>
 import { ref } from 'vue'
 import { global, config } from '@/modules/pinia'
-import { isValidJson, isValidFormData, isValidMqttData } from '@/modules/utils'
+import { isValidJson, isValidFormData, isValidMqttData } from '@mp-se/espframework-ui-components'
 
 const filesystemUsage = ref(null)
 const filesystemUsageText = ref(null)
 const filesView = ref([])
 const fileData = ref(null)
 
-const viewFile = (f) => {
+const viewFile = async (f) => {
   global.disabled = true
   global.clearMessages()
 
@@ -68,19 +68,18 @@ const viewFile = (f) => {
     file: f
   }
 
-  config.sendFilesystemRequest(data, (success, text) => {
-    if (success) {
-      if (isValidJson(text)) fileData.value = JSON.stringify(JSON.parse(text), null, 2)
-      else if (isValidFormData(text)) fileData.value = text.replaceAll('&', '&\n\r')
-      else if (isValidMqttData(text)) fileData.value = text.replaceAll('|', '|\n\r')
-      else fileData.value = text
-    }
+  const result = await config.sendFilesystemRequest(data)
+  if (result.success) {
+    if (isValidJson(result.text)) fileData.value = JSON.stringify(JSON.parse(result.text), null, 2)
+    else if (isValidFormData(result.text)) fileData.value = result.text.replaceAll('&', '&\n\r')
+    else if (isValidMqttData(result.text)) fileData.value = result.text.replaceAll('|', '|\n\r')
+    else fileData.value = result.text
+  }
 
-    global.disabled = false
-  })
+  global.disabled = false
 }
 
-const listFilesView = () => {
+const listFilesView = async () => {
   global.disabled = true
   global.clearMessages()
 
@@ -90,25 +89,24 @@ const listFilesView = () => {
     command: 'dir'
   }
 
-  config.sendFilesystemRequest(data, (success, text) => {
-    if (success) {
-      var json = JSON.parse(text)
-      filesystemUsage.value = (json.used / json.total) * 100
-      filesystemUsageText.value =
-        'Total space ' +
-        json.total / 1024 +
-        'kb, Free space ' +
-        json.free / 1024 +
-        'kb, Used space ' +
-        json.used / 1024 +
-        'kb'
+  const result = await config.sendFilesystemRequest(data)
+  if (result.success) {
+    var json = JSON.parse(result.text)
+    filesystemUsage.value = (json.used / json.total) * 100
+    filesystemUsageText.value =
+      'Total space ' +
+      json.total / 1024 +
+      'kb, Free space ' +
+      json.free / 1024 +
+      'kb, Used space ' +
+      json.used / 1024 +
+      'kb'
 
-      for (var f in json.files) {
-        filesView.value.push(json.files[f].file)
-      }
+    for (var f in json.files) {
+      filesView.value.push(json.files[f].file)
     }
+  }
 
-    global.disabled = false
-  })
+  global.disabled = false
 }
 </script>
