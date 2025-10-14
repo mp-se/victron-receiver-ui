@@ -126,6 +126,7 @@ async function loadConfig() {
     saveConfigState()
     global.initialized = true
     hideSpinner()
+    handleDarkModeUpdate(config.dark_mode)
     logDebug('App.loadConfig', 'Configuration loaded successfully')
   } else {
     logError('App.loadConfig', 'Failed to load config')
