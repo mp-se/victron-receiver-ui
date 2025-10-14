@@ -148,9 +148,9 @@ onMounted(async () => {
     const success = await status.load()
     if (success) {
       global.platform = status.platform
-      if (!status.wifi_setup && sharedHttpClient.isSSL()) { 
-        showLoginModal() 
-      } else { 
+      if (!status.wifi_setup && sharedHttpClient.isSSL()) {
+        showLoginModal()
+      } else {
         const base = btoa('admin:password')
         const success = await sharedHttpClient.auth(base)
         logDebug('App.login', success)

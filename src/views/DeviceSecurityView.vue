@@ -79,7 +79,11 @@
           <hr />
         </div>
         <div class="col-md-12">
-          <button type="submit" class="btn btn-primary w-2" :disabled="global.disabled || !global.configChanged">
+          <button
+            type="submit"
+            class="btn btn-primary w-2"
+            :disabled="global.disabled || !global.configChanged"
+          >
             <span
               class="spinner-border spinner-border-sm"
               role="status"
