@@ -147,8 +147,19 @@ onMounted(async () => {
     const success = await status.load()
     if (success) {
       global.platform = status.platform
-      if (!status.wifi_setup && sharedHttpClient.isSSL()) showLoginModal()
-      else loadConfig()
+      if (!status.wifi_setup && sharedHttpClient.isSSL()) { 
+        showLoginModal() 
+      } else { 
+        const base = btoa('admin:password')
+        const success = await sharedHttpClient.auth(base)
+        logDebug('App.login', success)
+        if (success) {
+          loadConfig()
+        } else {
+          global.messageError = 'Failed to authenticate with device!'
+        }
+        hideSpinner()
+      }
     } else {
       global.messageError = 'Failed to load status from device, please try to reload page!'
     }
