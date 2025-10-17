@@ -79,7 +79,13 @@
 import { onMounted, watch, ref } from 'vue'
 import { global, status, config, saveConfigState } from '@/modules/pinia'
 import { storeToRefs } from 'pinia'
-import { logDebug, logInfo, logError, sharedHttpClient } from '@mp-se/espframework-ui-components'
+import {
+  logDebug,
+  logInfo,
+  logError,
+  sharedHttpClient,
+  version
+} from '@mp-se/espframework-ui-components'
 import { items } from '@/modules/router'
 
 const { disabled } = storeToRefs(global)
@@ -141,6 +147,8 @@ watch(disabled, () => {
 })
 
 onMounted(async () => {
+  logInfo('App.onMounted()', `Using espframework version ${version}`)
+
   if (!global.initialized) {
     showSpinner()
     logDebug('App.onMounted', 'Starting up ssl =', sharedHttpClient.isSSL())
