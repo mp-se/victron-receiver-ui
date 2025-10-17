@@ -1,12 +1,12 @@
 /*
  * Common mock server functions for espframework
  *
- * (c) 2023-2025 Magnus Persson
+ * (c) 2023-2024 Magnus Persson
  */
 
 import { createRequire } from 'module'
 import { Buffer } from 'buffer'
-import { configData, statusData } from './data.js'
+import { configData, featureData, statusData } from './data.js'
 const require = createRequire(import.meta.url)
 const multer = require('multer')
 const path = require('path')
@@ -15,6 +15,18 @@ const upload = multer({ dest: './' })
 var wifiScanRunning = false
 
 export function registerEspFwk(app) {
+  // Helper function to validate Bearer token
+  function validateBearerToken(req) {
+    const authHeader = req.headers['authorization'] || req.headers['authorization']
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const token = authHeader.substring(7)
+      console.log('Bearer token for validation:', token)
+      return token === statusData.id
+    }
+    console.log('No or invalid Bearer token', authHeader)
+    return false
+  }
+
   app.get('/', function (req, res) {
     console.log('GET: /')
     const options = {
@@ -71,46 +83,34 @@ export function registerEspFwk(app) {
     console.log('GET: /api/auth')
     /* 
      * Description:    Perform device authentication and receive access token
-     * Authentication: Yes (Authorization basic header)
+     * Authentication: Yes, user and password
      * Limitation:     - 
      * Return:         200 OK, 401 Access Denied
      * Request body:   None
      */
-
-    const authHeader = req.headers['authorization'];
-    const base64Credentials = authHeader.split(' ')[1];
-    const credentials = Buffer.from(base64Credentials, 'base64').toString('ascii');
-    const [username, password] = credentials.split(':'); 
-       
-    if ((username === 'admin' && password === configData.admin_pass) || statusData.wifi_setup) {
-      var data = { token: statusData.id }
-      console.log(req.headers['authorization'])
-      return res.send(data)
-    } else {
-      return res.sendStatus(401);
-    }
-  })
-
-  app.get('/api/login', function (req, res) {
-    console.log('GET: /api/login')
-    /* 
-     * Description:    Perform login and validate admin password
-     * Authentication: Yes (Bearer + password)
-     * Limitation:     - 
-     * Return:         200 OK, 401 Access Denied
-     * Request body:   None
-     */
-    var pass = 'Bearer ' + configData.admin_pass
+    var data = { token: statusData.id }
 
     console.log(req.headers['authorization'])
 
-    if(pass == req.headers['authorization'] || configData.admin_pass == '') {
-      console.log("Login OK")
-      res.sendStatus(200)
+    // Decode and print authentication header (Basic auth only)
+    const authHeader = req.headers['authorization'] || req.headers['Authorization']
+    if (authHeader) {
+      if (authHeader.startsWith('Basic ')) {
+        const base64 = authHeader.substring(6)
+        try {
+          const decoded = Buffer.from(base64, 'base64').toString()
+          console.log('Basic auth decoded:', decoded)
+        } catch (e) {
+          console.log('Failed to decode Basic auth:', e.message)
+        }
+      } else {
+        console.log('Unsupported auth scheme:', authHeader.split(' ')[0])
+      }
     } else {
-      console.log("Login Failed")
-      res.sendStatus(401)
+      console.log('No Authorization header')
     }
+
+    res.send(data)
   })
 
   app.get('/api/config', (req, res) => {
@@ -123,6 +123,13 @@ export function registerEspFwk(app) {
      * Note:           -
      * Return:         200 OK, 401 Access Denied
      */
+
+    // Verify Bearer token
+    if (!validateBearerToken(req)) {
+      res.status(401).send('Access Denied')
+      return
+    }
+
     res.type('application/json')
     res.send(configData)
   })
@@ -173,10 +180,23 @@ export function registerEspFwk(app) {
      * Authentication: None
      * Limitation:     -
      * Note:           -
-     * Return:         200 OK, 401 Access Denied
+     * Return:         200 OK
      */
     res.type('application/json')
     res.send(statusData)
+  })
+
+  app.get('/api/feature', (req, res) => {
+    console.log('GET: /api/feature')
+    /*
+     * Description:    Return feature data as json document.
+     * Authentication: None
+     * Limitation:     -
+     * Note:           -
+     * Return:         200 OK
+     */
+    res.type('application/json')
+    res.send(featureData)
   })
 
   app.post('/api/config', (req, res) => {
