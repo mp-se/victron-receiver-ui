@@ -153,9 +153,9 @@ const factory = async () => {
   }
 }
 
-const saveSettings = () => {
+const saveSettings = async () => {
   if (!validateCurrentForm()) return
 
-  config.saveAll()
+  await config.saveAll()
 }
 </script>

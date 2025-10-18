@@ -70,7 +70,7 @@ const updateToken = () => {
   config.http_post_header2 = 'Authorization: Bearer ' + token.value
 }
 
-const save = () => {
+const save = async () => {
   if (!validateCurrentForm()) return
 
   if (config.http_post_target != '' && !config.http_post_target.endsWith('/'))
@@ -84,6 +84,6 @@ const save = () => {
     return
   }
 
-  config.saveAll()
+  await config.saveAll()
 }
 </script>

@@ -164,7 +164,7 @@ function checkMac(mac) {
   }
 }
 
-const saveSettings = () => {
+const saveSettings = async () => {
   var valid = true
 
   config.victron_config.forEach((e) => {
@@ -194,6 +194,6 @@ const saveSettings = () => {
   if (!valid) return
   if (!validateCurrentForm()) return
 
-  config.saveAll()
+  await config.saveAll()
 }
 </script>

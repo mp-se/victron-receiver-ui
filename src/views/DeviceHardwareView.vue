@@ -89,10 +89,10 @@ const timezoneOptions = ref([
   //{ label: '', value: "" },
 ])
 
-const save = () => {
+const save = async () => {
   if (!validateCurrentForm()) return
 
   global.clearMessages()
-  config.saveAll()
+  await config.saveAll()
 }
 </script>

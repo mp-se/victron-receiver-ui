@@ -87,9 +87,9 @@ const createIntervalLabel = () => {
   intervalLabel.value = '(' + s + ')'
 }
 
-const save = () => {
+const save = async () => {
   if (!validateCurrentForm()) return
 
-  config.saveAll()
+  await config.saveAll()
 }
 </script>

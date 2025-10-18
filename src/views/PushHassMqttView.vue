@@ -80,7 +80,7 @@
 import { validateCurrentForm } from '@mp-se/espframework-ui-components'
 import { global, config } from '@/modules/pinia'
 
-const save = () => {
+const save = async () => {
   if (config.mqtt_target.startsWith('http://')) {
     global.messageError = 'MQTT target looks like an URL and not servername/ip.'
     return
@@ -88,6 +88,6 @@ const save = () => {
 
   if (!validateCurrentForm()) return
 
-  config.saveAll()
+  await config.saveAll()
 }
 </script>

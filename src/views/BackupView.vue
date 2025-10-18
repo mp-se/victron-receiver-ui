@@ -126,12 +126,12 @@ function restore() {
   }
 }
 
-function doRestore(json) {
+async function doRestore(json) {
   for (const k in json) {
     config[k] = json[k]
   }
 
   getConfigChanges()
-  config.saveAll()
+  await config.saveAll()
 }
 </script>
