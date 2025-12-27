@@ -76,7 +76,7 @@
 </template>
 
 <script setup>
-import { onMounted, watch, ref } from 'vue'
+import { onMounted, onBeforeMount, watch, ref } from 'vue'
 import { global, status, config, saveConfigState } from '@/modules/pinia'
 import { storeToRefs } from 'pinia'
 import {
@@ -84,13 +84,34 @@ import {
   logInfo,
   logError,
   sharedHttpClient,
-  version
+  version,
+  useTimers
 } from '@mp-se/espframework-ui-components'
 import { items } from '@/modules/router'
 
+const { createInterval } = useTimers()
 const { disabled } = storeToRefs(global)
-
+const polling = ref(null)
 const showLogin = ref(false)
+
+function ping() {
+  ;(async () => {
+    const ok = await config.getPing()
+    if (ok.success) {
+      logInfo('App.ping', 'Ping successful', ok.data)
+      if (!ok.data.authenticated) {
+        logInfo('App.ping', 'Not authenticated, showing login modal')
+        login()
+      }
+    } else {
+      logInfo('App.ping', 'Ping failed')
+    }
+  })()
+}
+
+onBeforeMount(() => {
+  polling.value = createInterval(ping, 7000)
+})
 
 const close = (alert) => {
   if (alert == 'danger') global.messageError = ''
@@ -146,32 +167,36 @@ watch(disabled, () => {
   else document.body.style.cursor = 'default'
 })
 
+async function login() {
+  showSpinner()
+  logDebug('App.onMounted', 'Starting up ssl =', sharedHttpClient.isSSL())
+
+  const success = await status.load()
+  if (success) {
+    global.platform = status.platform
+    if (!status.wifi_setup && sharedHttpClient.isSSL()) {
+      showLoginModal()
+    } else {
+      const base = btoa('admin:password')
+      const success = await sharedHttpClient.auth(base)
+      logDebug('App.login', success)
+      if (success) {
+        loadConfig()
+      } else {
+        global.messageError = 'Failed to authenticate with device!'
+      }
+      hideSpinner()
+    }
+  } else {
+    global.messageError = 'Failed to load status from device, please try to reload page!'
+  }
+}
+
 onMounted(async () => {
   logInfo('App.onMounted()', `Using espframework version ${version}`)
 
   if (!global.initialized) {
-    showSpinner()
-    logDebug('App.onMounted', 'Starting up ssl =', sharedHttpClient.isSSL())
-
-    const success = await status.load()
-    if (success) {
-      global.platform = status.platform
-      if (!status.wifi_setup && sharedHttpClient.isSSL()) {
-        showLoginModal()
-      } else {
-        const base = btoa('admin:password')
-        const success = await sharedHttpClient.auth(base)
-        logDebug('App.login', success)
-        if (success) {
-          loadConfig()
-        } else {
-          global.messageError = 'Failed to authenticate with device!'
-        }
-        hideSpinner()
-      }
-    } else {
-      global.messageError = 'Failed to load status from device, please try to reload page!'
-    }
+    await login()
   }
 })
 

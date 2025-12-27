@@ -230,6 +230,18 @@ export const useConfigStore = defineStore('config', {
         global.messageError = 'Failed to do restart'
         global.disabled = false
       }
+    },
+    async getPing() {
+      logInfo('configStore.getPing()', 'Fetching /api/ping')
+
+      try {
+        const json = await sharedHttpClient.getJson('api/ping')
+        logInfo('configStore.getPing()', 'Fetching /api/ping completed')
+        return { success: true, data: json }
+      } catch (err) {
+        logError('configStore.getPing()', err)
+        return { success: false, data: null }
+      }
     }
   }
 })
