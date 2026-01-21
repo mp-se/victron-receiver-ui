@@ -12,12 +12,19 @@
             <BsCard :header="g.data.name" color="info" :title="g.name">
               <template #header> </template>
               <slot>
-                <p class="text-center">
-                  model string: {{ status.getModelString(Number(g.data.model)) }}<br />
+                <template v-if="g.data.name.startsWith('Exide')">
                   <template v-for="[key, val] in Object.entries(g.data)" :key="key">
                     {{ key }}: {{ val }}<br />
                   </template>
-                </p>
+                </template>
+                <template v-else>
+                  <p class="text-center">
+                    model string: {{ status.getModelString(Number(g.data.model)) }}<br />
+                    <template v-for="[key, val] in Object.entries(g.data)" :key="key">
+                      {{ key }}: {{ val }}<br />
+                    </template>
+                  </p>
+                </template>
               </slot>
             </BsCard>
           </div>

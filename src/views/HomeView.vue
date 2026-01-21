@@ -23,6 +23,17 @@
                 <p class="text-center">
                   <!-- These are the various templates for showing device specific data stored in the data payload -->
 
+                  <template v-if="g.data.name.startsWith('Exide')">
+                    Temperature: {{ convertTemperature(g.data.temperature) }} °{{
+                      config.temp_format
+                    }}<br />
+                    Battery: {{ g.data.battery_voltage }} V, {{ g.data.soc }} %<br />
+                    Current: {{ g.data.battery_current }} A<br />
+                    Temperature: {{ convertTemperature(g.data.temperature) }} °{{
+                      config.temp_format
+                    }}<br />
+                  </template>
+
                   <template v-if="g.data.name == 'Battery Monitor'">
                     Temperature: {{ convertTemperature(g.data.temperature) }} °{{
                       config.temp_format
