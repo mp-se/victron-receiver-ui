@@ -217,7 +217,7 @@ function formatTime(t) {
   if (days > 0) s += days + 'd '
   if (hours > 0) s += hours + 'h '
   if (minutes > 0) s += minutes + 'm '
-  if (seconds > 0) s += seconds + 's '
+  if (seconds >= 0) s += seconds + 's '
   return s
 }
 
