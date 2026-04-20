@@ -84,6 +84,23 @@
                     /></template>
                   </template>
 
+                  <template v-if="g.data.name == 'Inverter'">
+                    State: {{ g.data.state_message }}<br />
+                    Alarm: {{ g.data.alarm_message }}<br />
+                    <template v-if="g.data.battery_voltage != undefined"
+                      >Battery: {{ g.data.battery_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.ac_power != undefined"
+                      >AC Power: {{ g.data.ac_power }} A<br
+                    /></template>
+                    <template v-if="g.data.ac_voltage != undefined"
+                      >AC Voltage: {{ g.data.ac_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.ac_current != undefined"
+                      >AC Current: {{ g.data.ac_current }} A<br
+                    /></template>
+                  </template>
+
                   <template v-if="g.data.name == 'Shunt'">
                     <template v-if="g.data.soc != undefined"
                       >SOC: {{ g.data.soc }} %<br
