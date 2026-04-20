@@ -434,6 +434,10 @@ export const useStatusStore = defineStore('status', {
           return 'Orion Smart 48V|48V-8.5A Isolated DC-DC Charger'
         case 0xa3e6:
           return 'Lynx Smart BMS 1000'
+        case 0xa3f0:
+          return 'Orion XS 12/12-50A DC-DC Battery Charger.'
+        case 0xa3f1:
+          return 'Orion XS 1400-50A DC-DC Battery Charger.'
         case 0x2780:
           return 'Victron Multiplus II 12/3000/120-50 2x120V'
         case 0xc030:
