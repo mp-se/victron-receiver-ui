@@ -91,7 +91,7 @@
                       >Battery: {{ g.data.battery_voltage }} V<br
                     /></template>
                     <template v-if="g.data.ac_power != undefined"
-                      >AC Power: {{ g.data.ac_power }} A<br
+                      >AC Power: {{ g.data.ac_power }} VA<br
                     /></template>
                     <template v-if="g.data.ac_voltage != undefined"
                       >AC Voltage: {{ g.data.ac_voltage }} V<br
