@@ -101,6 +101,23 @@
                     /></template>
                   </template>
 
+                  <template v-if="g.data.name == 'Orion XS'">
+                    State: {{ g.data.state_message }}<br />
+                    Error: {{ g.data.error_message }}<br />
+                    <template v-if="g.data.input_voltage != undefined"
+                      >Input: {{ g.data.input_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.input_current != undefined"
+                      >Input Current: {{ g.data.input_current }} A<br
+                    /></template>
+                    <template v-if="g.data.output_voltage != undefined"
+                      >Output: {{ g.data.output_voltage }} V<br
+                    /></template>
+                    <template v-if="g.data.output_current != undefined"
+                      >Output Current: {{ g.data.output_current }} A<br
+                    /></template>
+                  </template>
+
                   <template v-if="g.data.name == 'Shunt'">
                     <template v-if="g.data.soc != undefined"
                       >SOC: {{ g.data.soc }} %<br
